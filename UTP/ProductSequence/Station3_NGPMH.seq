@@ -125,6 +125,10 @@ FailureAction = 2
 [DEF, SF.Seq[0].Locals]
 ResultList = Objs
 TestSocketName = Str
+A = "TYPE, Test_Values"
+B = "TYPE, Test_Values"
+PWM = "TYPE, Test_Values"
+SPI_Programming_Passed = Bool
 
 [DEF, SF.Seq[0].Locals.ResultList]
 %EPTYPE = TEResult
@@ -181,7 +185,7 @@ TestSocketName = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Main[0].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "Parameters.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
 
 [SF.Seq[0].Main[0].Result]
@@ -212,11 +216,20 @@ ActualArgs = Arguments
 
 [DEF, SF.Seq[0].Main[1].TS.SData.ActualArgs]
 TestSocketName = "TYPE, SequenceArgument"
+ProgrammingPassed = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Main[1].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "Parameters.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
+
+[SF.Seq[0].Main[1].TS.SData.ActualArgs.ProgrammingPassed]
+UseDef = False
+Expr = "Locals.SPI_Programming_Passed"
+ParamType = 16
+
+[SF.Seq[0].Main[1]]
+DataSource = "Locals.SPI_Programming_Passed"
 
 [DEF, SF.Seq[0].Main[1]]
 %NAME = "3.01. SPI Programming"
@@ -242,7 +255,7 @@ RotateMotor = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Main[2].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "Parameters.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
 
 [SF.Seq[0].Main[2].TS.SData.ActualArgs.RotateMotor]
@@ -276,7 +289,7 @@ PWM = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Main[3].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "Parameters.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
 
 [SF.Seq[0].Main[3].TS.SData.ActualArgs.A]
@@ -605,7 +618,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Setup[1].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS+_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS+_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -647,7 +660,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Setup[2].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS-_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS-_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -691,7 +704,7 @@ CurrentLimit = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Setup[3].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -739,7 +752,7 @@ OutputState = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Setup[4].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -787,7 +800,7 @@ RotateMotor = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "Parameters.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
 
 [SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.RotateMotor]
@@ -858,7 +871,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[2].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS+_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS+_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -900,7 +913,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[3].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS-_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS-_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -2162,6 +2175,7 @@ Low = 0
 High = 0
 
 [SF.Seq[2].Main[1]]
+Comp = "EQ"
 DataSource = "Locals.SPI.Messages.ZPOSM_0"
 
 [DEF, SF.Seq[2].Main[1]]

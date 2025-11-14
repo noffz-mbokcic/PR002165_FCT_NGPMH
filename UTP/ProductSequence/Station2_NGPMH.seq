@@ -877,7 +877,7 @@ TDChecksum = -1359689880
 
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[0]]
 Label = "VISA resource name"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -892,7 +892,7 @@ ConnectorNumber = 9
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -903,7 +903,7 @@ DisplayType = "ASCII String"
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5
@@ -980,7 +980,7 @@ UseDefaultValues = True
 
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[3]]
 Label = "VISA resource name out"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -996,7 +996,7 @@ ConnectorNumber = 3
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -1007,7 +1007,7 @@ DisplayType = "ASCII String"
 [SF.Seq[2].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5
@@ -1394,7 +1394,7 @@ TDChecksum = -1359689880
 
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[0]]
 Label = "VISA resource name"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -1409,7 +1409,7 @@ ConnectorNumber = 9
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -1420,7 +1420,7 @@ DisplayType = "ASCII String"
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5
@@ -1497,7 +1497,7 @@ UseDefaultValues = True
 
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[3]]
 Label = "VISA resource name out"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -1513,7 +1513,7 @@ ConnectorNumber = 3
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -1524,7 +1524,7 @@ DisplayType = "ASCII String"
 [SF.Seq[3].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5
@@ -1783,7 +1783,7 @@ TDChecksum = -1359689880
 
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[0]]
 Label = "VISA resource name"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -1798,7 +1798,7 @@ ConnectorNumber = 9
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -1809,7 +1809,7 @@ DisplayType = "ASCII String"
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5
@@ -1886,7 +1886,7 @@ UseDefaultValues = True
 
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[3]]
 Label = "VISA resource name out"
-ArgVal = "StationGlobals.DMM"
+ArgVal = "StationGlobals.References.DMM"
 Type = 3
 WireRequirement = 1
 ClusterType = 21
@@ -1902,7 +1902,7 @@ ConnectorNumber = 3
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
-ArgVal = "StationGlobals.DMM.DeviceName"
+ArgVal = "StationGlobals.References.DMM.DeviceName"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
@@ -1913,7 +1913,7 @@ DisplayType = "ASCII String"
 [SF.Seq[4].Main[0].TS.SData.ViCall.Parms[3].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
-ArgVal = "StationGlobals.DMM.SessionNumber"
+ArgVal = "StationGlobals.References.DMM.SessionNumber"
 Type = 0
 WireRequirement = 1
 NumType = 5

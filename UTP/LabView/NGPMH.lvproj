@@ -28,11 +28,13 @@
 			<Item Name="Delete Alarm archive and Create Header for new one Alarm archive.vi" Type="VI" URL="../Station/Delete Alarm archive and Create Header for new one Alarm archive.vi"/>
 			<Item Name="Get Error Message.vi" Type="VI" URL="../Station/Get Error Message.vi"/>
 			<Item Name="Get Failure set to write.vi" Type="VI" URL="../Station/Get Failure set to write.vi"/>
+			<Item Name="Read Ini FIle.vi" Type="VI" URL="../Station/Read Ini FIle.vi"/>
 			<Item Name="Update Operating Mode.vi" Type="VI" URL="../Station/Update Operating Mode.vi"/>
 		</Item>
 		<Item Name="Aim TTi 1908P DMM.lvlib" Type="Library" URL="../AimTTi/Aim TTi 1908P DMM.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
+				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
 				<Item Name="Acquire Semaphore.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Acquire Semaphore.vi"/>
 				<Item Name="AddNamedSemaphorePrefix.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/AddNamedSemaphorePrefix.vi"/>
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
@@ -305,6 +307,7 @@
 				<Item Name="lvpalettesupport.dll" Type="Document" URL="/&lt;vilib&gt;/addons/TestStand/lvpalettesupport.dll"/>
 				<Item Name="LVRectTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRectTypeDef.ctl"/>
 				<Item Name="NI_FileType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/lvfile.llb/NI_FileType.lvlib"/>
+				<Item Name="NI_LVConfig.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/config.llb/NI_LVConfig.lvlib"/>
 				<Item Name="NI_MABase.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MABase.lvlib"/>
 				<Item Name="NI_MAPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MAPro.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
@@ -681,9 +684,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="Configure.ctl" Type="VI" URL="../AimTTi/Configure.ctl"/>
-			<Item Name="Generate SPI Command Frame.vi" Type="VI" URL="../../../2. SPI on DAQmx/Generate SPI Command Frame.vi"/>
-			<Item Name="Generate SPI Write Data Frame.vi" Type="VI" URL="../../../2. SPI on DAQmx/Generate SPI Write Data Frame.vi"/>
-			<Item Name="Get Parity Bit.vi" Type="VI" URL="../../../2. SPI on DAQmx/Get Parity Bit.vi"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
