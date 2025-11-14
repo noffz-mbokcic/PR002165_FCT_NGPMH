@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<ProductConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <Name>Nexteer</Name>
+    <VariantIdentifiers>
+      <VariantName>
+        <Name>NGPMH</Name>
+        <Description />
+      </VariantName>
+    </VariantIdentifiers>
+    <SequenceFiles>
+      <SequenceFile>
+        <Name>Station_Interface.seq</Name>
+        <Path>C:\UTP\source\InterfaceSequences\Station_Interface.seq</Path>
+        <SequenceFileItemType>InterfaceSequence</SequenceFileItemType>
+        <VariantItems>
+          <VariantItem>
+            <Name>Master</Name>
+            <FileGlobalValueItems />
+            <SequenceItems />
+          </VariantItem>
+          <VariantItem>
+            <Name>NGPMH</Name>
+            <FileGlobalValueItems />
+            <SequenceItems />
+            <Description />
+          </VariantItem>
+        </VariantItems>
+      </SequenceFile>
+      <SequenceFile>
+        <Name>FCTO1_Nexteer.seq</Name>
+        <Path>C:\UTP\source\ProductSequences\FCTO1_Nexteer.seq</Path>
+        <SequenceFileItemType>TestSequence</SequenceFileItemType>
+        <VariantItems>
+          <VariantItem>
+            <Name>Master</Name>
+            <FileGlobalValueItems />
+            <SequenceItems>
+              <SequenceItem>
+                <Name>MainSequence</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Section 1: Power Supply</Name>
+                        <UniqueId>ID#:J25GTOTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Section 2: System test</Name>
+                        <UniqueId>ID#:O/BMYuTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Section 3: Current calibration</Name>
+                        <UniqueId>ID#:PPBMYuTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Section 4: Verify values</Name>
+                        <UniqueId>ID#:PfBMYuTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Section 5: Functional testing</Name>
+                        <UniqueId>ID#:PvBMYuTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Section 6: End of Line</Name>
+                        <UniqueId>ID#:P/BMYuTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>5</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Message Popup</Name>
+                        <UniqueId>ID#:GhQCxEP/7xG4dVB7nf4f8B</UniqueId>
+                        <StepType>MessagePopup</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Sequence</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Statement</Name>
+                        <UniqueId>ID#:yYgKEh8D8BG4eFB7nf4f8B</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Message Popup</Name>
+                        <UniqueId>ID#:yogKEh8D8BG4eFB7nf4f8B</UniqueId>
+                        <StepType>MessagePopup</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Message Popup</Name>
+                        <UniqueId>ID#:y4gKEh8D8BG4eFB7nf4f8B</UniqueId>
+                        <StepType>MessagePopup</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Message Popup</Name>
+                        <UniqueId>ID#:zIgKEh8D8BG4eFB7nf4f8B</UniqueId>
+                        <StepType>MessagePopup</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>--------SubSequences -----------</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Read Conf file</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Quiscent</Name>
+                        <UniqueId>ID#:PUF0R7bu7xG4ZFB7nf4f8B</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Lock</Name>
+                        <UniqueId>ID#:U90lt7zu7xG4ZFB7nf4f8B</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>NFC</Name>
+                        <UniqueId>ID#:b78007zu7xG4ZFB7nf4f8B</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>MOC</Name>
+                        <UniqueId>ID#:cL8007zu7xG4ZFB7nf4f8B</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 1 testing</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:iLJXseTt7xG4Y1B7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 2</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:F50ZuKu08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 3</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:GJ0ZuKu08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 4</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:GZ0ZuKu08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 5</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:Gp0ZuKu08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Wait</Name>
+                        <UniqueId>ID#:DfaWmK+08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>NI_Wait</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Section 6</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Pins</Name>
+                        <UniqueId>ID#:EOJMx6u08BG5RVB7nf4f8B</UniqueId>
+                        <StepType>PassFailTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+            </SequenceItems>
+          </VariantItem>
+          <VariantItem>
+            <Name>NGPMH</Name>
+            <FileGlobalValueItems />
+            <SequenceItems />
+            <Description />
+          </VariantItem>
+        </VariantItems>
+      </SequenceFile>
+      <SequenceFile>
+        <Name>FCTO1_Interface.seq</Name>
+        <Path>C:\UTP\source\InterfaceSequences\FCTO1_Interface.seq</Path>
+        <SequenceFileItemType>InterfaceSequence</SequenceFileItemType>
+        <VariantItems>
+          <VariantItem>
+            <Name>Master</Name>
+            <FileGlobalValueItems />
+            <SequenceItems />
+          </VariantItem>
+          <VariantItem>
+            <Name>NGPMH</Name>
+            <FileGlobalValueItems />
+            <SequenceItems />
+            <Description />
+          </VariantItem>
+        </VariantItems>
+      </SequenceFile>
+    </SequenceFiles>
+    <Description />
+  </Product>
+  <AppInfo>
+    <Version>2.0.0.676</Version>
+    <LastModification>2018-01-26T17:20:44.6985814+01:00</LastModification>
+  </AppInfo>
+  <AppInfo>
+    <Version>2.0.1.682</Version>
+    <LastModification>2018-03-29T14:51:22.9975882+02:00</LastModification>
+  </AppInfo>
+  <AppInfo>
+    <Version>7.0.0.760</Version>
+    <LastModification>2022-06-03T14:27:31.5819874+02:00</LastModification>
+  </AppInfo>
+  <AppInfo>
+    <Version>7.0.0.761</Version>
+    <LastModification>2022-06-24T12:51:26.5083352+02:00</LastModification>
+  </AppInfo>
+  <AppInfo>
+    <Version>9.2.0.0</Version>
+    <LastModification>2025-02-05T12:48:57.1828301+01:00</LastModification>
+  </AppInfo>
+  <AppInfo>
+    <Version>9.2.1.0</Version>
+    <LastModification>2025-11-13T10:59:01.0187496+01:00</LastModification>
+  </AppInfo>
+</ProductConfiguration>
