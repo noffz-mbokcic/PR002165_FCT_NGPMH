@@ -28,11 +28,11 @@ NI_CommonCParameterResult = CommonCParameterResult
 EditSubstep = StepType
 SequenceArgument = Argument
 NI_SequenceParameterResult = SequenceParameterResult
-NumericLimitTest = StepType
 NoneStepAdditions = NoneModule
 Statement = StepType
 NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = StepType
 NoffzUTP_TEF_UI_TestSocket_ShowMessageDialog = StepType
+PassFailTest = StepType
 
 [DEF, SF]
 Seq = Objs
@@ -106,17 +106,13 @@ ResultList = Objs
 
 [DEF, SF.Seq[0].Main]
 %[0] = Step
-%TYPE: %[0] = "NumericLimitTest"
+%TYPE: %[0] = "PassFailTest"
 
 [SF.Seq[0].Main[0].TS]
 Id = "ID#:hCrvw7fphkC0XZILHKFRBB"
-ConnectionLifetime = 0
 
 [DEF, SF.Seq[0].Main[0].TS]
 SData = "TYPE, NoneStepAdditions"
-
-[SF.Seq[0].Main[0].Result]
-Units = "mA"
 
 [SF.Seq[0].Main[0]]
 DataSource = "Step.Result.Numeric = 10.1"
@@ -523,11 +519,11 @@ NI_CommonCParameterResult = "NI_CommonCParameterResult"
 EditSubstep = "EditSubstep"
 SequenceArgument = "SequenceArgument"
 NI_SequenceParameterResult = "NI_SequenceParameterResult"
-NumericLimitTest = "NumericLimitTest"
 NoneStepAdditions = "NoneStepAdditions"
 Statement = "Statement"
 NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = "NoffzUTP_TEF_Model_TestSocket_GetTestSocketName"
 NoffzUTP_TEF_UI_TestSocket_ShowMessageDialog = "NoffzUTP_TEF_UI_TestSocket_ShowMessageDialog"
+PassFailTest = "PassFailTest"
 
 [DEF, Path]
 %LOCATION = "StdTypes"
@@ -1234,250 +1230,6 @@ CheckedState = 1
 [NI_SequenceParameterResult.Flags]
 %NUMFMT = "%#x"
 
-[DEF, NumericLimitTest]
-%LOCATION = "StepTypes"
-Substeps = "TYPE, StepTypeSubstepsArray"
-DescriptionFormat = "TYPE, Expression"
-%FLG: DescriptionFormat = 524288
-DefaultNameFormat = "TYPE, Expression"
-%FLG: DefaultNameFormat = 524288
-Menu = "TYPE, StepTypeMenu"
-AdditionalResultsHints = Objs
-%FLG: AdditionalResultsHints = 524288
-TS = "TYPE, TEInf"
-NI_Data = "TYPE, StepTypeNIData"
-Result = Obj
-Limits = Obj
-Comp = Str
-CompExpr = "TYPE, Expression"
-UseCompExpr = Bool
-InBuf = Str
-DataSource = "TYPE, Expression"
-CodeTemplates = Str
-%FLG: CodeTemplates = 524288
-BlockStartTypes = Str
-%FLG: BlockStartTypes = 524288
-BlockEndTypes = Str
-%FLG: BlockEndTypes = 524288
-AppliesToBlockStructure = Bool
-%FLG: AppliesToBlockStructure = 524288
-CanEncapsulate = Bool
-%FLG: CanEncapsulate = 524288
-Category = Str
-%FLG: Category = 524288
-%ROOT_TYPE = True
-
-[NumericLimitTest]
-%HI: Substeps = [0]
-%INSTFLG: Substeps = 524312
-%INSTOVRD: Substeps = 655384
-DescriptionFormat Line0001 = "(Step.result.status == \"\" ? \"\" : (\"{\" + Str(Step.result.numeric) + \"}, \")) \n+ ResStr(\"NI_STEPTYPES\", \"NUMERI"
-DescriptionFormat Line0002 = "C_LIMIT_DESCRIPTION_NAME\") \n+ \",  \" \n+ \n(\nStep.compexpr == \"\"?\n     (\n     SearchAndReplace\n          (\n   "
-DescriptionFormat Line0003 = "       SearchAndReplace\n               (\n               SearchAndReplace\n                    (\n                     "
-DescriptionFormat Line0004 = "    SearchAndReplace\n                         ( SearchAndReplace(SearchAndReplace(ResStr(\"NI_SUBSTEPS\",Step.Comp + \""
-DescriptionFormat Line0005 = "_EX\"),\"%hs\",(Step.Limits.Nominal<0?\"-\":\"+\")),\"%ls\",(Step.Limits.Nominal<0 ? \"+\":\"-\" ) ),\n                 "
-DescriptionFormat Line0006 = "             \n                              \"%hi\",\n                              (Step.limits.highexpr == \"\" ? Str"
-DescriptionFormat Line0007 = "(Step.limits.high) : Step.limits.highexpr)\n                         ),\n                        \"%low\",\n            "
-DescriptionFormat Line0008 = "            (Step.Limits.lowexpr == \"\" ? Str(Step.limits.low) : Step.limits.lowexpr)\n                    ),\n        "
-DescriptionFormat Line0009 = "            \"%nom\",\n                    (Step.Limits.NominalExpr== \"\" ? Str(Step.limits.Nominal) : Step.limits.Nomi"
-DescriptionFormat Line0010 = "nalExpr)\n               ), \n              \"%tre\", \n              ToLower(Step.Limits.ThresholdType) == \"percentage"
-DescriptionFormat Line0011 = "\"?\n              \"%\" : \n              (\n                  ToLower(Step.Limits.ThresholdType) == \"delta\"? \n     "
-DescriptionFormat Line0012 = "             \"\": \n                  (\n                 ToLower(Step.Limits.ThresholdType) == \"ppm\"? \n            "
-DescriptionFormat Line0013 = "     \"ppm\" :\n                 Str(Step.Limits.ThresholdType)\n                  )\n             )\n         )\n     )"
-DescriptionFormat Line0014 = " \n: (ResStr(\"NI_SUBSTEPS\", \"COMP_TYPE_EXPR_DESC\"))\n) \n+ (Step.Result.Units == \"\" ? \"\" : \", \" + Step.Result."
-DescriptionFormat Line0015 = "Units)  \n+ ((\"%ModuleDescription\" == \"\") ? \"\" : \", %ModuleDescription\")"
-%FLG: DescriptionFormat = 4194328
-%INSTFLG: DescriptionFormat = 4718616
-%INSTOVRD: DescriptionFormat = 4718616
-DefaultNameFormat = "ResStr(\"NI_STEPTYPES\", \"NUM_DEF_STEP_NAME\")"
-%FLG: DefaultNameFormat = 4194328
-%INSTFLG: DefaultNameFormat = 4718616
-%INSTOVRD: DefaultNameFormat = 4718616
-%INSTFLG: Menu = 524312
-%INSTOVRD: Menu = 524312
-%FLG: AdditionalResultsHints = 4194328
-%INSTFLG: TS = 262168
-%INSTOVRD: TS = 4456472
-%FLG: Result = 4194304
-%INSTFLG: Result = 4194304
-%FLG: Limits = 12288
-%INSTFLG: Limits = 12288
-Comp = "GELE"
-%FLG: Comp = 12288
-%INSTFLG: Comp = 12288
-%FLG: CompExpr = 6144
-DataSource = "Step.Result.Numeric"
-CodeTemplates Line0001 = "NumericLimitLabVIEW|NumericLimitLabVIEWNXG|NumericLimitCVI|NumericLimitVB.NET|NumericLimitCSharp.NET|NumericLimitC++.NET"
-CodeTemplates Line0002 = "|NumericLimitVC++_Template|NumericLimitHTB80_Template|NumericLimitHTB72Template|NumericLimit_Template"
-%FLG: CodeTemplates = 4194328
-%FLG: BlockStartTypes = 4194328
-%FLG: BlockEndTypes = 4194328
-%FLG: AppliesToBlockStructure = 4194328
-%FLG: CanEncapsulate = 4194328
-Category = "Test"
-%FLG: Category = 24
-%TIMESTAMP = 1666107258
-%VERSION = "23.0.0.1"
-%TYPELASTMOD = "23.0.0.0"
-%MINPRODVER = "23.0.0.0"
-%TYPE_FLG = 33554446
-
-[DEF, NumericLimitTest.Substeps]
-%[0] = Step
-%TYPE: %[0] = "EditSubstep"
-
-[DEF, NumericLimitTest.Substeps[0].TS]
-SData = "TYPE, FlexCStepAdditions"
-%FLG: SData = 2097152
-
-[NumericLimitTest.Substeps[0].TS.SData.Call]
-LibPath = "CommonSubsteps.dll"
-Func = "EditNumericMeasurementStepUsingExpr"
-%HI: Parms = [3]
-
-[DEF, NumericLimitTest.Substeps[0].TS.SData.Call.Parms]
-%[0] = "TYPE, FCParameter"
-%[1] = "TYPE, FCParameter"
-%[2] = "TYPE, FCParameter"
-%[3] = "TYPE, FCParameter"
-
-[NumericLimitTest.Substeps[0].TS.SData.Call.Parms[0]]
-Name = "Return Value"
-Type = 3
-ObjType = 2
-%INSTOVRD: ResultAct = 5177369
-%INSTOVRD: Flags = 5177369
-
-[NumericLimitTest.Substeps[0].TS.SData.Call.Parms[1]]
-Name = "sequenceContext"
-Type = 4
-%INSTOVRD: ResultAct = 5177369
-ArgVal = "ThisContext"
-%INSTOVRD: Flags = 5177369
-
-[NumericLimitTest.Substeps[0].TS.SData.Call.Parms[2]]
-Name = "reserved"
-%INSTOVRD: ResultAct = 5177369
-ArgVal = "0"
-%INSTOVRD: Flags = 5177369
-
-[NumericLimitTest.Substeps[0].TS.SData.Call.Parms[3]]
-Name = "changed"
-ObjType = 2
-NumPass = 1
-%INSTOVRD: ResultAct = 5177369
-ArgVal = "RunState.InitialSelection.SelectedFile.ChangeCount"
-ArgDisplayVal = "RunState.InitialSelection.SelectedFile.ChangeCount"
-%INSTOVRD: Flags = 5177369
-
-[NumericLimitTest.Substeps[0].TS]
-%INSTFLG: SData = 2097152
-%INSTOVRD: SData = 2097152
-ConnectionLifetime = 0
-
-[NumericLimitTest.Substeps[0]]
-%INSTFLG: TS = 262168
-%INSTOVRD: TS = 262168
-MenuName = "ResStr(\"NI_STEPTYPES\", \"NUM_EDIT_STEP_MENU_NAME\")"
-SupportsReadOnly = True
-HasEditPanel = True
-
-[NumericLimitTest.Substeps[0].Result]
-%INSTOVRD: Error = 4194304
-%INSTFLG: ReportText = 0
-%INSTOVRD: Common = 4194304
-
-[DEF, NumericLimitTest.Substeps[0]]
-%NAME = "Edit"
-
-[NumericLimitTest.Menu]
-ItemName = "ResStr(\"NI_STEPTYPES\", \"NUM_MENU_ITEM_NAME\")"
-Group = "Tests"
-
-[DEF, NumericLimitTest.AdditionalResultsHints]
-%EPTYPE = "TYPE, NI_CustomResult"
-
-[DEF, NumericLimitTest.TS]
-SData = Obj
-%FLG: SData = 2097152
-Requirements = Obj
-%FLG: Requirements = 2097152
-
-[NumericLimitTest.TS]
-%INSTFLG: SData = 2097152
-%INSTOVRD: SData = 7143448
-StatusExpr Line0001 = "CheckLimits(Step.DataSource == \"Step.Result.Numeric\" ? Step.Result.Numeric : (Step.Result.Numeric = Evaluate(Step.Data"
-StatusExpr Line0002 = "Source)), Step.Limits.High, Step.Limits.Low, Step.Comp, True, Step.Limits.Nominal, Step.Limits.ThresholdType)"
-%INSTFLG: StatusExpr = 1
-%INSTOVRD: StatusExpr = 5046297
-%FLG: Requirements = 1
-%INSTFLG: Requirements = 1
-
-[DEF, NumericLimitTest.TS.Requirements]
-Links = Strs
-
-[NumericLimitTest.TS.Requirements]
-%FLG: Links = 71303168
-%INSTFLG: Links = 71303168
-%INSTOVRD: Links = 72286233
-
-[NumericLimitTest.NI_Data]
-%HI: EditPanels = [1]
-
-[NumericLimitTest.NI_Data.EditPanels]
-%[0] = "NIStepTypeControls.dll|NationalInstruments.TestStand.StepTypeControls.NumericLimitTestLimitsTabInfo"
-%[1] = "NIStepTypeControls.dll|NationalInstruments.TestStand.StepTypeControls.NumericLimitTestDataSourceTabInfo"
-
-[DEF, NumericLimitTest.Result]
-Error = "TYPE, Error"
-Status = Str
-Numeric = Num
-ReportText = Str
-Common = "TYPE, CommonResults"
-Units = Str
-
-[NumericLimitTest.Result]
-%FLG: Error = 4194304
-%INSTFLG: Error = 4194304
-%INSTOVRD: Error = 4194304
-%FLG: Status = 4194304
-%INSTFLG: Status = 4194304
-%FLG: Numeric = 9216
-%INSTFLG: Numeric = 9216
-%FLG: ReportText = 4194304
-%INSTFLG: ReportText = 4194304
-%INSTOVRD: Common = 4194304
-%FLG: Units = 10240
-%INSTFLG: Units = 8192
-
-[DEF, NumericLimitTest.Limits]
-ThresholdType = Str
-Nominal = Num
-Low = Num
-High = Num
-ThresholdTypeExpr = "TYPE, Expression"
-NominalExpr = "TYPE, Expression"
-LowExpr = "TYPE, Expression"
-HighExpr = "TYPE, Expression"
-UseThresholdTypeExpr = Bool
-UseNominalExpr = Bool
-UseLowExpr = Bool
-UseHighExpr = Bool
-
-[NumericLimitTest.Limits]
-ThresholdType = "PERCENTAGE"
-Nominal = 100
-Low = 9
-High = 11
-%FLG: ThresholdTypeExpr = 2048
-%FLG: NominalExpr = 2048
-%FLG: LowExpr = 2048
-%FLG: HighExpr = 2048
-%FLG: UseThresholdTypeExpr = 2048
-%FLG: UseNominalExpr = 2048
-%FLG: UseLowExpr = 2048
-%FLG: UseHighExpr = 2048
-
 [DEF, NoneStepAdditions]
 %LOCATION = "StdTypes"
 %ROOT_TYPE = True
@@ -2019,6 +1771,193 @@ ReportText = Str
 Common = "TYPE, CommonResults"
 
 [NoffzUTP_TEF_UI_TestSocket_ShowMessageDialog.Result]
+%FLG: Error = 4194304
+%INSTFLG: Error = 4194304
+%INSTOVRD: Error = 4194304
+%FLG: Status = 4194304
+%INSTFLG: Status = 4194304
+%FLG: ReportText = 4194304
+%INSTFLG: ReportText = 4194304
+%INSTOVRD: Common = 4194304
+
+[DEF, PassFailTest]
+%LOCATION = "StepTypes"
+Substeps = "TYPE, StepTypeSubstepsArray"
+DescriptionFormat = "TYPE, Expression"
+%FLG: DescriptionFormat = 524288
+DefaultNameFormat = "TYPE, Expression"
+%FLG: DefaultNameFormat = 524288
+Menu = "TYPE, StepTypeMenu"
+AdditionalResultsHints = Objs
+%FLG: AdditionalResultsHints = 524288
+TS = "TYPE, TEInf"
+NI_Data = "TYPE, StepTypeNIData"
+Result = Obj
+InBuf = Str
+DataSource = "TYPE, Expression"
+CodeTemplates = Str
+%FLG: CodeTemplates = 524288
+BlockStartTypes = Str
+%FLG: BlockStartTypes = 524288
+BlockEndTypes = Str
+%FLG: BlockEndTypes = 524288
+AppliesToBlockStructure = Bool
+%FLG: AppliesToBlockStructure = 524288
+CanEncapsulate = Bool
+%FLG: CanEncapsulate = 524288
+Category = Str
+%FLG: Category = 524288
+%ROOT_TYPE = True
+
+[PassFailTest]
+%HI: Substeps = [0]
+%INSTFLG: Substeps = 524312
+%INSTOVRD: Substeps = 655384
+DescriptionFormat Line0001 = "ResStr(\"NI_STEPTYPES\", \"PASSFAIL_DESCRIPTION_NAME\") + ((\"%ModuleDescription\" == \"\") ? \"\" : \",  %ModuleDescrip"
+DescriptionFormat Line0002 = "tion\")"
+%FLG: DescriptionFormat = 4194328
+%INSTFLG: DescriptionFormat = 4718616
+%INSTOVRD: DescriptionFormat = 4718616
+DefaultNameFormat = "ResStr(\"NI_STEPTYPES\", \"PASSFAIL_DEF_STEP_NAME\")"
+%FLG: DefaultNameFormat = 4194328
+%INSTFLG: DefaultNameFormat = 4718616
+%INSTOVRD: DefaultNameFormat = 4718616
+%INSTFLG: Menu = 524312
+%INSTOVRD: Menu = 524312
+%FLG: AdditionalResultsHints = 4194328
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 4456472
+%FLG: Result = 4194304
+%INSTFLG: Result = 4194304
+DataSource = "Step.Result.PassFail"
+CodeTemplates Line0001 = "PassFailLabVIEW|PassFailLabVIEWNXG|PassFailCVI|PassFailVB.NET|PassFailCSharp.NET|PassFailC++.NET|PassFailVC++_Template|P"
+CodeTemplates Line0002 = "assFailHTB80_Template|PassFailHTB72_Template|PassFail_Template"
+%FLG: CodeTemplates = 4194328
+%FLG: BlockStartTypes = 4194328
+%FLG: BlockEndTypes = 4194328
+%FLG: AppliesToBlockStructure = 4194328
+%FLG: CanEncapsulate = 4194328
+Category = "Test"
+%FLG: Category = 24
+%TIMESTAMP = 1666107258
+%VERSION = "23.0.0.1"
+%TYPELASTMOD = "23.0.0.0"
+%MINPRODVER = "23.0.0.0"
+%TYPE_FLG = 33554446
+
+[DEF, PassFailTest.Substeps]
+%[0] = Step
+%TYPE: %[0] = "EditSubstep"
+
+[DEF, PassFailTest.Substeps[0].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[PassFailTest.Substeps[0].TS.SData.Call]
+LibPath = "CommonSubsteps.dll"
+Func = "EditPassFailStep"
+%HI: Parms = [3]
+
+[DEF, PassFailTest.Substeps[0].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+%[2] = "TYPE, FCParameter"
+%[3] = "TYPE, FCParameter"
+
+[PassFailTest.Substeps[0].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+ObjType = 2
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[PassFailTest.Substeps[0].TS.SData.Call.Parms[1]]
+Name = "sequenceContext"
+Type = 4
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "ThisContext"
+%INSTOVRD: Flags = 5177369
+
+[PassFailTest.Substeps[0].TS.SData.Call.Parms[2]]
+Name = "reserved"
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "0"
+%INSTOVRD: Flags = 5177369
+
+[PassFailTest.Substeps[0].TS.SData.Call.Parms[3]]
+Name = "changed"
+ObjType = 2
+NumPass = 1
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "RunState.InitialSelection.SelectedFile.ChangeCount"
+%INSTOVRD: Flags = 5177369
+
+[PassFailTest.Substeps[0].TS]
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 2097152
+ConnectionLifetime = 0
+
+[PassFailTest.Substeps[0]]
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 262168
+MenuName = "ResStr(\"NI_STEPTYPES\", \"PASSFAIL_EDIT_STEP_MENU_NAME\")"
+SupportsReadOnly = True
+HasEditPanel = True
+
+[PassFailTest.Substeps[0].Result]
+%INSTOVRD: Error = 4194304
+%INSTFLG: ReportText = 0
+%INSTOVRD: Common = 4194304
+
+[DEF, PassFailTest.Substeps[0]]
+%NAME = "Edit"
+
+[PassFailTest.Menu]
+ItemName = "ResStr(\"NI_STEPTYPES\", \"PASSFAIL_MENU_ITEM_NAME\")"
+Group = "Tests"
+
+[DEF, PassFailTest.AdditionalResultsHints]
+%EPTYPE = "TYPE, NI_CustomResult"
+
+[DEF, PassFailTest.TS]
+SData = Obj
+%FLG: SData = 2097152
+Requirements = Obj
+%FLG: Requirements = 2097152
+
+[PassFailTest.TS]
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 7143448
+ConnectionLifetime = 0
+StatusExpr Line0001 = "Step.DataSource != \"Step.Result.PassFail\" ? Step.Result.PassFail = Evaluate(Step.DataSource) : False, Step.Result.Pass"
+StatusExpr Line0002 = "Fail ? \"Passed\" : \"Failed\" "
+%INSTFLG: StatusExpr = 1
+%INSTOVRD: StatusExpr = 5046297
+%FLG: Requirements = 1
+%INSTFLG: Requirements = 1
+
+[DEF, PassFailTest.TS.Requirements]
+Links = Strs
+
+[PassFailTest.TS.Requirements]
+%FLG: Links = 71303168
+%INSTFLG: Links = 71303168
+%INSTOVRD: Links = 72286233
+
+[PassFailTest.NI_Data]
+%HI: EditPanels = [0]
+
+[PassFailTest.NI_Data.EditPanels]
+%[0] = "NIStepTypeControls.dll|NationalInstruments.TestStand.StepTypeControls.PassFailTestTabInfo"
+
+[DEF, PassFailTest.Result]
+Error = "TYPE, Error"
+Status = Str
+PassFail = Bool
+ReportText = Str
+Common = "TYPE, CommonResults"
+
+[PassFailTest.Result]
 %FLG: Error = 4194304
 %INSTFLG: Error = 4194304
 %INSTOVRD: Error = 4194304

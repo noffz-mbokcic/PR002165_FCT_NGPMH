@@ -77,6 +77,8 @@ VIParameter = VIParameter
 NI_NodeProperty = LVNodeProperty
 FlexGStepAdditions = FGModule
 VIParameterElement = VIParameterElement
+NoffzUTP_TEF_Model_Station_GetTestSocketNames = StepType
+NI_Flow_ForEach = StepType
 
 [DEF, SF]
 Seq = Objs
@@ -146,7 +148,7 @@ FailureAction = Num
 [SF.Seq[0]]
 %FLG: Parameters = 4456448
 %FLG: Locals = 4194304
-%HI: Main = [24]
+%HI: Main = [29]
 %FLG: Main = 4194304
 %FLG: Setup = 4194304
 %FLG: Cleanup = 4194304
@@ -169,6 +171,8 @@ Keyence1 = Obj
 Keyence2 = Obj
 Ini = Strs
 DMM = Str
+TestSocketNames = Strs
+TestSocketName = Str
 
 [DEF, SF.Seq[0].Locals.ResultList]
 %EPTYPE = TEResult
@@ -178,7 +182,8 @@ DMM = Str
 
 [SF.Seq[0].Locals]
 %HI: ProductsAndVariants = [7]
-%HI: Ini = [3]
+%HI: Ini = [4]
+%HI: TestSocketNames = [7]
 
 [DEF, SF.Seq[0].Locals.Keyence1]
 IP = Str
@@ -239,6 +244,16 @@ Port = Num
 %TYPE: %[23] = "Action"
 %[24] = Step
 %TYPE: %[24] = "Action"
+%[25] = Step
+%TYPE: %[25] = "Label"
+%[26] = Step
+%TYPE: %[26] = "NoffzUTP_TEF_Model_Station_GetTestSocketNames"
+%[27] = Step
+%TYPE: %[27] = "NI_Flow_ForEach"
+%[28] = Step
+%TYPE: %[28] = "Action"
+%[29] = Step
+%TYPE: %[29] = "NI_Flow_End"
 
 [SF.Seq[0].Main[0].TS]
 Id = "ID#:s1wfaqn/fEucs6YVq011DA"
@@ -491,6 +506,7 @@ StatusExpr = "\"\""
 %FLG: %[11] = 67108864
 %FLG: %[12] = 67108864
 %FLG: %[20] = 67108864
+%FLG: %[25] = 67108864
 
 [SF.Seq[0].Main[10].TS]
 Id = "ID#:MYjeBRXlg02qSGkeh3L6TB"
@@ -1299,6 +1315,155 @@ DisplayType = "ASCII String"
 
 [DEF, SF.Seq[0].Main[24]]
 %NAME = "Initialize DMM"
+
+[SF.Seq[0].Main[25].TS]
+Id = "ID#:iC53Bo7D8BG5WVB7nf4f8B"
+Icon = "ni_blank.ico"
+StatusExpr = "\"\""
+%FLG: StatusExpr = 1
+
+[SF.Seq[0].Main[26].TS]
+Id = "ID#:fy53Bo7D8BG5WVB7nf4f8B"
+
+[DEF, SF.Seq[0].Main[26].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[0].Main[26].TS.SData]
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.Station.GetTestSocketNames"
+CustomThreadAffinity = "-1"
+Trace = "Off"
+
+[DEF, SF.Seq[0].Main[26].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[0].Main[26].TS.SData.ActualArgs]
+TestSocketNames = "TYPE, SequenceArgument"
+
+[SF.Seq[0].Main[26].TS.SData.ActualArgs.TestSocketNames]
+UseDef = False
+Expr = "Locals.TestSocketNames"
+ParamType = 256
+
+[DEF, SF.Seq[0].Main[26].TS.SData.Prototype]
+OperationNames = Strs
+
+[SF.Seq[0].Main[26].TS.SData.Prototype]
+%FLG: OperationNames = 4
+
+[DEF, SF.Seq[0].Main[26]]
+%NAME = "Model.Station.GetTestSocketNames"
+
+[SF.Seq[0].Main[27].TS]
+Id = "ID#:gC53Bo7D8BG5WVB7nf4f8B"
+
+[SF.Seq[0].Main[27]]
+ArrayExpr = "Locals.TestSocketNames"
+ArrayElementExpr = "Locals.TestSocketName"
+
+[DEF, SF.Seq[0].Main[27]]
+%NAME = "For Each"
+
+[SF.Seq[0].Main[28].TS]
+Id = "ID#:gS53Bo7D8BG5WVB7nf4f8B"
+
+[DEF, SF.Seq[0].Main[28].TS]
+SData = "TYPE, FlexGStepAdditions"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall]
+ProjectPath = "..\\LabView\\NGPMH.lvproj"
+VIPath = "My Computer\\Queues.lvlib\\Create QUEUE.vi"
+Namespace = "Queues.lvlib"
+TDChecksum = 637353658
+%HI: Parms = [2]
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms]
+%[0] = "TYPE, VIParameter"
+%[1] = "TYPE, VIParameter"
+%[2] = "TYPE, VIParameter"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[0]]
+Label = "QueueName"
+ArgVal = "Locals.TestSocketName"
+Type = 1
+WireRequirement = 1
+DisplayType = "ASCII String"
+ConnectorNumber = 10
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[0]]
+%NAME = "QueueName"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[1]]
+Label = "queue out"
+Type = 4
+WireRequirement = 1
+ReferenceType = 3
+DisplayType = "Number (U32)"
+Direction = 1
+ConnectorNumber = 3
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[1]]
+%NAME = "queue out"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2]]
+Label = "error out"
+ArgVal = "Step.Result.Error"
+Type = 3
+WireRequirement = 1
+DisplayType = "Container"
+%HI: ArrayClusterEls = [2]
+Direction = 1
+ConnectorNumber = 0
+LegacyClusterType = 2
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls]
+%[0] = "TYPE, VIParameterElement"
+%[1] = "TYPE, VIParameterElement"
+%[2] = "TYPE, VIParameterElement"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[0]]
+Label = "status"
+ArgVal = "Step.Result.Error.Occurred"
+Type = 2
+WireRequirement = 1
+DisplayType = "Boolean"
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[0]]
+%NAME = "status"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[1]]
+Label = "code"
+ArgVal = "Step.Result.Error.Code"
+Type = 0
+WireRequirement = 1
+NumType = 4
+DisplayType = "Number (I32)"
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[1]]
+%NAME = "code"
+
+[SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[2]]
+Label = "source"
+ArgVal = "Step.Result.Error.Msg"
+Type = 1
+WireRequirement = 1
+DisplayType = "ASCII String"
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2].ArrayClusterEls[2]]
+%NAME = "source"
+
+[DEF, SF.Seq[0].Main[28].TS.SData.ViCall.Parms[2]]
+%NAME = "error out"
+
+[DEF, SF.Seq[0].Main[28]]
+%NAME = "Create QUEUE for evry STATION"
+
+[SF.Seq[0].Main[29].TS]
+Id = "ID#:gi53Bo7D8BG5WVB7nf4f8B"
+
+[DEF, SF.Seq[0].Main[29]]
+%NAME = "End"
 
 [DEF, SF.Seq[0].RTS]
 Type = Num
@@ -2810,7 +2975,7 @@ FailureAction = Num
 %FLG: Locals = 4194304
 %FLG: Main = 4194304
 %FLG: Setup = 4194304
-%HI: Cleanup = [2]
+%HI: Cleanup = [6]
 %FLG: Cleanup = 4194304
 %FLG: RecordResults = 4194312
 %FLG: RTS = 4456456
@@ -2822,36 +2987,231 @@ FailureAction = 2
 
 [DEF, SF.Seq[3].Locals]
 ResultList = Objs
+TestSocketNames = Strs
+TestSocketName = Str
 
 [DEF, SF.Seq[3].Locals.ResultList]
 %EPTYPE = TEResult
 
+[SF.Seq[3].Locals]
+%HI: TestSocketNames = [7]
+
 [DEF, SF.Seq[3].Cleanup]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NoffzUTP_TEF_Model_Station_GetTestSocketNames"
 %[1] = Step
-%TYPE: %[1] = "Action"
+%TYPE: %[1] = "NI_Flow_ForEach"
 %[2] = Step
 %TYPE: %[2] = "Action"
+%[3] = Step
+%TYPE: %[3] = "NI_Flow_End"
+%[4] = Step
+%TYPE: %[4] = "Action"
+%[5] = Step
+%TYPE: %[5] = "Action"
+%[6] = Step
+%TYPE: %[6] = "Action"
 
 [SF.Seq[3].Cleanup[0].TS]
-Id = "ID#:Zt+HO2/B8BG5WFB7nf4f8B"
+Id = "ID#:gDxFpI7D8BG5WVB7nf4f8B"
 
 [DEF, SF.Seq[3].Cleanup[0].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[3].Cleanup[0].TS.SData]
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.Station.GetTestSocketNames"
+CustomThreadAffinity = "-1"
+Trace = "Off"
+
+[DEF, SF.Seq[3].Cleanup[0].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[3].Cleanup[0].TS.SData.ActualArgs]
+TestSocketNames = "TYPE, SequenceArgument"
+
+[SF.Seq[3].Cleanup[0].TS.SData.ActualArgs.TestSocketNames]
+UseDef = False
+Expr = "Locals.TestSocketNames"
+ParamType = 256
+
+[DEF, SF.Seq[3].Cleanup[0].TS.SData.Prototype]
+OperationNames = Strs
+
+[SF.Seq[3].Cleanup[0].TS.SData.Prototype]
+%FLG: OperationNames = 4
+
+[DEF, SF.Seq[3].Cleanup[0]]
+%NAME = "Model.Station.GetTestSocketNames"
+
+[SF.Seq[3].Cleanup[1].TS]
+Id = "ID#:I/c2jI7D8BG5WVB7nf4f8B"
+
+[SF.Seq[3].Cleanup[1]]
+ArrayExpr = "Locals.TestSocketNames"
+ArrayElementExpr = "Locals.TestSocketName"
+
+[DEF, SF.Seq[3].Cleanup[1]]
+%NAME = "For Each"
+
+[SF.Seq[3].Cleanup[2].TS]
+Id = "ID#:JPc2jI7D8BG5WVB7nf4f8B"
+
+[DEF, SF.Seq[3].Cleanup[2].TS]
 SData = "TYPE, FlexGStepAdditions"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall]
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall]
+ProjectPath = "..\\LabView\\NGPMH.lvproj"
+VIPath = "My Computer\\Queues.lvlib\\Destroy QUEUE.vi"
+Namespace = "Queues.lvlib"
+TDChecksum = 316070602
+%HI: Parms = [2]
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms]
+%[0] = "TYPE, VIParameter"
+%[1] = "TYPE, VIParameter"
+%[2] = "TYPE, VIParameter"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0]]
+Label = "Queue name"
+ArgVal = "Locals.TestSocketName"
+Type = 1
+WireRequirement = 1
+DisplayType = "ASCII String"
+ConnectorNumber = 11
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0]]
+%NAME = "Queue name"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1]]
+Label = "error in (no error)"
+Type = 3
+WireRequirement = 1
+DisplayType = "Container"
+UseDefaultValues = True
+%HI: ArrayClusterEls = [2]
+ConnectorNumber = 8
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls]
+%[0] = "TYPE, VIParameterElement"
+%[1] = "TYPE, VIParameterElement"
+%[2] = "TYPE, VIParameterElement"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+Label = "status"
+ArgVal = "False"
+Type = 2
+WireRequirement = 1
+DisplayType = "Boolean"
+UseDefaultValues = True
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+%NAME = "status"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+Label = "code"
+ArgVal = "0"
+Type = 0
+WireRequirement = 1
+NumType = 4
+DisplayType = "Number (I32)"
+UseDefaultValues = True
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+%NAME = "code"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+Label = "source"
+ArgVal = "\"\""
+Type = 1
+WireRequirement = 1
+DisplayType = "ASCII String"
+UseDefaultValues = True
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+%NAME = "source"
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1]]
+%NAME = "error in (no error)"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2]]
+Label = "error out"
+ArgVal = "Step.Result.Error"
+Type = 3
+WireRequirement = 1
+DisplayType = "Container"
+%HI: ArrayClusterEls = [2]
+Direction = 1
+ConnectorNumber = 0
+LegacyClusterType = 2
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls]
+%[0] = "TYPE, VIParameterElement"
+%[1] = "TYPE, VIParameterElement"
+%[2] = "TYPE, VIParameterElement"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[0]]
+Label = "status"
+ArgVal = "Step.Result.Error.Occurred"
+Type = 2
+WireRequirement = 1
+DisplayType = "Boolean"
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[0]]
+%NAME = "status"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[1]]
+Label = "code"
+ArgVal = "Step.Result.Error.Code"
+Type = 0
+WireRequirement = 1
+NumType = 4
+DisplayType = "Number (I32)"
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[1]]
+%NAME = "code"
+
+[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[2]]
+Label = "source"
+ArgVal = "Step.Result.Error.Msg"
+Type = 1
+WireRequirement = 1
+DisplayType = "ASCII String"
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2].ArrayClusterEls[2]]
+%NAME = "source"
+
+[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[2]]
+%NAME = "error out"
+
+[DEF, SF.Seq[3].Cleanup[2]]
+%NAME = "Destroy Queue for evry STATION"
+
+[SF.Seq[3].Cleanup[3].TS]
+Id = "ID#:Jfc2jI7D8BG5WVB7nf4f8B"
+
+[DEF, SF.Seq[3].Cleanup[3]]
+%NAME = "End"
+
+[SF.Seq[3].Cleanup[4].TS]
+Id = "ID#:Zt+HO2/B8BG5WFB7nf4f8B"
+
+[DEF, SF.Seq[3].Cleanup[4].TS]
+SData = "TYPE, FlexGStepAdditions"
+
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall]
 ProjectPath = "NGPMH.lvproj"
 VIPath = "My Computer\\Keyence\\Deinitialize TCP Connection.vi"
 VIDescription = "This VI is for deinitialization of TCP connection"
 TDChecksum = -2112832748
 %HI: Parms = [1]
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms]
 %[0] = "TYPE, VIParameter"
 %[1] = "TYPE, VIParameter"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[0]]
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[0]]
 Label = "TCP Network Connection in"
 ArgVal = "StationGlobals.References.Keyence[0]"
 Type = 4
@@ -2860,10 +3220,10 @@ ReferenceType = 3
 DisplayType = "Number (U32)"
 ConnectorNumber = 11
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[0]]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[0]]
 %NAME = "TCP Network Connection in"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1]]
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1]]
 Label = "error out"
 ArgVal = "Step.Result.Error"
 Type = 3
@@ -2874,22 +3234,22 @@ Direction = 1
 ConnectorNumber = 0
 LegacyClusterType = 2
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls]
 %[0] = "TYPE, VIParameterElement"
 %[1] = "TYPE, VIParameterElement"
 %[2] = "TYPE, VIParameterElement"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 Label = "status"
 ArgVal = "Step.Result.Error.Occurred"
 Type = 2
 WireRequirement = 1
 DisplayType = "Boolean"
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 %NAME = "status"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 Label = "code"
 ArgVal = "Step.Result.Error.Code"
 Type = 0
@@ -2897,43 +3257,43 @@ WireRequirement = 1
 NumType = 4
 DisplayType = "Number (I32)"
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 %NAME = "code"
 
-[SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 Label = "source"
 ArgVal = "Step.Result.Error.Msg"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 %NAME = "source"
 
-[DEF, SF.Seq[3].Cleanup[0].TS.SData.ViCall.Parms[1]]
+[DEF, SF.Seq[3].Cleanup[4].TS.SData.ViCall.Parms[1]]
 %NAME = "error out"
 
-[DEF, SF.Seq[3].Cleanup[0]]
+[DEF, SF.Seq[3].Cleanup[4]]
 %NAME = "Deinitialize Keyence 1 scanner"
 
-[SF.Seq[3].Cleanup[1].TS]
+[SF.Seq[3].Cleanup[5].TS]
 Id = "ID#:Z9+HO2/B8BG5WFB7nf4f8B"
 
-[DEF, SF.Seq[3].Cleanup[1].TS]
+[DEF, SF.Seq[3].Cleanup[5].TS]
 SData = "TYPE, FlexGStepAdditions"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall]
 ProjectPath = "NGPMH.lvproj"
 VIPath = "My Computer\\Keyence\\Deinitialize TCP Connection.vi"
 VIDescription = "This VI is for deinitialization of TCP connection"
 TDChecksum = -2112832748
 %HI: Parms = [1]
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms]
 %[0] = "TYPE, VIParameter"
 %[1] = "TYPE, VIParameter"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[0]]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[0]]
 Label = "TCP Network Connection in"
 ArgVal = "StationGlobals.References.Keyence[1]"
 Type = 4
@@ -2942,10 +3302,10 @@ ReferenceType = 3
 DisplayType = "Number (U32)"
 ConnectorNumber = 11
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[0]]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[0]]
 %NAME = "TCP Network Connection in"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1]]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1]]
 Label = "error out"
 ArgVal = "Step.Result.Error"
 Type = 3
@@ -2956,22 +3316,22 @@ Direction = 1
 ConnectorNumber = 0
 LegacyClusterType = 2
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls]
 %[0] = "TYPE, VIParameterElement"
 %[1] = "TYPE, VIParameterElement"
 %[2] = "TYPE, VIParameterElement"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 Label = "status"
 ArgVal = "Step.Result.Error.Occurred"
 Type = 2
 WireRequirement = 1
 DisplayType = "Boolean"
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 %NAME = "status"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 Label = "code"
 ArgVal = "Step.Result.Error.Code"
 Type = 0
@@ -2979,43 +3339,43 @@ WireRequirement = 1
 NumType = 4
 DisplayType = "Number (I32)"
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 %NAME = "code"
 
-[SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 Label = "source"
 ArgVal = "Step.Result.Error.Msg"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 %NAME = "source"
 
-[DEF, SF.Seq[3].Cleanup[1].TS.SData.ViCall.Parms[1]]
+[DEF, SF.Seq[3].Cleanup[5].TS.SData.ViCall.Parms[1]]
 %NAME = "error out"
 
-[DEF, SF.Seq[3].Cleanup[1]]
+[DEF, SF.Seq[3].Cleanup[5]]
 %NAME = "Deinitialize Keyence 2 scanner"
 
-[SF.Seq[3].Cleanup[2].TS]
+[SF.Seq[3].Cleanup[6].TS]
 Id = "ID#:tYR5r2/B8BG5WFB7nf4f8B"
 
-[DEF, SF.Seq[3].Cleanup[2].TS]
+[DEF, SF.Seq[3].Cleanup[6].TS]
 SData = "TYPE, FlexGStepAdditions"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall]
 ProjectPath = "NGPMH.lvproj"
 VIPath = "My Computer\\Aim TTi 1908P DMM.lvlib\\Deinitialize.vi"
 Namespace = "Aim TTi 1908P DMM.lvlib"
 TDChecksum = 526371495
 %HI: Parms = [1]
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms]
 %[0] = "TYPE, VIParameter"
 %[1] = "TYPE, VIParameter"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0]]
 Label = "VISA resource name"
 ArgVal = "StationGlobals.References.DMM"
 Type = 3
@@ -3025,11 +3385,11 @@ DisplayType = "LabVIEWIOControl"
 %HI: ArrayClusterEls = [1]
 ConnectorNumber = 9
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0].ArrayClusterEls]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0].ArrayClusterEls]
 %[0] = "TYPE, VIParameterElement"
 %[1] = "TYPE, VIParameterElement"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
 Label = "DeviceName"
 Caption = "Device Name"
 ArgVal = "StationGlobals.References.DMM.DeviceName"
@@ -3037,10 +3397,10 @@ Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0].ArrayClusterEls[0]]
 %NAME = "DeviceName"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
 Label = "SessionNumber"
 Caption = "Session Number"
 ArgVal = "StationGlobals.References.DMM.SessionNumber"
@@ -3049,13 +3409,13 @@ WireRequirement = 1
 NumType = 5
 DisplayType = "Number (U32)"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0].ArrayClusterEls[1]]
 %NAME = "SessionNumber"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[0]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[0]]
 %NAME = "VISA resource name"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1]]
 Label = "error out"
 ArgVal = "Step.Result.Error"
 Type = 3
@@ -3066,22 +3426,22 @@ Direction = 1
 ConnectorNumber = 0
 LegacyClusterType = 2
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls]
 %[0] = "TYPE, VIParameterElement"
 %[1] = "TYPE, VIParameterElement"
 %[2] = "TYPE, VIParameterElement"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 Label = "status"
 ArgVal = "Step.Result.Error.Occurred"
 Type = 2
 WireRequirement = 1
 DisplayType = "Boolean"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[0]]
 %NAME = "status"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 Label = "code"
 ArgVal = "Step.Result.Error.Code"
 Type = 0
@@ -3089,23 +3449,23 @@ WireRequirement = 1
 NumType = 4
 DisplayType = "Number (I32)"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[1]]
 %NAME = "code"
 
-[SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 Label = "source"
 ArgVal = "Step.Result.Error.Msg"
 Type = 1
 WireRequirement = 1
 DisplayType = "ASCII String"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1].ArrayClusterEls[2]]
 %NAME = "source"
 
-[DEF, SF.Seq[3].Cleanup[2].TS.SData.ViCall.Parms[1]]
+[DEF, SF.Seq[3].Cleanup[6].TS.SData.ViCall.Parms[1]]
 %NAME = "error out"
 
-[DEF, SF.Seq[3].Cleanup[2]]
+[DEF, SF.Seq[3].Cleanup[6]]
 %NAME = "Deinitialize DMM"
 
 [DEF, SF.Seq[3].RTS]
@@ -5210,6 +5570,8 @@ VIParameter = "VIParameter"
 NI_NodeProperty = "NI_NodeProperty"
 FlexGStepAdditions = "FlexGStepAdditions"
 VIParameterElement = "VIParameterElement"
+NoffzUTP_TEF_Model_Station_GetTestSocketNames = "NoffzUTP_TEF_Model_Station_GetTestSocketNames"
+NI_Flow_ForEach = "NI_Flow_ForEach"
 
 [DEF, Path]
 %LOCATION = "StdTypes"
@@ -12520,4 +12882,403 @@ NumType = 7
 %MINPRODVER = "23.0.0.0"
 %FLG = 24
 %TYPE_FLG = 33554436
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames]
+%LOCATION = "StepTypes"
+Substeps = "TYPE, StepTypeSubstepsArray"
+DescriptionFormat = "TYPE, Expression"
+%FLG: DescriptionFormat = 524288
+DefaultNameFormat = "TYPE, Expression"
+%FLG: DefaultNameFormat = 524288
+Menu = "TYPE, StepTypeMenu"
+AdditionalResultsHints = Objs
+%FLG: AdditionalResultsHints = 524288
+TS = "TYPE, TEInf"
+NI_Data = "TYPE, StepTypeNIData"
+Result = Obj
+CodeTemplates = Str
+%FLG: CodeTemplates = 524288
+BlockStartTypes = Str
+%FLG: BlockStartTypes = 524288
+BlockEndTypes = Str
+%FLG: BlockEndTypes = 524288
+AppliesToBlockStructure = Bool
+%FLG: AppliesToBlockStructure = 524288
+CanEncapsulate = Bool
+%FLG: CanEncapsulate = 524288
+%ROOT_TYPE = True
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames]
+%INSTFLG: Substeps = 524312
+%INSTOVRD: Substeps = 655384
+DescriptionFormat = "\"%ModuleDescription\""
+%FLG: DescriptionFormat = 4194328
+%INSTFLG: DescriptionFormat = 4718616
+%INSTOVRD: DescriptionFormat = 4718616
+DefaultNameFormat = "\"Model.Station.GetTestSocketNames\""
+%FLG: DefaultNameFormat = 4194328
+%INSTFLG: DefaultNameFormat = 4718616
+%INSTOVRD: DefaultNameFormat = 4718616
+%INSTFLG: Menu = 524312
+%INSTOVRD: Menu = 524312
+%FLG: AdditionalResultsHints = 4194328
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 4456472
+%FLG: Result = 4194304
+%INSTFLG: Result = 4194304
+%FLG: CodeTemplates = 4194328
+%FLG: BlockStartTypes = 4194328
+%FLG: BlockEndTypes = 4194328
+%FLG: AppliesToBlockStructure = 4194328
+%FLG: CanEncapsulate = 4194328
+%TIMESTAMP = 1686127307
+%VERSION = "5.0.0.8"
+%TYPELASTMOD = "5.0.1.66"
+%TYPE_FLG = 2
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.Menu]
+ItemName = "\"Get Test Socket Names\""
+Group = "NI_Miscellaneous"
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.AdditionalResultsHints]
+%EPTYPE = "TYPE, NI_CustomResult"
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS]
+Icon = "UTP TEF.ico"
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 7274521
+ConnectionLifetime = 0
+StatusExpr Line0001 = "(Step.Result.Status == \"Done\" && (Step.TS.SData.ThreadOpt == 0 || Step.TS.SData.ThreadOpt == 3)) ? \"Passed\" : Step.R"
+StatusExpr Line0002 = "esult.Status"
+%INSTFLG: StatusExpr = 1
+%INSTOVRD: StatusExpr = 5046297
+%FLG: CanSpecifyModule = 131072
+%FLG: Requirements = 1
+%INSTFLG: Requirements = 1
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS]
+SData = "TYPE, SeqCallStepAdditions"
+%FLG: SData = 2097152
+Requirements = Obj
+%FLG: Requirements = 2097152
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData]
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.Station.GetTestSocketNames"
+CustomThreadAffinity = "-1"
+Trace = "Off"
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData]
+ActualArgs = Arguments
+%FLG: ActualArgs = 2097152
+Prototype = Obj
+%FLG: Prototype = 2097152
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData.ActualArgs]
+TestSocketNames = "TYPE, SequenceArgument"
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData.ActualArgs.TestSocketNames]
+UseDef = False
+ParamType = 256
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData.Prototype]
+OperationNames = Strs
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.SData.Prototype]
+%FLG: OperationNames = 4
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.Requirements]
+Links = Strs
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.TS.Requirements]
+%FLG: Links = 71303168
+%INSTFLG: Links = 71303168
+%INSTOVRD: Links = 72286233
+
+[DEF, NoffzUTP_TEF_Model_Station_GetTestSocketNames.Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+
+[NoffzUTP_TEF_Model_Station_GetTestSocketNames.Result]
+%FLG: Error = 4194304
+%INSTFLG: Error = 4194304
+%INSTOVRD: Error = 4194304
+%FLG: Status = 4194304
+%INSTFLG: Status = 4194304
+%FLG: ReportText = 4194304
+%INSTFLG: ReportText = 4194304
+%INSTOVRD: Common = 4194304
+
+[DEF, NI_Flow_ForEach]
+%LOCATION = "StepTypes"
+DescriptionFormat = "TYPE, Expression"
+%FLG: DescriptionFormat = 524288
+DefaultNameFormat = "TYPE, Expression"
+%FLG: DefaultNameFormat = 524288
+Menu = "TYPE, StepTypeMenu"
+Substeps = "TYPE, StepTypeSubstepsArray"
+CodeTemplates = Str
+%FLG: CodeTemplates = 524288
+TS = "TYPE, TEInf"
+NI_Data = "TYPE, StepTypeNIData"
+Result = Obj
+Description = Str
+ArrayExpr = "TYPE, Expression"
+EvaluatedArrayExpr = Ref
+ArrayElementExpr = "TYPE, Expression"
+EvaluatedArrayElementExpr = Ref
+OffsetExpr = "TYPE, Expression"
+EvaluatedOffsetExpr = Ref
+SubscriptExpr = "TYPE, Expression"
+EvaluatedSubscriptExpr = Ref
+Offset = Num
+BlockStartTypes = Str
+%FLG: BlockStartTypes = 524288
+BlockEndTypes = Str
+%FLG: BlockEndTypes = 524288
+AppliesToBlockStructure = Bool
+%FLG: AppliesToBlockStructure = 524288
+ElementRestorerLocal = Str
+AdditionalResultsHints = Objs
+%FLG: AdditionalResultsHints = 524288
+CanEncapsulate = Bool
+%FLG: CanEncapsulate = 524288
+IterationType = Num
+FieldMappingExpr = "TYPE, Expression"
+EvaluatedFieldMappingExpr = Ref
+AutoCloseAtEndofFile = Bool
+%ROOT_TYPE = True
+
+[NI_Flow_ForEach]
+DescriptionFormat Line0001 = "Step.ArrayExpr == \"\" ? ResStr(\"FLOW_CONTROL_STEPS\", \"UNSPECIFIED\") :  \n(Step.Description !=\"\" ? Step.Descriptio"
+DescriptionFormat Line0002 = "n : \n((Step.ArrayElementExpr != \"\" ? Str(LocalizeExpression(Step.ArrayElementExpr), \"%expr\", 0x7) : ResStr(\"FLOW_C"
+DescriptionFormat Line0003 = "ONTROL_STEPS\", \"ARRAYELEMENT\")) + ResStr(\"FLOW_CONTROL_STEPS\", \"IN\") + Str(LocalizeExpression(Step.ArrayExpr), \""
+DescriptionFormat Line0004 = "%expr\", 0x7)))\n\n\n"
+%FLG: DescriptionFormat = 4194328
+%INSTFLG: DescriptionFormat = 4718616
+%INSTOVRD: DescriptionFormat = 4718616
+DefaultNameFormat = "ResStr(\"FLOW_CONTROL_STEPS\", \"FOREACH_DEF_STEP_NAME\")"
+%FLG: DefaultNameFormat = 4194328
+%INSTFLG: DefaultNameFormat = 4718616
+%INSTOVRD: DefaultNameFormat = 4718616
+%HI: Substeps = [1]
+%FLG: CodeTemplates = 4194328
+%INSTFLG: TS = 262168
+%FLG: Result = 4194304
+%INSTFLG: Result = 4194304
+%INSTFLG: Description = 8
+%INSTFLG: EvaluatedArrayExpr = 8
+%INSTFLG: EvaluatedArrayElementExpr = 8
+%INSTFLG: EvaluatedOffsetExpr = 8
+%INSTFLG: EvaluatedSubscriptExpr = 8
+%INSTFLG: Offset = 8
+%FLG: BlockStartTypes = 4194328
+BlockEndTypes = "NI_Flow_End"
+%FLG: BlockEndTypes = 4194328
+AppliesToBlockStructure = True
+%FLG: AppliesToBlockStructure = 4194328
+%INSTFLG: ElementRestorerLocal = 8
+%FLG: AdditionalResultsHints = 4194328
+CanEncapsulate = True
+%FLG: CanEncapsulate = 4194328
+%TIMESTAMP = 1690473017
+%VERSION = "23.0.0.2"
+%TYPELASTMOD = "23.0.0.0"
+%MINPRODVER = "23.0.0.0"
+%TYPE_FLG = 33554438
+%INSTFLG = 67108864
+
+[NI_Flow_ForEach.Menu]
+ItemName = "ResStr(\"FLOW_CONTROL_STEPS\", \"FOREACH_INSERT_MENU_ITEM_NAME\")"
+Group = "NI_FlowControl_Loop"
+
+[DEF, NI_Flow_ForEach.Substeps]
+%[0] = Step
+%TYPE: %[0] = "Substep"
+%[1] = Step
+%TYPE: %[1] = "EditSubstep"
+
+[NI_Flow_ForEach.Substeps[0].TS]
+Id = "ID#:0fUZg4IOtkenNvECPWGh4A"
+
+[DEF, NI_Flow_ForEach.Substeps[0].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[NI_Flow_ForEach.Substeps[0].TS.SData.Call]
+LibPath = "NIFlowControl.dll"
+Func = "?OnNewStepWithEndStep@@YAXPAUIDispatch@@@Z"
+%HI: Parms = [1]
+
+[DEF, NI_Flow_ForEach.Substeps[0].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+
+[NI_Flow_ForEach.Substeps[0].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[NI_Flow_ForEach.Substeps[0].TS.SData.Call.Parms[1]]
+Type = 4
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "ThisContext"
+%INSTOVRD: Flags = 5177369
+
+[DEF, NI_Flow_ForEach.Substeps[0]]
+%NAME = "OnNewStep"
+
+[NI_Flow_ForEach.Substeps[1].TS]
+Id = "ID#:ny3+UymIz0KMmddc0LFNWB"
+
+[DEF, NI_Flow_ForEach.Substeps[1].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[NI_Flow_ForEach.Substeps[1].TS.SData.Call]
+LibPath = "NIFlowControl.dll"
+Func = "?EditForEachStep@@YAXPAUIDispatch@@@Z"
+%HI: Parms = [1]
+
+[DEF, NI_Flow_ForEach.Substeps[1].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+
+[NI_Flow_ForEach.Substeps[1].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[NI_Flow_ForEach.Substeps[1].TS.SData.Call.Parms[1]]
+Type = 4
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "ThisContext"
+%INSTOVRD: Flags = 5177369
+
+[NI_Flow_ForEach.Substeps[1]]
+MenuName = "ResStr(\"FLOW_CONTROL_STEPS\", \"FOREACH_EDIT_MENU_ITEM_NAME\")"
+SupportsReadOnly = True
+HasEditPanel = True
+
+[DEF, NI_Flow_ForEach.Substeps[1]]
+%NAME = "Edit"
+
+[NI_Flow_ForEach.TS]
+Icon = "FlowControl\\NI_ForEach.ico"
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 7274521
+%INSTFLG: PreCond = 1
+%INSTOVRD: PreCond = 5046297
+LoadOpt = "DynamicLoad"
+%INSTFLG: LoadOpt = 1
+%INSTOVRD: LoadOpt = 5046297
+%INSTFLG: UnloadOpt = 1
+%INSTOVRD: UnloadOpt = 5046297
+%INSTFLG: WindowActivation = 1
+%INSTOVRD: WindowActivation = 5046297
+%INSTFLG: StepFCSeqF = 1
+%INSTOVRD: StepFCSeqF = 5046297
+%INSTOVRD: IgnoreRTE = 5046297
+%INSTOVRD: UseMutex = 5046297
+%INSTOVRD: MutexNameOrRef = 5046297
+%INSTOVRD: BatchSyncOpt = 5046297
+%INSTFLG: SwitchEnabled = 1
+%INSTOVRD: SwitchEnabled = 5046297
+%INSTFLG: VirtualDeviceName = 1
+%INSTOVRD: VirtualDeviceName = 5046297
+%INSTFLG: SwitchOperation = 1
+%INSTOVRD: SwitchOperation = 5046297
+%INSTFLG: RouteGroupConnect = 1
+%INSTOVRD: RouteGroupConnect = 5046297
+%INSTFLG: RouteGroupDisconnect = 1
+%INSTOVRD: RouteGroupDisconnect = 5046297
+%INSTFLG: MulticonnectMode = 1
+%INSTOVRD: MulticonnectMode = 5046297
+%INSTFLG: OperationOrder = 1
+%INSTOVRD: OperationOrder = 5046297
+%INSTFLG: ConnectionLifetime = 1
+%INSTOVRD: ConnectionLifetime = 5046297
+%INSTFLG: WaitForDebounce = 1
+%INSTOVRD: WaitForDebounce = 5046297
+%INSTFLG: PassAct = 1
+%INSTOVRD: PassAct = 5046297
+%INSTFLG: FailAct = 1
+%INSTOVRD: FailAct = 5046297
+%INSTFLG: PassActTarget = 1
+%INSTOVRD: PassActTarget = 5046297
+%INSTFLG: FailActTarget = 1
+%INSTOVRD: FailActTarget = 5046297
+%INSTFLG: CustExpr = 1
+%INSTOVRD: CustExpr = 5046297
+%INSTFLG: CustTrueAct = 1
+%INSTOVRD: CustTrueAct = 5046297
+%INSTFLG: CustFalseAct = 1
+%INSTOVRD: CustFalseAct = 5046297
+%INSTFLG: CustTrueActTarget = 1
+%INSTOVRD: CustTrueActTarget = 5046297
+%INSTFLG: CustFalseActTarget = 1
+%INSTOVRD: CustFalseActTarget = 5046297
+%INSTFLG: LoopType = 1
+%INSTOVRD: LoopType = 5046297
+%INSTFLG: LoopWhile = 1
+%INSTOVRD: LoopWhile = 5046297
+%INSTFLG: LoopStatus = 1
+%INSTOVRD: LoopStatus = 5046297
+%INSTFLG: LoopIncrement = 1
+%INSTOVRD: LoopIncrement = 5046297
+%INSTFLG: LoopInitialize = 1
+%INSTOVRD: LoopInitialize = 5046297
+%INSTFLG: LoopOpt = 1
+%INSTOVRD: LoopOpt = 5046297
+%INSTFLG: PreExpr = 1
+%INSTOVRD: PreExpr = 5046297
+%INSTFLG: PostExpr = 1
+%INSTOVRD: PostExpr = 5046297
+%INSTFLG: StatusExpr = 1
+%INSTOVRD: StatusExpr = 5046297
+%INSTFLG: PrecondIntExe = 1
+%INSTOVRD: PrecondIntExe = 5046297
+%FLG: Requirements = 1
+%INSTFLG: Requirements = 1
+
+[DEF, NI_Flow_ForEach.TS]
+SData = "TYPE, NoneStepAdditions"
+%FLG: SData = 2097152
+Requirements = Obj
+%FLG: Requirements = 2097152
+
+[DEF, NI_Flow_ForEach.TS.Requirements]
+Links = Strs
+
+[NI_Flow_ForEach.TS.Requirements]
+%FLG: Links = 71303168
+%INSTFLG: Links = 71303168
+%INSTOVRD: Links = 72286233
+
+[NI_Flow_ForEach.NI_Data]
+%HI: EditPanels = [0]
+
+[NI_Flow_ForEach.NI_Data.EditPanels]
+%[0] = "NIStepTypeControls.dll|NationalInstruments.TestStand.StepTypeControls.NI_Flow_ForEachTabInfo"
+
+[DEF, NI_Flow_ForEach.Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+
+[NI_Flow_ForEach.Result]
+%FLG: Error = 4194304
+%INSTFLG: Error = 4194304
+%FLG: Status = 4194304
+%INSTFLG: Status = 4194304
+%FLG: ReportText = 4194304
+%INSTFLG: ReportText = 4194304
+
+[DEF, NI_Flow_ForEach.AdditionalResultsHints]
+%EPTYPE = "TYPE, NI_CustomResult"
 
