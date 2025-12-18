@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?><Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RequestSupportData.xsd">
+  <requestParameters>
+	<Mode>int</Mode>
+	<Operator>string</Operator>
+	<SerialNo>string</SerialNo>
+	<HuNo>string</HuNo>
+	<MaterialCode>string</MaterialCode>
+	<PackingInstructions>string</PackingInstructions>
+	<ProductionVersion>string</ProductionVersion>
+  </requestParameters>
+</Body>

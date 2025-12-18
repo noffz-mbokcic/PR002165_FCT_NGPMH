@@ -15,4 +15,5 @@
 	<Item Name="Measure Waveform.vi" Type="VI" URL="../Measure Waveform.vi"/>
 	<Item Name="Process Measurement.vi" Type="VI" URL="../Process Measurement.vi"/>
 	<Item Name="Test Values.ctl" Type="VI" URL="../Test Values.ctl"/>
+	<Item Name="Test AI.vi" Type="VI" URL="../Test AI.vi"/>
 </Library>

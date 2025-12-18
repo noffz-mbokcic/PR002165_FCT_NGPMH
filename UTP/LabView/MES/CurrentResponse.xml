@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation='ResponseSupportData.xsd'>
+    <ExecuteResponse>
+	 <ExecuteResult>
+        <Result>string</Result>
+        <MessageCode>string</MessageCode>
+        <MessageDescription>string</MessageDescription>
+        <BoxNo>string</BoxNo>
+        <PalletNo>string</PalletNo>
+        <PackingInstruction1>string1</PackingInstruction1>
+        <PackingInstruction2>string2</PackingInstruction2>
+        <PackingInstruction3>string3</PackingInstruction3>
+        <PackingInstruction4>string4</PackingInstruction4>
+        <PackingInstruction5>string</PackingInstruction5>
+        <SerialCount>int</SerialCount>
+        <MaxSerialCount>int</MaxSerialCount>
+        <BoxCount>int</BoxCount>
+        <MaxBoxCount>int</MaxBoxCount>
+      </ExecuteResult>
+	</ExecuteResponse>
+</Body>

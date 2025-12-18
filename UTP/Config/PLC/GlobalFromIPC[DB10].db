@@ -1,0 +1,170 @@
+﻿DATA_BLOCK "GlobalFromIPC"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      Station1 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station1_LeftDutNest_Ready : Bool;
+               Station1_LeftDutNest_Running : Bool;
+               Station1_LeftDutNest_Error : Bool;
+               Station1_LeftDutNest_TestPassed : Bool;
+               Station1_LeftDutNest_TestFailed : Bool;
+               Station1_LeftDutNest_InterlockTesting : Bool;
+               Station1_LeftDutNest_ErrorCode : Int;
+            END_STRUCT;
+            Station1_SN : String;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station1_RightDutNest_Ready : Bool;
+               Station1_RightDutNest_Running : Bool;
+               Station1_RightDutNest_Error : Bool;
+               Station1_RightDutNest_TestPassed : Bool;
+               Station1_RightDutNest_TestFailed : Bool;
+               Station1_RightDutNest_InterlockTesting : Bool;
+               Station1_RightDutNest_ErrorCode : Int;
+            END_STRUCT;
+            Station1_SN : String;
+         END_STRUCT;
+      END_STRUCT;
+      Station2 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station2_LeftDutNest_Ready : Bool;
+               Station2_LeftDutNest_Running : Bool;
+               Station2_LeftDutNest_Error : Bool;
+               Station2_LeftDutNest_TestPassed : Bool;
+               Station2_LeftDutNest_TestFailed : Bool;
+               Station2_LeftDutNest_InterlockTesting : Bool;
+               Station2_LeftDutNest_ErrorCode : Int;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station2_RightDutNest_Ready : Bool;
+               Station2_RightDutNest_Running : Bool;
+               Station2_RightDutNest_Error : Bool;
+               Station2_RightDutNest_TestPassed : Bool;
+               Station2_RightDutNest_TestFailed : Bool;
+               Station2_RightDutNest_InterlockTesting : Bool;
+               Station2_RightDutNest_ErrorCode : Int;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Station3 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station3_LeftDutNest_Ready : Bool;
+               Station3_LeftDutNest_Running : Bool;
+               Station3_LeftDutNest_Error : Bool;
+               Station3_LeftDutNest_TestPassed : Bool;
+               Station3_LeftDutNest_TestFailed : Bool;
+               Station3_LeftDutNest_InterlockTesting : Bool;
+               Station3_LeftDutNest_ErrorCode : Int;
+            END_STRUCT;
+            Motor : Struct
+               Station3_LeftDutNest_Enable : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11: Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+			   Dummy14 : Bool;
+			   Dummy15 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station3_RightDutNest_Ready : Bool;
+               Station3_RightDutNest_Running : Bool;
+               Station3_RightDutNest_Error : Bool;
+               Station3_RightDutNest_TestPassed : Bool;
+               Station3_RightDutNest_TestFailed : Bool;
+               Station3_RightDutNest_InterlockTesting : Bool;
+               Station3_RightDutNest_ErrorCode : Int;
+            END_STRUCT;
+            Motor : Struct
+               Station3_RightDutNest_Enable : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11: Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+			   Dummy14 : Bool;
+			   Dummy15 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Station4 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station4_LeftDutNest_Ready : Bool;
+               Station4_LeftDutNest_Running : Bool;
+               Station4_LeftDutNest_Error : Bool;
+               Station4_LeftDutNest_TestPassed : Bool;
+               Station4_LeftDutNest_TestFailed : Bool;
+               Station4_LeftDutNest_InterlockTesting : Bool;
+               Station4_LeftDutNest_ErrorCode : Int;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station4_RightDutNest_Ready : Bool;
+               Station4_RightDutNest_Running : Bool;
+               Station4_RightDutNest_Error : Bool;
+               Station4_RightDutNest_TestPassed : Bool;
+               Station4_RightDutNest_TestFailed : Bool;
+               Station4_RightDutNest_InterlockTesting : Bool;
+               Station4_RightDutNest_ErrorCode : Int;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Packaging : Struct
+         Loging : Struct
+            OKLog : Bool;
+            NOKLog : Bool;
+         END_STRUCT;
+         ProductSerialRegistration : Struct
+            PackagingInstructions1 : String;
+			PackagingInstructions2 : String;
+			PackagingInstructions3 : String;
+			PackagingInstructions4 : String;
+			PackagingInstructions5 : String;
+            MessageDescription : String;
+            BoxNo : String;
+            PalletHUNumber : String;
+            SerialCount : String;
+         END_STRUCT;
+         States : Struct
+            Ready : Bool;
+            Running : Bool;
+            Error : Bool;
+            ErrorCode : Int;
+            ComandResponseOK : Bool;
+         END_STRUCT;
+      END_STRUCT;
+   END_STRUCT;
+   
+   
+BEGIN
+
+END_DATA_BLOCK
+

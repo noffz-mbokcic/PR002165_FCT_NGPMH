@@ -1,0 +1,234 @@
+﻿DATA_BLOCK "GlobalToIPC"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      Station1 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station1_LeftDutNest_StartTest : Bool;
+               Station1_LeftDutNest_Stoptest : Bool;
+               Station1_LeftDutNest_Reset : Bool;
+            END_STRUCT;
+			Dummy1 : Bool;
+		    Dummy2 : Bool;
+		    Dummy3 : Bool;
+		    Dummy4 : Bool;
+		    Dummy5 : Bool;
+		    Dummy6 : Bool;
+			Dummy7 : Bool;
+			Dummy8 : Bool;
+			Dummy9 : Bool;
+			Dummy10 : Bool;
+			Dummy11: Bool;
+			Dummy12 : Bool;
+			Dummy13 : Bool;
+            Station1_DUTPresentSensor : Bool;
+            Station1_DUTPlaced : Bool;
+		    Dummy1 : Bool;
+		    Dummy2 : Bool;
+		    Dummy3 : Bool;
+		    Dummy4 : Bool;
+		    Dummy5 : Bool;
+		    Dummy6 : Bool;
+			Dummy7 : Bool;
+			Dummy8 : Bool;
+			Dummy9 : Bool;
+			Dummy10 : Bool;
+			Dummy11: Bool;
+			Dummy12 : Bool;
+			Dummy13 : Bool;
+			Dummy14 : Bool;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station1_RightDutNest_StartTest : Bool;
+               Station1_RightDutNest_Stoptest : Bool;
+               Station1_RightDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+            Station1_DUTPresentSensor : Bool;
+            Station1_DUTPlaced : Bool;
+         END_STRUCT;
+      END_STRUCT;
+      Station2 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station2_LeftDutNest_StartTest : Bool;
+               Station2_LeftDutNest_Stoptest : Bool;
+               Station2_LeftDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station2_RightDutNest_StartTest : Bool;
+               Station2_RightDutNest_Stoptest : Bool;
+               Station2_RightDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Station3 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station3_LeftDutNest_StartTest : Bool;
+               Station3_LeftDutNest_Stoptest : Bool;
+               Station3_LeftDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+            Motor : Struct
+               Station3_LeftDutNest_ReadyRunning : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+			   Dummy14 : Bool;
+			   Dummy15 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station3_RightDutNest_StartTest : Bool;
+               Station3_RightDutNest_Stoptest : Bool;
+               Station3_RightDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+            Motor : Struct
+               Station3_RightDutNest_ReadyRunning : Bool;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Station4 : Struct
+         LeftDutNest : Struct
+            Testing : Struct
+               Station4_LeftDutNest_StoreResults : Bool;
+               Station4_LeftDutNest_PackagingStatus : Bool;
+               Station4_LeftDutNest_Reset : Bool;
+			   Dummy1 : Bool;
+			   Dummy2 : Bool;
+		       Dummy3 : Bool;
+		       Dummy4 : Bool;
+		       Dummy5 : Bool;
+		       Dummy6 : Bool;
+			   Dummy7 : Bool;
+			   Dummy8 : Bool;
+			   Dummy9 : Bool;
+			   Dummy10 : Bool;
+			   Dummy11 : Bool;
+			   Dummy12 : Bool;
+			   Dummy13 : Bool;
+            END_STRUCT;
+         END_STRUCT;
+         RightDutNest : Struct
+            Testing : Struct
+               Station4_RightDutNest_StoreResults : Bool;
+               Station4_RightDutNest_PackagingStatus : Bool;
+               Station4_RightDutNest_Reset : Bool;
+            END_STRUCT;
+         END_STRUCT;
+      END_STRUCT;
+      Packaging : Struct
+         Loging : Struct
+            MES_Login_User : String;
+            SAP_Login_User : String;
+            SAP_Login_Password : String;
+         END_STRUCT;
+         ProductSerialRegistration : Struct
+            MaterialCode : String;
+            PackagingInstruction : String;
+            ProductVersion : String;
+            HUnumber : String;
+         END_STRUCT;
+         Commands : Struct
+            LogON : Bool;
+            LogOFF : Bool;
+            ObtainPackigingInstructions : Bool;
+            TemporaryClose : Bool;
+            PermanentClose : Bool;
+            ContinueHU : Bool;
+            Reset : Bool;
+         END_STRUCT;
+      END_STRUCT;
+      System : Struct
+         GeneralError : Bool;
+         Mode : Int;
+         SubMode : Int;
+         EMGactive : Bool;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

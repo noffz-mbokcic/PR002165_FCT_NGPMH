@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Execute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="requestParameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Operator"/>
+              <xs:element type="xs:string" name="SerialNo"/>
+              <xs:element type="xs:string" name="MaterialCode"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

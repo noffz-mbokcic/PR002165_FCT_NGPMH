@@ -1,0 +1,21 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+           targetNamespace="http://tempuri.org/">
+<import namespace="http://schemas.xmlsoap.org/soap/envelope/"   
+            schemaLocation="http://schemas.xmlsoap.org/soap/envelope/"></import>
+  <xs:element name="Execute">
+	<xs:complexType>
+	  <xs:sequence>
+		<xs:element name="requestParameters">
+		  <xs:complexType>
+			<xs:sequence>
+			  <xs:element type="xs:byte" name="Operator"/>
+			  <xs:element type="xs:byte" name="SerialNo"/>
+			  <xs:element type="xs:byte" name="MaterialCode"/>
+			</xs:sequence>
+		  </xs:complexType>
+		</xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+  </xs:element>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <Execute xmlns="http://tempuri.org/">
+      <requestParameters>
+        <Mode>Var_Mode</Mode>
+        <Operator>Var_Operator</Operator>
+        <SerialNo>Var_Serial</SerialNo>
+        <HuNo>Var_HU</HuNo>
+        <MaterialCode>Var_Material</MaterialCode>
+        <PackingInstructions>Var_Packing</PackingInstructions>
+        <ProductionVersion>Var_Product</ProductionVersion>
+      </requestParameters>
+    </Execute>
+  </soap:Body>
+</soap:Envelope>
