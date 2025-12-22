@@ -1,0 +1,1 @@
+Files in this folder, as well as the folder itself should exist at path : C:\Program Files\National Instruments\LabVIEW 2023\user.lib

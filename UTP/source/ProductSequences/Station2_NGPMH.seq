@@ -30,7 +30,6 @@ SequenceArgument = Argument
 NI_SequenceParameterResult = SequenceParameterResult
 NumericLimitTest = StepType
 NoneStepAdditions = NoneModule
-Action = StepType
 NoffzUTP_IODCPSULimitsSet = StepType
 NoffzUTP_IOSwitchSPSTSet = StepType
 NoffzUTP_IODCPSUOutputSet = StepType
@@ -43,6 +42,7 @@ Substep = StepType
 PostSubstep = StepType
 NI_Wait = StepType
 NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = StepType
+NI_Lock = StepType
 
 [DEF, SF]
 Seq = Objs
@@ -102,11 +102,11 @@ FailureAction = Num
 [SF.Seq[0]]
 %FLG: Parameters = 4456448
 %FLG: Locals = 4194304
-%HI: Main = [4]
+%HI: Main = [5]
 %FLG: Main = 4194304
 %HI: Setup = [5]
 %FLG: Setup = 4194304
-%HI: Cleanup = [4]
+%HI: Cleanup = [5]
 %FLG: Cleanup = 4194304
 RecordResults = True
 %FLG: RecordResults = 4194312
@@ -119,6 +119,8 @@ FailureAction = 2
 ResultList = Objs
 TestSocketName = Str
 Voltage = Num
+Start = Str
+Stop = Str
 
 [DEF, SF.Seq[0].Locals.ResultList]
 %EPTYPE = TEResult
@@ -133,7 +135,9 @@ Voltage = Num
 %[3] = Step
 %TYPE: %[3] = "NumericLimitTest"
 %[4] = Step
-%TYPE: %[4] = "NumericLimitTest"
+%TYPE: %[4] = "NI_Lock"
+%[5] = Step
+%TYPE: %[5] = "NumericLimitTest"
 
 [SF.Seq[0].Main[0].TS]
 Id = "ID#:Rl17voHA8BG5VlB7nf4f8B"
@@ -144,6 +148,7 @@ SData = "TYPE, SeqCallStepAdditions"
 [SF.Seq[0].Main[0].TS.SData]
 SeqName = "1.1 Test Power Supply Voltage on TP24"
 UseCurFile = True
+Trace = "Off"
 
 [DEF, SF.Seq[0].Main[0].TS.SData]
 ActualArgs = Arguments
@@ -185,6 +190,7 @@ SData = "TYPE, SeqCallStepAdditions"
 [SF.Seq[0].Main[1].TS.SData]
 SeqName = "1.2 Overvoltage test"
 UseCurFile = True
+Trace = "Off"
 
 [DEF, SF.Seq[0].Main[1].TS.SData]
 ActualArgs = Arguments
@@ -226,6 +232,7 @@ SData = "TYPE, SeqCallStepAdditions"
 [SF.Seq[0].Main[2].TS.SData]
 SeqName = "1.3 Post-overvoltage test"
 UseCurFile = True
+Trace = "Off"
 
 [DEF, SF.Seq[0].Main[2].TS.SData]
 ActualArgs = Arguments
@@ -267,6 +274,7 @@ SData = "TYPE, SeqCallStepAdditions"
 [SF.Seq[0].Main[3].TS.SData]
 SeqName = "2.1 Test Power Supply Voltage on TP24_2"
 UseCurFile = True
+Trace = "Off"
 
 [DEF, SF.Seq[0].Main[3].TS.SData]
 ActualArgs = Arguments
@@ -300,44 +308,59 @@ DataSource = "Locals.Voltage"
 %NAME = "2.01 Test Power Supply Voltage on TP24"
 
 [SF.Seq[0].Main[4].TS]
-Id = "ID#:V117voHA8BG5VlB7nf4f8B"
+Id = "ID#:TH8y76rZ8BGJzsyCf5xeVC"
 
-[DEF, SF.Seq[0].Main[4].TS]
+[SF.Seq[0].Main[4]]
+NameOrRefExpr = "\"DMM\""
+Operation = 2
+%COMMENT = "Move to subsequence for nicer oveerview"
+
+[DEF, SF.Seq[0].Main[4]]
+%NAME = "UnLock DMM"
+
+[SF.Seq[0].Main[5].TS]
+Id = "ID#:V117voHA8BG5VlB7nf4f8B"
+MutexNameOrRef = "\"DMM\""
+BatchSyncOpt = 3
+
+[DEF, SF.Seq[0].Main[5].TS]
 SData = "TYPE, SeqCallStepAdditions"
 
-[SF.Seq[0].Main[4].TS.SData]
+[SF.Seq[0].Main[5].TS.SData]
 SeqName = "2.2 Reverse polarity"
 UseCurFile = True
+Trace = "Off"
 
-[DEF, SF.Seq[0].Main[4].TS.SData]
+[DEF, SF.Seq[0].Main[5].TS.SData]
 ActualArgs = Arguments
 
-[DEF, SF.Seq[0].Main[4].TS.SData.ActualArgs]
+[DEF, SF.Seq[0].Main[5].TS.SData.ActualArgs]
 TestSocketName = "TYPE, SequenceArgument"
 Voltage = "TYPE, SequenceArgument"
 
-[SF.Seq[0].Main[4].TS.SData.ActualArgs.TestSocketName]
+[SF.Seq[0].Main[5].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
 Expr = "Locals.TestSocketName"
 ParamType = 2
 
-[SF.Seq[0].Main[4].TS.SData.ActualArgs.Voltage]
+[SF.Seq[0].Main[5].TS.SData.ActualArgs.Voltage]
 UseDef = False
 Expr = "Locals.Voltage"
 ParamType = 4
 ParamRepresentation = 1
 
-[SF.Seq[0].Main[4].Result]
+[SF.Seq[0].Main[5].Result]
 Units = "V"
 
-[SF.Seq[0].Main[4].Limits]
+[SF.Seq[0].Main[5].Limits]
 Low = 3
 High = 3.6000000000000001
 
-[SF.Seq[0].Main[4]]
+[SF.Seq[0].Main[5]]
 DataSource = "Locals.Voltage"
+%COMMENT = "Lock sequence"
 
-[DEF, SF.Seq[0].Main[4]]
+[DEF, SF.Seq[0].Main[5]]
 %NAME = "2.02 Reverse polarity test"
 
 [DEF, SF.Seq[0].Setup]
@@ -352,7 +375,7 @@ DataSource = "Locals.Voltage"
 %[4] = Step
 %TYPE: %[4] = "NoffzUTP_IODCPSUOutputSet"
 %[5] = Step
-%TYPE: %[5] = "NI_Wait"
+%TYPE: %[5] = "NI_Lock"
 
 [SF.Seq[0].Setup[0].TS]
 Id = "ID#:HJoCRLTD8BG5WVB7nf4f8B"
@@ -436,7 +459,7 @@ Flags = 0
 
 [SF.Seq[0].Setup[1].TS.SData.ActualArgs.CurrentLimit]
 UseDef = False
-Expr = "1"
+Expr = "0.5 //1"
 ParamType = 4
 ParamRepresentation = 1
 Flags = 0
@@ -572,44 +595,75 @@ OutputState = Bool
 %NAME = "Power On Device"
 
 [SF.Seq[0].Setup[5].TS]
-Id = "ID#:ofJ3ArTD8BG5WVB7nf4f8B"
-ResultOption = 0
-%HI: AdditionalResultsHints = [0]
+Id = "ID#:OhJG56rZ8BGJzsyCf5xeVC"
+%HI: AdditionalResultsHints = [2]
 
 [DEF, SF.Seq[0].Setup[5].TS.AdditionalResultsHints]
 %[0] = "TYPE, NI_CustomResult"
+%[1] = "TYPE, NI_CustomResult"
+%[2] = "TYPE, NI_CustomResult"
 
 [SF.Seq[0].Setup[5].TS.AdditionalResultsHints[0]]
-Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
-ValueToLog = "Evaluate(Step.TimeExpr)"
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"CREATE_LOCK_HINT\")"
+ValueToLog = "Step.CreateIfDoesNotExist"
 
-[SF.Seq[0].Setup[5]]
-TimeExpr = "0.1"
+[SF.Seq[0].Setup[5].TS.AdditionalResultsHints[1]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"LOCK_OPERATION_LIFETIME_HINT\")"
+ValueToLog Line0001 = "ResStr(\"NI_MUTEX_STEP_TYPE\", (Step.LockLifetime == 0 ? \"LIFETIME_SEQUENCE\" :\n    Step.LockLifetime == 1 ? \"LIFETIM"
+ValueToLog Line0002 = "E_THREAD\" :\n    Step.LockLifetime == 2 ? \"LIFETIME_REFERENCE\" :\n    \"\"))"
+
+[SF.Seq[0].Setup[5].TS.AdditionalResultsHints[2]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"TIMEOUT\")"
+ValueToLog = "Step.TimeoutEnabled ? Str(Evaluate(Step.TimeoutExpr)) : ResStr(\"NI_MUTEX_STEP_TYPE\", \"DISABLED\")"
 
 [DEF, SF.Seq[0].Setup[5]]
-%NAME = "Wait"
+Result = Obj
+%NAME = "Lock DMM"
+
+[DEF, SF.Seq[0].Setup[5].Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+TimeoutOccurred = Bool
+
+[SF.Seq[0].Setup[5].Result]
+%FLG: Error = 4194304
+%FLG: Status = 4194304
+%FLG: ReportText = 4194304
+%FLG: Common = 0
+
+[SF.Seq[0].Setup[5]]
+%FLG: Result = 4194304
+NameOrRefExpr = "\"DMM\""
+Operation = 1
+Lifetime = 1
+CreateIfDoesNotExist = True
 
 [DEF, SF.Seq[0].Cleanup]
 %[0] = Step
-%TYPE: %[0] = "NoffzUTP_IODCPSUOutputSet"
+%TYPE: %[0] = "NoffzUTP_TEF_Model_TestSocket_GetTestSocketName"
 %[1] = Step
-%TYPE: %[1] = "NoffzUTP_IOSwitchSPSTSet"
+%TYPE: %[1] = "NoffzUTP_IODCPSUOutputSet"
 %[2] = Step
 %TYPE: %[2] = "NoffzUTP_IOSwitchSPSTSet"
 %[3] = Step
 %TYPE: %[3] = "NoffzUTP_IOSwitchSPSTSet"
 %[4] = Step
 %TYPE: %[4] = "NoffzUTP_IOSwitchSPSTSet"
+%[5] = Step
+%TYPE: %[5] = "NoffzUTP_IOSwitchSPSTSet"
 
 [SF.Seq[0].Cleanup[0].TS]
-Id = "ID#:NGP0sbPD8BG5WVB7nf4f8B"
+Id = "ID#:zMu+o97c8BGJ1syCf5xeVC"
 
 [DEF, SF.Seq[0].Cleanup[0].TS]
 SData = "TYPE, SeqCallStepAdditions"
 
 [SF.Seq[0].Cleanup[0].TS.SData]
-SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.DCPSU.Output.Set"
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.TestSocket.GetTestSocketName"
+CustomThreadAffinity = "-1"
 Trace = "Off"
 
 [DEF, SF.Seq[0].Cleanup[0].TS.SData]
@@ -617,37 +671,45 @@ ActualArgs = Arguments
 Prototype = Obj
 
 [DEF, SF.Seq[0].Cleanup[0].TS.SData.ActualArgs]
-ChannelName = "TYPE, SequenceArgument"
-OutputState = "TYPE, SequenceArgument"
+TestSocket = "TYPE, SequenceArgument"
+TestSocketName = "TYPE, SequenceArgument"
 
-[SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.ChannelName]
+[SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.TestSocket]
+ParamType = 4
+ParamRepresentation = 1
+Flags = 0
+
+[SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.TestSocketName]
 UseDef = False
-Expr = "\"PowerSupply_\" + Locals.TestSocketName"
+Expr = "Locals.TestSocketName"
 ParamType = 2
-Flags = 0
-
-[SF.Seq[0].Cleanup[0].TS.SData.ActualArgs.OutputState]
-UseDef = False
-Expr = "False"
-ParamType = 16
-Flags = 0
 
 [DEF, SF.Seq[0].Cleanup[0].TS.SData.Prototype]
-ChannelName = Str
-OutputState = Bool
+TestSocket = Num
+TestSocketName = Str
+
+[SF.Seq[0].Cleanup[0].TS.SData.Prototype]
+TestSocket = Nan
+%FLG: TestSocketName = 4
+
+[SF.Seq[0].Cleanup[0].TS.SData.Prototype.TestSocket]
+%COMMENT = "Test Socket number."
+
+[SF.Seq[0].Cleanup[0].TS.SData.Prototype.TestSocketName]
+%COMMENT = "Test Socket name."
 
 [DEF, SF.Seq[0].Cleanup[0]]
-%NAME = "Power Off Device"
+%NAME = "Model.TestSocket.GetTestSocketName"
 
 [SF.Seq[0].Cleanup[1].TS]
-Id = "ID#:SV17voHA8BG5VlB7nf4f8B"
+Id = "ID#:NGP0sbPD8BG5WVB7nf4f8B"
 
 [DEF, SF.Seq[0].Cleanup[1].TS]
 SData = "TYPE, SeqCallStepAdditions"
 
 [SF.Seq[0].Cleanup[1].TS.SData]
 SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.Switch.SPST.Position.Set"
+SeqName = "UTP.IO.DCPSU.Output.Set"
 Trace = "Off"
 
 [DEF, SF.Seq[0].Cleanup[1].TS.SData]
@@ -656,33 +718,29 @@ Prototype = Obj
 
 [DEF, SF.Seq[0].Cleanup[1].TS.SData.ActualArgs]
 ChannelName = "TYPE, SequenceArgument"
-SwitchPosition = "TYPE, SequenceArgument"
+OutputState = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[1].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_DMM+_TP24\" + \"_\"+ Locals.TestSocketName"
+Expr = "\"PowerSupply_\" + Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
-[SF.Seq[0].Cleanup[1].TS.SData.ActualArgs.SwitchPosition]
+[SF.Seq[0].Cleanup[1].TS.SData.ActualArgs.OutputState]
 UseDef = False
-Expr = "0"
-ParamType = 4
-ParamRepresentation = 1
+Expr = "False"
+ParamType = 16
 Flags = 0
 
 [DEF, SF.Seq[0].Cleanup[1].TS.SData.Prototype]
 ChannelName = Str
-SwitchPosition = Num
-
-[SF.Seq[0].Cleanup[1].TS.SData.Prototype.SwitchPosition]
-%COMMENT = "0:Open; 1:Closed"
+OutputState = Bool
 
 [DEF, SF.Seq[0].Cleanup[1]]
-%NAME = "Disconnect DMM +"
+%NAME = "Power Off Device"
 
 [SF.Seq[0].Cleanup[2].TS]
-Id = "ID#:Sl17voHA8BG5VlB7nf4f8B"
+Id = "ID#:SV17voHA8BG5VlB7nf4f8B"
 
 [DEF, SF.Seq[0].Cleanup[2].TS]
 SData = "TYPE, SeqCallStepAdditions"
@@ -702,7 +760,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[2].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_DMM-_GND_\"+ Locals.TestSocketName"
+Expr = "\"Pick_DMM+_TP24\" + \"_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -721,10 +779,10 @@ SwitchPosition = Num
 %COMMENT = "0:Open; 1:Closed"
 
 [DEF, SF.Seq[0].Cleanup[2]]
-%NAME = "Disconnect DMM -"
+%NAME = "Disconnect DMM + T24 "
 
 [SF.Seq[0].Cleanup[3].TS]
-Id = "ID#:S117voHA8BG5VlB7nf4f8B"
+Id = "ID#:Sl17voHA8BG5VlB7nf4f8B"
 
 [DEF, SF.Seq[0].Cleanup[3].TS]
 SData = "TYPE, SeqCallStepAdditions"
@@ -744,7 +802,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[3].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS+_\"+ Locals.TestSocketName"
+Expr = "\"Pick_DMM-_GND_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -763,10 +821,10 @@ SwitchPosition = Num
 %COMMENT = "0:Open; 1:Closed"
 
 [DEF, SF.Seq[0].Cleanup[3]]
-%NAME = "Disconnect Power Supply +"
+%NAME = "Disconnect DMM - GND"
 
 [SF.Seq[0].Cleanup[4].TS]
-Id = "ID#:TF17voHA8BG5VlB7nf4f8B"
+Id = "ID#:S117voHA8BG5VlB7nf4f8B"
 
 [DEF, SF.Seq[0].Cleanup[4].TS]
 SData = "TYPE, SeqCallStepAdditions"
@@ -786,7 +844,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[0].Cleanup[4].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_PS-_\"+ Locals.TestSocketName"
+Expr = "\"Pick_PS+_\"+ Locals.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -805,6 +863,48 @@ SwitchPosition = Num
 %COMMENT = "0:Open; 1:Closed"
 
 [DEF, SF.Seq[0].Cleanup[4]]
+%NAME = "Disconnect Power Supply +"
+
+[SF.Seq[0].Cleanup[5].TS]
+Id = "ID#:TF17voHA8BG5VlB7nf4f8B"
+
+[DEF, SF.Seq[0].Cleanup[5].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[0].Cleanup[5].TS.SData]
+SFPath = "Noffz.UTP.IO.seq"
+SeqName = "UTP.IO.Switch.SPST.Position.Set"
+Trace = "Off"
+
+[DEF, SF.Seq[0].Cleanup[5].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[0].Cleanup[5].TS.SData.ActualArgs]
+ChannelName = "TYPE, SequenceArgument"
+SwitchPosition = "TYPE, SequenceArgument"
+
+[SF.Seq[0].Cleanup[5].TS.SData.ActualArgs.ChannelName]
+UseDef = False
+Expr = "\"Pick_PS-_\"+ Locals.TestSocketName"
+ParamType = 2
+Flags = 0
+
+[SF.Seq[0].Cleanup[5].TS.SData.ActualArgs.SwitchPosition]
+UseDef = False
+Expr = "0"
+ParamType = 4
+ParamRepresentation = 1
+Flags = 0
+
+[DEF, SF.Seq[0].Cleanup[5].TS.SData.Prototype]
+ChannelName = Str
+SwitchPosition = Num
+
+[SF.Seq[0].Cleanup[5].TS.SData.Prototype.SwitchPosition]
+%COMMENT = "0:Open; 1:Closed"
+
+[DEF, SF.Seq[0].Cleanup[5]]
 %NAME = "Disconnect Power Supply -"
 
 [DEF, SF.Seq[0].RTS]
@@ -968,7 +1068,7 @@ Voltage = Num
 %FLG: Locals = 4194304
 %HI: Main = [0]
 %FLG: Main = 4194304
-%HI: Setup = [1]
+%HI: Setup = [2]
 %FLG: Setup = 4194304
 %HI: Cleanup = [1]
 %FLG: Cleanup = 4194304
@@ -990,10 +1090,14 @@ ResultList = Objs
 
 [DEF, SF.Seq[2].Main]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NumericLimitTest"
 
 [SF.Seq[2].Main[0].TS]
 Id = "ID#:T117voHA8BG5VlB7nf4f8B"
+LoopType = "PassFailCount"
+LoopWhile = "RunState.LoopIndex < 10 && RunState.LoopNumPassed < 1"
+LoopStatus = "RunState.LoopNumPassed >= 1 ? \"Passed\" : \"Failed\""
+LoopOpt = 1
 
 [DEF, SF.Seq[2].Main[0].TS]
 SData = "TYPE, FlexGStepAdditions"
@@ -1231,6 +1335,13 @@ DisplayType = "ASCII String"
 [DEF, SF.Seq[2].Main[0].TS.SData.ViCall.Parms[6]]
 %NAME = "error out"
 
+[SF.Seq[2].Main[0].Limits]
+Low = 4.9000000000000004
+High = 5.0999999999999996
+
+[SF.Seq[2].Main[0]]
+DataSource = "Parameters.Voltage"
+
 [DEF, SF.Seq[2].Main[0]]
 %NAME = "1.1 Test Power Supply voltage"
 
@@ -1239,6 +1350,8 @@ DisplayType = "ASCII String"
 %TYPE: %[0] = "NoffzUTP_IOSwitchSPSTSet"
 %[1] = Step
 %TYPE: %[1] = "NoffzUTP_IOSwitchSPSTSet"
+%[2] = Step
+%TYPE: %[2] = "NI_Wait"
 
 [SF.Seq[2].Setup[0].TS]
 Id = "ID#:TV17voHA8BG5VlB7nf4f8B"
@@ -1261,7 +1374,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[2].Setup[0].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_DMM+_T24_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM+_TP24_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -1323,6 +1436,25 @@ SwitchPosition = Num
 
 [DEF, SF.Seq[2].Setup[1]]
 %NAME = "Connect DMM - to GND"
+
+[SF.Seq[2].Setup[2].TS]
+Id = "ID#:6WqLv6DZ8BGJzsyCf5xeVC"
+Mode = "Skip"
+ResultOption = 0
+%HI: AdditionalResultsHints = [0]
+
+[DEF, SF.Seq[2].Setup[2].TS.AdditionalResultsHints]
+%[0] = "TYPE, NI_CustomResult"
+
+[SF.Seq[2].Setup[2].TS.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
+ValueToLog = "Evaluate(Step.TimeExpr)"
+
+[SF.Seq[2].Setup[2]]
+TimeExpr = "0.2"
+
+[DEF, SF.Seq[2].Setup[2]]
+%NAME = "Wait"
 
 [DEF, SF.Seq[2].Cleanup]
 %[0] = Step
@@ -1488,7 +1620,7 @@ Voltage = Num
 %FLG: Locals = 4194304
 %HI: Main = [0]
 %FLG: Main = 4194304
-%HI: Setup = [0]
+%HI: Setup = [1]
 %FLG: Setup = 4194304
 %FLG: Cleanup = 4194304
 RecordResults = True
@@ -1509,10 +1641,14 @@ ResultList = Objs
 
 [DEF, SF.Seq[3].Main]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NumericLimitTest"
 
 [SF.Seq[3].Main[0].TS]
 Id = "ID#:U117voHA8BG5VlB7nf4f8B"
+LoopType = "PassFailCount"
+LoopWhile = "RunState.LoopIndex < 10 && RunState.LoopNumPassed < 1"
+LoopStatus = "RunState.LoopNumPassed >= 1 ? \"Passed\" : \"Failed\""
+LoopOpt = 1
 
 [DEF, SF.Seq[3].Main[0].TS]
 SData = "TYPE, FlexGStepAdditions"
@@ -1750,12 +1886,21 @@ DisplayType = "ASCII String"
 [DEF, SF.Seq[3].Main[0].TS.SData.ViCall.Parms[6]]
 %NAME = "error out"
 
+[SF.Seq[3].Main[0].Limits]
+Low = -0.10000000000000001
+High = 0.10000000000000001
+
+[SF.Seq[3].Main[0]]
+DataSource = "(Parameters.voltage !=0) ? Parameters.voltage : 999"
+
 [DEF, SF.Seq[3].Main[0]]
 %NAME = "1.2 Read overvoltage voltage on T24"
 
 [DEF, SF.Seq[3].Setup]
 %[0] = Step
 %TYPE: %[0] = "NoffzUTP_IODCPSULimitsSet"
+%[1] = Step
+%TYPE: %[1] = "NI_Wait"
 
 [SF.Seq[3].Setup[0].TS]
 Id = "ID#:Ul17voHA8BG5VlB7nf4f8B"
@@ -1804,6 +1949,25 @@ CurrentLimit = Num
 
 [DEF, SF.Seq[3].Setup[0]]
 %NAME = "Set Voltage to 17 V"
+
+[SF.Seq[3].Setup[1].TS]
+Id = "ID#:4SAfPqPZ8BGJzsyCf5xeVC"
+Mode = "Skip"
+ResultOption = 0
+%HI: AdditionalResultsHints = [0]
+
+[DEF, SF.Seq[3].Setup[1].TS.AdditionalResultsHints]
+%[0] = "TYPE, NI_CustomResult"
+
+[SF.Seq[3].Setup[1].TS.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
+ValueToLog = "Evaluate(Step.TimeExpr)"
+
+[SF.Seq[3].Setup[1]]
+TimeExpr = "0.2"
+
+[DEF, SF.Seq[3].Setup[1]]
+%NAME = "Wait"
 
 [DEF, SF.Seq[3].RTS]
 Type = Num
@@ -1877,7 +2041,7 @@ Voltage = Num
 %FLG: Locals = 4194304
 %HI: Main = [0]
 %FLG: Main = 4194304
-%HI: Setup = [0]
+%HI: Setup = [1]
 %FLG: Setup = 4194304
 %FLG: Cleanup = 4194304
 RecordResults = True
@@ -1898,10 +2062,14 @@ ResultList = Objs
 
 [DEF, SF.Seq[4].Main]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NumericLimitTest"
 
 [SF.Seq[4].Main[0].TS]
 Id = "ID#:VV17voHA8BG5VlB7nf4f8B"
+LoopType = "PassFailCount"
+LoopWhile = "RunState.LoopIndex < 10 && RunState.LoopNumPassed < 1"
+LoopStatus = "RunState.LoopNumPassed >= 1 ? \"Passed\" : \"Failed\""
+LoopOpt = 1
 
 [DEF, SF.Seq[4].Main[0].TS]
 SData = "TYPE, FlexGStepAdditions"
@@ -2139,12 +2307,21 @@ DisplayType = "ASCII String"
 [DEF, SF.Seq[4].Main[0].TS.SData.ViCall.Parms[6]]
 %NAME = "error out"
 
+[SF.Seq[4].Main[0].Limits]
+Low = 5.4000000000000004
+High = 5.5999999999999996
+
+[SF.Seq[4].Main[0]]
+DataSource = "Parameters.Voltage"
+
 [DEF, SF.Seq[4].Main[0]]
 %NAME = "1.2 Read voltage on T24 after overvoltage"
 
 [DEF, SF.Seq[4].Setup]
 %[0] = Step
 %TYPE: %[0] = "NoffzUTP_IODCPSULimitsSet"
+%[1] = Step
+%TYPE: %[1] = "NI_Wait"
 
 [SF.Seq[4].Setup[0].TS]
 Id = "ID#:VF17voHA8BG5VlB7nf4f8B"
@@ -2193,6 +2370,25 @@ CurrentLimit = Num
 
 [DEF, SF.Seq[4].Setup[0]]
 %NAME = "Set Voltage to 5.5 V"
+
+[SF.Seq[4].Setup[1].TS]
+Id = "ID#:4iAfPqPZ8BGJzsyCf5xeVC"
+Mode = "Skip"
+ResultOption = 0
+%HI: AdditionalResultsHints = [0]
+
+[DEF, SF.Seq[4].Setup[1].TS.AdditionalResultsHints]
+%[0] = "TYPE, NI_CustomResult"
+
+[SF.Seq[4].Setup[1].TS.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
+ValueToLog = "Evaluate(Step.TimeExpr)"
+
+[SF.Seq[4].Setup[1]]
+TimeExpr = "0.2"
+
+[DEF, SF.Seq[4].Setup[1]]
+%NAME = "Wait"
 
 [DEF, SF.Seq[4].RTS]
 Type = Num
@@ -2376,10 +2572,14 @@ ResultList = Objs
 
 [DEF, SF.Seq[6].Main]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NumericLimitTest"
 
 [SF.Seq[6].Main[0].TS]
 Id = "ID#:Xl17voHA8BG5VlB7nf4f8B"
+LoopType = "PassFailCount"
+LoopWhile = "RunState.LoopIndex < 10 && RunState.LoopNumPassed < 1"
+LoopStatus = "RunState.LoopNumPassed >= 1 ? \"Passed\" : \"Failed\""
+LoopOpt = 1
 
 [DEF, SF.Seq[6].Main[0].TS]
 SData = "TYPE, FlexGStepAdditions"
@@ -2617,6 +2817,13 @@ DisplayType = "ASCII String"
 [DEF, SF.Seq[6].Main[0].TS.SData.ViCall.Parms[6]]
 %NAME = "error out"
 
+[SF.Seq[6].Main[0].Limits]
+Low = 4.9000000000000004
+High = 5.0999999999999996
+
+[SF.Seq[6].Main[0]]
+DataSource = "Parameters.Voltage"
+
 [DEF, SF.Seq[6].Main[0]]
 %NAME = "2.1 Test Power Supply voltage"
 
@@ -2658,7 +2865,7 @@ CurrentLimit = "TYPE, SequenceArgument"
 
 [SF.Seq[6].Setup[0].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PowerSupply+_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -2671,7 +2878,7 @@ Flags = 0
 
 [SF.Seq[6].Setup[0].TS.SData.ActualArgs.CurrentLimit]
 UseDef = False
-Expr = "1"
+Expr = "0.5//1"
 ParamType = 4
 ParamRepresentation = 1
 Flags = 0
@@ -2810,7 +3017,7 @@ OutputState = Bool
 %NAME = "DCPSU.Output.Set"
 
 [SF.Seq[6].Setup[4].TS]
-Id = "ID#:zT3N8bPD8BG5WVB7nf4f8B"
+Id = "ID#:4yAfPqPZ8BGJzsyCf5xeVC"
 Mode = "Skip"
 ResultOption = 0
 %HI: AdditionalResultsHints = [0]
@@ -2823,7 +3030,7 @@ Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
 ValueToLog = "Evaluate(Step.TimeExpr)"
 
 [SF.Seq[6].Setup[4]]
-TimeExpr = "0.1"
+TimeExpr = "0.2"
 
 [DEF, SF.Seq[6].Setup[4]]
 %NAME = "Wait"
@@ -3069,7 +3276,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[6].Cleanup[3].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"Pick_DMM+_T24_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM+_TP24_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3204,9 +3411,9 @@ Voltage = Num
 %FLG: Locals = 4194304
 %HI: Main = [0]
 %FLG: Main = 4194304
-%HI: Setup = [14]
+%HI: Setup = [15]
 %FLG: Setup = 4194304
-%HI: Cleanup = [4]
+%HI: Cleanup = [3]
 %FLG: Cleanup = 4194304
 RecordResults = True
 %FLG: RecordResults = 4194312
@@ -3226,10 +3433,14 @@ ResultList = Objs
 
 [DEF, SF.Seq[7].Main]
 %[0] = Step
-%TYPE: %[0] = "Action"
+%TYPE: %[0] = "NumericLimitTest"
 
 [SF.Seq[7].Main[0].TS]
 Id = "ID#:b117voHA8BG5VlB7nf4f8B"
+LoopType = "PassFailCount"
+LoopWhile = "RunState.LoopIndex < 10 && RunState.LoopNumPassed < 1"
+LoopStatus = "RunState.LoopNumPassed >= 1 ? \"Passed\" : \"Failed\""
+LoopOpt = 1
 
 [DEF, SF.Seq[7].Main[0].TS]
 SData = "TYPE, FlexGStepAdditions"
@@ -3467,6 +3678,13 @@ DisplayType = "ASCII String"
 [DEF, SF.Seq[7].Main[0].TS.SData.ViCall.Parms[6]]
 %NAME = "error out"
 
+[SF.Seq[7].Main[0].Limits]
+Low = 3
+High = 3.6000000000000001
+
+[SF.Seq[7].Main[0]]
+DataSource = "Parameters.Voltage"
+
 [DEF, SF.Seq[7].Main[0]]
 %NAME = "2.2 Test Voltage on T25"
 
@@ -3490,17 +3708,19 @@ DisplayType = "ASCII String"
 %[8] = Step
 %TYPE: %[8] = "NoffzUTP_IODCPSULimitsSet"
 %[9] = Step
-%TYPE: %[9] = "NoffzUTP_IODCPSUOutputSet"
+%TYPE: %[9] = "NoffzUTP_IOSwitchSPSTSet"
 %[10] = Step
-%TYPE: %[10] = "NI_Wait"
+%TYPE: %[10] = "NoffzUTP_IOSwitchSPSTSet"
 %[11] = Step
-%TYPE: %[11] = "NoffzUTP_IOSwitchSPSTSet"
+%TYPE: %[11] = "NoffzUTP_IODCPSUOutputSet"
 %[12] = Step
-%TYPE: %[12] = "NoffzUTP_IOSwitchSPSTSet"
+%TYPE: %[12] = "NI_Lock"
 %[13] = Step
 %TYPE: %[13] = "NoffzUTP_IOSwitchSPSTSet"
 %[14] = Step
 %TYPE: %[14] = "NoffzUTP_IOSwitchSPSTSet"
+%[15] = Step
+%TYPE: %[15] = "NI_Wait"
 
 [SF.Seq[7].Setup[0].TS]
 Id = "ID#:Y117voHA8BG5VlB7nf4f8B"
@@ -3524,7 +3744,7 @@ CurrentLimit = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[0].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3537,7 +3757,7 @@ Flags = 0
 
 [SF.Seq[7].Setup[0].TS.SData.ActualArgs.CurrentLimit]
 UseDef = False
-Expr = "1"
+Expr = "0.5//1"
 ParamType = 4
 ParamRepresentation = 1
 Flags = 0
@@ -3571,7 +3791,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[1].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_Reverse_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS+_Reverse_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3613,7 +3833,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[2].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS-_Reverse_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS-_Reverse_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3655,7 +3875,7 @@ OutputState = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[3].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3711,7 +3931,7 @@ OutputState = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[5].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3749,7 +3969,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[6].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_Reverse_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS+_Reverse_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3791,7 +4011,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[7].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS-_Reverse_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_PS-_Reverse_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3834,7 +4054,7 @@ CurrentLimit = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[8].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\" + Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -3861,14 +4081,14 @@ CurrentLimit = Num
 %NAME = "Set Normal operation voltage"
 
 [SF.Seq[7].Setup[9].TS]
-Id = "ID#:tB721rPD8BG5WVB7nf4f8B"
+Id = "ID#:a117voHA8BG5VlB7nf4f8B"
 
 [DEF, SF.Seq[7].Setup[9].TS]
 SData = "TYPE, SeqCallStepAdditions"
 
 [SF.Seq[7].Setup[9].TS.SData]
 SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.DCPSU.Output.Set"
+SeqName = "UTP.IO.Switch.SPST.Position.Set"
 Trace = "Off"
 
 [DEF, SF.Seq[7].Setup[9].TS.SData]
@@ -3877,54 +4097,82 @@ Prototype = Obj
 
 [DEF, SF.Seq[7].Setup[9].TS.SData.ActualArgs]
 ChannelName = "TYPE, SequenceArgument"
-OutputState = "TYPE, SequenceArgument"
+SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[9].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\" + Parameters.TestSocketName"
+Expr = "\"Pick_PS+_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
-[SF.Seq[7].Setup[9].TS.SData.ActualArgs.OutputState]
+[SF.Seq[7].Setup[9].TS.SData.ActualArgs.SwitchPosition]
 UseDef = False
-Expr = "True"
-ParamType = 16
+Expr = "1"
+ParamType = 4
+ParamRepresentation = 1
 Flags = 0
 
 [DEF, SF.Seq[7].Setup[9].TS.SData.Prototype]
 ChannelName = Str
-OutputState = Bool
+SwitchPosition = Num
+
+[SF.Seq[7].Setup[9].TS.SData.Prototype.SwitchPosition]
+%COMMENT = "0:Open; 1:Closed"
 
 [DEF, SF.Seq[7].Setup[9]]
-%NAME = "Power on Voltage"
+%NAME = "Connect Power Supply +"
 
 [SF.Seq[7].Setup[10].TS]
-Id = "ID#:AJcR47PD8BG5WVB7nf4f8B"
-ResultOption = 0
-%HI: AdditionalResultsHints = [0]
+Id = "ID#:bF17voHA8BG5VlB7nf4f8B"
 
-[DEF, SF.Seq[7].Setup[10].TS.AdditionalResultsHints]
-%[0] = "TYPE, NI_CustomResult"
+[DEF, SF.Seq[7].Setup[10].TS]
+SData = "TYPE, SeqCallStepAdditions"
 
-[SF.Seq[7].Setup[10].TS.AdditionalResultsHints[0]]
-Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
-ValueToLog = "Evaluate(Step.TimeExpr)"
+[SF.Seq[7].Setup[10].TS.SData]
+SFPath = "Noffz.UTP.IO.seq"
+SeqName = "UTP.IO.Switch.SPST.Position.Set"
+Trace = "Off"
 
-[SF.Seq[7].Setup[10]]
-TimeExpr = "0.1"
+[DEF, SF.Seq[7].Setup[10].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[7].Setup[10].TS.SData.ActualArgs]
+ChannelName = "TYPE, SequenceArgument"
+SwitchPosition = "TYPE, SequenceArgument"
+
+[SF.Seq[7].Setup[10].TS.SData.ActualArgs.ChannelName]
+UseDef = False
+Expr = "\"Pick_PS-_\"+ Parameters.TestSocketName"
+ParamType = 2
+Flags = 0
+
+[SF.Seq[7].Setup[10].TS.SData.ActualArgs.SwitchPosition]
+UseDef = False
+Expr = "1"
+ParamType = 4
+ParamRepresentation = 1
+Flags = 0
+
+[DEF, SF.Seq[7].Setup[10].TS.SData.Prototype]
+ChannelName = Str
+SwitchPosition = Num
+
+[SF.Seq[7].Setup[10].TS.SData.Prototype.SwitchPosition]
+%COMMENT = "0:Open; 1:Closed"
 
 [DEF, SF.Seq[7].Setup[10]]
-%NAME = "Wait"
+%NAME = "Connect Power Supply -"
 
 [SF.Seq[7].Setup[11].TS]
-Id = "ID#:a117voHA8BG5VlB7nf4f8B"
+Id = "ID#:tB721rPD8BG5WVB7nf4f8B"
 
 [DEF, SF.Seq[7].Setup[11].TS]
 SData = "TYPE, SeqCallStepAdditions"
 
 [SF.Seq[7].Setup[11].TS.SData]
 SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.Switch.SPST.Position.Set"
+SeqName = "UTP.IO.DCPSU.Output.Set"
 Trace = "Off"
 
 [DEF, SF.Seq[7].Setup[11].TS.SData]
@@ -3933,72 +4181,72 @@ Prototype = Obj
 
 [DEF, SF.Seq[7].Setup[11].TS.SData.ActualArgs]
 ChannelName = "TYPE, SequenceArgument"
-SwitchPosition = "TYPE, SequenceArgument"
+OutputState = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[11].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"PS+_\"+ Parameters.TestSocketName"
+Expr = "\"PowerSupply_\" + Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
-[SF.Seq[7].Setup[11].TS.SData.ActualArgs.SwitchPosition]
+[SF.Seq[7].Setup[11].TS.SData.ActualArgs.OutputState]
 UseDef = False
-Expr = "1"
-ParamType = 4
-ParamRepresentation = 1
+Expr = "True"
+ParamType = 16
 Flags = 0
 
 [DEF, SF.Seq[7].Setup[11].TS.SData.Prototype]
 ChannelName = Str
-SwitchPosition = Num
-
-[SF.Seq[7].Setup[11].TS.SData.Prototype.SwitchPosition]
-%COMMENT = "0:Open; 1:Closed"
+OutputState = Bool
 
 [DEF, SF.Seq[7].Setup[11]]
-%NAME = "Connect Power Supply +"
+%NAME = "Power on Voltage"
 
 [SF.Seq[7].Setup[12].TS]
-Id = "ID#:bF17voHA8BG5VlB7nf4f8B"
+Id = "ID#:43djPavZ8BGJzsyCf5xeVC"
+%HI: AdditionalResultsHints = [2]
 
-[DEF, SF.Seq[7].Setup[12].TS]
-SData = "TYPE, SeqCallStepAdditions"
+[DEF, SF.Seq[7].Setup[12].TS.AdditionalResultsHints]
+%[0] = "TYPE, NI_CustomResult"
+%[1] = "TYPE, NI_CustomResult"
+%[2] = "TYPE, NI_CustomResult"
 
-[SF.Seq[7].Setup[12].TS.SData]
-SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.Switch.SPST.Position.Set"
-Trace = "Off"
+[SF.Seq[7].Setup[12].TS.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"CREATE_LOCK_HINT\")"
+ValueToLog = "Step.CreateIfDoesNotExist"
 
-[DEF, SF.Seq[7].Setup[12].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
+[SF.Seq[7].Setup[12].TS.AdditionalResultsHints[1]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"LOCK_OPERATION_LIFETIME_HINT\")"
+ValueToLog Line0001 = "ResStr(\"NI_MUTEX_STEP_TYPE\", (Step.LockLifetime == 0 ? \"LIFETIME_SEQUENCE\" :\n    Step.LockLifetime == 1 ? \"LIFETIM"
+ValueToLog Line0002 = "E_THREAD\" :\n    Step.LockLifetime == 2 ? \"LIFETIME_REFERENCE\" :\n    \"\"))"
 
-[DEF, SF.Seq[7].Setup[12].TS.SData.ActualArgs]
-ChannelName = "TYPE, SequenceArgument"
-SwitchPosition = "TYPE, SequenceArgument"
-
-[SF.Seq[7].Setup[12].TS.SData.ActualArgs.ChannelName]
-UseDef = False
-Expr = "\"PS-_\"+ Parameters.TestSocketName"
-ParamType = 2
-Flags = 0
-
-[SF.Seq[7].Setup[12].TS.SData.ActualArgs.SwitchPosition]
-UseDef = False
-Expr = "1"
-ParamType = 4
-ParamRepresentation = 1
-Flags = 0
-
-[DEF, SF.Seq[7].Setup[12].TS.SData.Prototype]
-ChannelName = Str
-SwitchPosition = Num
-
-[SF.Seq[7].Setup[12].TS.SData.Prototype.SwitchPosition]
-%COMMENT = "0:Open; 1:Closed"
+[SF.Seq[7].Setup[12].TS.AdditionalResultsHints[2]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"TIMEOUT\")"
+ValueToLog = "Step.TimeoutEnabled ? Str(Evaluate(Step.TimeoutExpr)) : ResStr(\"NI_MUTEX_STEP_TYPE\", \"DISABLED\")"
 
 [DEF, SF.Seq[7].Setup[12]]
-%NAME = "Connect Power Supply -"
+Result = Obj
+%NAME = "Lock DMM"
+
+[DEF, SF.Seq[7].Setup[12].Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+TimeoutOccurred = Bool
+
+[SF.Seq[7].Setup[12].Result]
+%FLG: Error = 4194304
+%FLG: Status = 4194304
+%FLG: ReportText = 4194304
+%FLG: Common = 0
+
+[SF.Seq[7].Setup[12]]
+%FLG: Result = 4194304
+NameOrRefExpr = "\"DMM\""
+Operation = 1
+Lifetime = 1
+LockLifetime = 1
 
 [SF.Seq[7].Setup[13].TS]
 Id = "ID#:bV17voHA8BG5VlB7nf4f8B"
@@ -4021,7 +4269,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[13].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"DMM+_T25_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM+_TP25_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -4063,7 +4311,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Setup[14].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"DMM-_GND_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM-_GND_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -4084,6 +4332,25 @@ SwitchPosition = Num
 [DEF, SF.Seq[7].Setup[14]]
 %NAME = "Connect DMM - to GND"
 
+[SF.Seq[7].Setup[15].TS]
+Id = "ID#:3/dhSaPZ8BGJzsyCf5xeVC"
+Mode = "Skip"
+ResultOption = 0
+%HI: AdditionalResultsHints = [0]
+
+[DEF, SF.Seq[7].Setup[15].TS.AdditionalResultsHints]
+%[0] = "TYPE, NI_CustomResult"
+
+[SF.Seq[7].Setup[15].TS.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_WAIT_STEP_TYPE\", \"TIME_TO_WAIT\")"
+ValueToLog = "Evaluate(Step.TimeExpr)"
+
+[SF.Seq[7].Setup[15]]
+TimeExpr = "0.2"
+
+[DEF, SF.Seq[7].Setup[15]]
+%NAME = "Wait"
+
 [DEF, SF.Seq[7].Cleanup]
 %[0] = Step
 %TYPE: %[0] = "NoffzUTP_IODCPSUOutputSet"
@@ -4092,9 +4359,7 @@ SwitchPosition = Num
 %[2] = Step
 %TYPE: %[2] = "NoffzUTP_IOSwitchSPSTSet"
 %[3] = Step
-%TYPE: %[3] = "NoffzUTP_IOSwitchSPSTSet"
-%[4] = Step
-%TYPE: %[4] = "NoffzUTP_IOSwitchSPSTSet"
+%TYPE: %[3] = "NI_Lock"
 
 [SF.Seq[7].Cleanup[0].TS]
 Id = "ID#:LPxAurPD8BG5WVB7nf4f8B"
@@ -4155,7 +4420,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Cleanup[1].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"DMM+_T25_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM+_TP25_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -4197,7 +4462,7 @@ SwitchPosition = "TYPE, SequenceArgument"
 
 [SF.Seq[7].Cleanup[2].TS.SData.ActualArgs.ChannelName]
 UseDef = False
-Expr = "\"DMM-_GND_\"+ Parameters.TestSocketName"
+Expr = "\"Pick_DMM-_GND_\"+ Parameters.TestSocketName"
 ParamType = 2
 Flags = 0
 
@@ -4219,88 +4484,15 @@ SwitchPosition = Num
 %NAME = "Disconnect DMM - from GND"
 
 [SF.Seq[7].Cleanup[3].TS]
-Id = "ID#:cl17voHA8BG5VlB7nf4f8B"
+Id = "ID#:5HdjPavZ8BGJzsyCf5xeVC"
 
-[DEF, SF.Seq[7].Cleanup[3].TS]
-SData = "TYPE, SeqCallStepAdditions"
-
-[SF.Seq[7].Cleanup[3].TS.SData]
-SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.Switch.SPST.Position.Set"
-Trace = "Off"
-
-[DEF, SF.Seq[7].Cleanup[3].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
-
-[DEF, SF.Seq[7].Cleanup[3].TS.SData.ActualArgs]
-ChannelName = "TYPE, SequenceArgument"
-SwitchPosition = "TYPE, SequenceArgument"
-
-[SF.Seq[7].Cleanup[3].TS.SData.ActualArgs.ChannelName]
-UseDef = False
-Expr = "\"PS+_\"+ Parameters.TestSocketName"
-ParamType = 2
-Flags = 0
-
-[SF.Seq[7].Cleanup[3].TS.SData.ActualArgs.SwitchPosition]
-UseDef = False
-Expr = "0"
-ParamType = 4
-ParamRepresentation = 1
-Flags = 0
-
-[DEF, SF.Seq[7].Cleanup[3].TS.SData.Prototype]
-ChannelName = Str
-SwitchPosition = Num
-
-[SF.Seq[7].Cleanup[3].TS.SData.Prototype.SwitchPosition]
-%COMMENT = "0:Open; 1:Closed"
+[SF.Seq[7].Cleanup[3]]
+NameOrRefExpr = "\"DMM\""
+Operation = 2
+%COMMENT = "Move to subsequence for nicer oveerview"
 
 [DEF, SF.Seq[7].Cleanup[3]]
-%NAME = "Disconnect Power Supply +"
-
-[SF.Seq[7].Cleanup[4].TS]
-Id = "ID#:c117voHA8BG5VlB7nf4f8B"
-
-[DEF, SF.Seq[7].Cleanup[4].TS]
-SData = "TYPE, SeqCallStepAdditions"
-
-[SF.Seq[7].Cleanup[4].TS.SData]
-SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.Switch.SPST.Position.Set"
-Trace = "Off"
-
-[DEF, SF.Seq[7].Cleanup[4].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
-
-[DEF, SF.Seq[7].Cleanup[4].TS.SData.ActualArgs]
-ChannelName = "TYPE, SequenceArgument"
-SwitchPosition = "TYPE, SequenceArgument"
-
-[SF.Seq[7].Cleanup[4].TS.SData.ActualArgs.ChannelName]
-UseDef = False
-Expr = "\"PS-_\"+ Parameters.TestSocketName"
-ParamType = 2
-Flags = 0
-
-[SF.Seq[7].Cleanup[4].TS.SData.ActualArgs.SwitchPosition]
-UseDef = False
-Expr = "0"
-ParamType = 4
-ParamRepresentation = 1
-Flags = 0
-
-[DEF, SF.Seq[7].Cleanup[4].TS.SData.Prototype]
-ChannelName = Str
-SwitchPosition = Num
-
-[SF.Seq[7].Cleanup[4].TS.SData.Prototype.SwitchPosition]
-%COMMENT = "0:Open; 1:Closed"
-
-[DEF, SF.Seq[7].Cleanup[4]]
-%NAME = "Disconnect Power Supply -"
+%NAME = "UnLock DMM"
 
 [DEF, SF.Seq[7].RTS]
 Type = Num
@@ -4379,7 +4571,6 @@ SequenceArgument = "SequenceArgument"
 NI_SequenceParameterResult = "NI_SequenceParameterResult"
 NumericLimitTest = "NumericLimitTest"
 NoneStepAdditions = "NoneStepAdditions"
-Action = "Action"
 NoffzUTP_IODCPSULimitsSet = "NoffzUTP_IODCPSULimitsSet"
 NoffzUTP_IOSwitchSPSTSet = "NoffzUTP_IOSwitchSPSTSet"
 NoffzUTP_IODCPSUOutputSet = "NoffzUTP_IODCPSUOutputSet"
@@ -4392,6 +4583,7 @@ Substep = "Substep"
 PostSubstep = "PostSubstep"
 NI_Wait = "NI_Wait"
 NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = "NoffzUTP_TEF_Model_TestSocket_GetTestSocketName"
+NI_Lock = "NI_Lock"
 
 [DEF, Path]
 %LOCATION = "StdTypes"
@@ -5353,119 +5545,6 @@ High = 11
 %MINPRODVER = "23.0.0.0"
 %FLG = 24
 %TYPE_FLG = 33554436
-
-[DEF, Action]
-%LOCATION = "StepTypes"
-Substeps = "TYPE, StepTypeSubstepsArray"
-DescriptionFormat = "TYPE, Expression"
-%FLG: DescriptionFormat = 524288
-DefaultNameFormat = "TYPE, Expression"
-%FLG: DefaultNameFormat = 524288
-Menu = "TYPE, StepTypeMenu"
-AdditionalResultsHints = Objs
-%FLG: AdditionalResultsHints = 524288
-TS = "TYPE, TEInf"
-NI_Data = "TYPE, StepTypeNIData"
-Result = Obj
-CodeTemplates = Str
-%FLG: CodeTemplates = 524288
-BlockStartTypes = Str
-%FLG: BlockStartTypes = 524288
-BlockEndTypes = Str
-%FLG: BlockEndTypes = 524288
-AppliesToBlockStructure = Bool
-%FLG: AppliesToBlockStructure = 524288
-CanEncapsulate = Bool
-%FLG: CanEncapsulate = 524288
-Category = Str
-%FLG: Category = 524288
-%ROOT_TYPE = True
-
-[Action]
-%INSTFLG: Substeps = 524312
-%INSTOVRD: Substeps = 655384
-DescriptionFormat Line0001 = "ResStr(\"NI_STEPTYPES\", \"ACTION_DESCRIPTION_NAME\") + ((\"%ModuleDescription\" == \"\") ? \"\" : \",  %ModuleDescripti"
-DescriptionFormat Line0002 = "on\")"
-%FLG: DescriptionFormat = 4194328
-%INSTFLG: DescriptionFormat = 4718616
-%INSTOVRD: DescriptionFormat = 4718616
-DefaultNameFormat = "ResStr(\"NI_STEPTYPES\", \"ACTION_DEF_STEP_NAME\")"
-%FLG: DefaultNameFormat = 4194328
-%INSTFLG: DefaultNameFormat = 4718616
-%INSTOVRD: DefaultNameFormat = 4718616
-%INSTFLG: Menu = 524312
-%INSTOVRD: Menu = 524312
-%FLG: AdditionalResultsHints = 4194328
-%INSTFLG: TS = 262168
-%INSTOVRD: TS = 4456472
-%FLG: Result = 4194304
-%INSTFLG: Result = 4194304
-CodeTemplates Line0001 = "DefaultLabVIEW|DefaultLabVIEWNXG|DefaultCVI|DefaultVB.NET|DefaultCSharp.NET|DefaultC++.NET|DefaultVC++_Template|DefaultH"
-CodeTemplates Line0002 = "TB72_Template|DefaultHTB80_Template|Default_Template"
-%FLG: CodeTemplates = 4194328
-%FLG: BlockStartTypes = 4194328
-%FLG: BlockEndTypes = 4194328
-%FLG: AppliesToBlockStructure = 4194328
-%FLG: CanEncapsulate = 4194328
-Category = "Action"
-%FLG: Category = 24
-%TIMESTAMP = 1666107258
-%VERSION = "23.0.0.1"
-%TYPELASTMOD = "23.0.0.0"
-%MINPRODVER = "23.0.0.0"
-%TYPE_FLG = 33554446
-
-[Action.Menu]
-ItemName = "ResStr(\"NI_STEPTYPES\", \"ACTION_MENU_ITEM_NAME\")"
-Group = "Action"
-
-[DEF, Action.AdditionalResultsHints]
-%EPTYPE = "TYPE, NI_CustomResult"
-
-[DEF, Action.TS]
-SData = Obj
-%FLG: SData = 2097152
-Requirements = Obj
-%FLG: Requirements = 2097152
-
-[Action.TS]
-%INSTFLG: SData = 2097152
-%INSTOVRD: SData = 7143448
-ConnectionLifetime = 0
-%INSTFLG: PassAct = 1
-%INSTOVRD: PassAct = 5046297
-%INSTFLG: FailAct = 1
-%INSTOVRD: FailAct = 5046297
-%INSTFLG: PassActTarget = 1
-%INSTOVRD: PassActTarget = 5046297
-%INSTFLG: FailActTarget = 1
-%INSTOVRD: FailActTarget = 5046297
-%FLG: Requirements = 1
-%INSTFLG: Requirements = 1
-
-[DEF, Action.TS.Requirements]
-Links = Strs
-
-[Action.TS.Requirements]
-%FLG: Links = 71303168
-%INSTFLG: Links = 71303168
-%INSTOVRD: Links = 72286233
-
-[DEF, Action.Result]
-Error = "TYPE, Error"
-Status = Str
-ReportText = Str
-Common = "TYPE, CommonResults"
-
-[Action.Result]
-%FLG: Error = 4194304
-%INSTFLG: Error = 4194304
-%INSTOVRD: Error = 4194304
-%FLG: Status = 4194304
-%INSTFLG: Status = 4194304
-%FLG: ReportText = 4194304
-%INSTFLG: ReportText = 4194304
-%INSTOVRD: Common = 4194304
 
 [DEF, NoffzUTP_IODCPSULimitsSet]
 %LOCATION = "StepTypes"
@@ -6693,6 +6772,322 @@ ReportText = Str
 Common = "TYPE, CommonResults"
 
 [NoffzUTP_TEF_Model_TestSocket_GetTestSocketName.Result]
+%FLG: Error = 4194304
+%INSTFLG: Error = 4194304
+%INSTOVRD: Error = 4194304
+%FLG: Status = 4194304
+%INSTFLG: Status = 4194304
+%FLG: ReportText = 4194304
+%INSTFLG: ReportText = 4194304
+%INSTOVRD: Common = 4194304
+
+[DEF, NI_Lock]
+%LOCATION = "StepTypes"
+DescriptionFormat = "TYPE, Expression"
+%FLG: DescriptionFormat = 524288
+DefaultNameFormat = "TYPE, Expression"
+%FLG: DefaultNameFormat = 524288
+Menu = "TYPE, StepTypeMenu"
+Substeps = "TYPE, StepTypeSubstepsArray"
+CodeTemplates = Str
+%FLG: CodeTemplates = 524288
+AdditionalResultsHints = Objs
+%FLG: AdditionalResultsHints = 524288
+TS = "TYPE, TEInf"
+NI_Data = "TYPE, StepTypeNIData"
+Result = Obj
+%FLG: Result = 2097152
+NameOrRefExpr = "TYPE, Expression"
+LifetimeRefExpr = "TYPE, Expression"
+TimeoutEnabled = Bool
+TimeoutExpr = "TYPE, Expression"
+ErrorOnTimeout = Bool
+AlreadyExistsExpr = "TYPE, Expression"
+NumThreadsWaitingExpr = "TYPE, Expression"
+Operation = Num
+Lifetime = Num
+LockLifetime = Num
+CreateIfDoesNotExist = Bool
+BlockStartTypes = Str
+%FLG: BlockStartTypes = 524288
+BlockEndTypes = Str
+%FLG: BlockEndTypes = 524288
+AppliesToBlockStructure = Bool
+%FLG: AppliesToBlockStructure = 524288
+CanEncapsulate = Bool
+%FLG: CanEncapsulate = 524288
+%ROOT_TYPE = True
+
+[NI_Lock]
+DescriptionFormat Line0001 = "ResStr(\"NI_MUTEX_STEP_TYPE_OPER_NAME\", Str( Step.Operation ) ) + \"(\" + LocalizeExpression(Step.NameOrRefExpr) + \")\"
+DescriptionFormat Line0002 = """
+%FLG: DescriptionFormat = 4194328
+%INSTFLG: DescriptionFormat = 4718616
+%INSTOVRD: DescriptionFormat = 4718616
+DefaultNameFormat = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"DEF_STEP_NAME\")"
+%FLG: DefaultNameFormat = 4194328
+%INSTFLG: DefaultNameFormat = 4718616
+%INSTOVRD: DefaultNameFormat = 4718616
+%INSTFLG: Menu = 524312
+%INSTOVRD: Menu = 524312
+%HI: Substeps = [2]
+%INSTFLG: Substeps = 524312
+%INSTOVRD: Substeps = 655384
+CodeTemplates = "Default_Template"
+%FLG: CodeTemplates = 4194328
+%HI: AdditionalResultsHints = [1]
+%FLG: AdditionalResultsHints = 4194328
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 4456472
+%FLG: Result = 4194304
+%INSTFLG: Result = 6291456
+ErrorOnTimeout = True
+Lifetime = 3
+%FLG: BlockStartTypes = 4194328
+%FLG: BlockEndTypes = 4194328
+%FLG: AppliesToBlockStructure = 4194328
+%FLG: CanEncapsulate = 4194328
+%TIMESTAMP = 1666107258
+%VERSION = "23.0.0.1"
+%TYPELASTMOD = "23.0.0.0"
+%MINPRODVER = "23.0.0.0"
+%TYPE_FLG = 33554446
+
+[NI_Lock.Menu]
+ItemName = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"MENU_ITEM_NAME\")"
+Group = "NI_NonAdvSynchronization"
+
+[DEF, NI_Lock.Substeps]
+%[0] = Step
+%TYPE: %[0] = "Substep"
+%[1] = Step
+%TYPE: %[1] = "PostSubstep"
+%[2] = Step
+%TYPE: %[2] = "EditSubstep"
+
+[NI_Lock.Substeps[0].TS]
+Id = "ID#:/AAp+G3ORUqJ2tKFptFzVB"
+
+[DEF, NI_Lock.Substeps[0].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[NI_Lock.Substeps[0].TS.SData.Call]
+LibPath = "syncsteps.dll"
+Func = "?SetMutexAdditionalResultsHintsForOperation@@YAXPAUStep@TS@@@Z"
+%HI: Parms = [1]
+
+[DEF, NI_Lock.Substeps[0].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+
+[NI_Lock.Substeps[0].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[0].TS.SData.Call.Parms[1]]
+Name = "step"
+Type = 205
+StructType = "TS::Step"
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "Step"
+%INSTOVRD: Flags = 5177369
+
+[DEF, NI_Lock.Substeps[0]]
+%NAME = "OnNewStep"
+
+[DEF, NI_Lock.Substeps[1].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[NI_Lock.Substeps[1].TS.SData.Call]
+LibPath = "syncsteps.dll"
+Func = "DoMutexOperation"
+%HI: Parms = [1]
+
+[DEF, NI_Lock.Substeps[1].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+
+[NI_Lock.Substeps[1].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[1].TS.SData.Call.Parms[1]]
+Name = "seqContext"
+Type = 4
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "ThisContext"
+ArgDisplayVal = "ThisContext"
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[1].TS]
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 2097152
+ConnectionLifetime = 0
+
+[NI_Lock.Substeps[1].TS.CustomResults.%EPTYPE]
+Name = "\"Foo\""
+ValueToLog = "12"
+IsAnyType = False
+
+[NI_Lock.Substeps[1]]
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 262168
+
+[NI_Lock.Substeps[1].Result]
+%INSTOVRD: Error = 4194304
+%INSTFLG: ReportText = 0
+%INSTOVRD: Common = 4194304
+
+[DEF, NI_Lock.Substeps[1]]
+%NAME = "Post"
+
+[DEF, NI_Lock.Substeps[2].TS]
+SData = "TYPE, FlexCStepAdditions"
+%FLG: SData = 2097152
+
+[NI_Lock.Substeps[2].TS.SData.Call]
+LibPath = "syncsteps.dll"
+Func = "EditMutexStep"
+%HI: Parms = [3]
+
+[DEF, NI_Lock.Substeps[2].TS.SData.Call.Parms]
+%[0] = "TYPE, FCParameter"
+%[1] = "TYPE, FCParameter"
+%[2] = "TYPE, FCParameter"
+%[3] = "TYPE, FCParameter"
+
+[NI_Lock.Substeps[2].TS.SData.Call.Parms[0]]
+Name = "Return Value"
+Type = 3
+%INSTOVRD: ResultAct = 5177369
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[2].TS.SData.Call.Parms[1]]
+Name = "sequenceContext"
+Type = 4
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "ThisContext"
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[2].TS.SData.Call.Parms[2]]
+Name = "reserved"
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "0"
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[2].TS.SData.Call.Parms[3]]
+Name = "changeCount"
+NumPass = 1
+%INSTOVRD: ResultAct = 5177369
+ArgVal = "RunState.InitialSelection.SelectedFile.ChangeCount"
+ArgDisplayVal = "RunState.InitialSelection.SelectedFile.ChangeCount"
+%INSTOVRD: Flags = 5177369
+
+[NI_Lock.Substeps[2].TS]
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 2097152
+ConnectionLifetime = 0
+
+[NI_Lock.Substeps[2].TS.CustomResults.%EPTYPE]
+Name = "\"Foo\""
+ValueToLog = "12"
+IsAnyType = False
+
+[NI_Lock.Substeps[2]]
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 262168
+MenuName = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"EDIT_STEP_MENU_NAME\")"
+SupportsReadOnly = True
+HasEditPanel = True
+
+[NI_Lock.Substeps[2].Result]
+%INSTOVRD: Error = 4194304
+%INSTFLG: ReportText = 0
+%INSTOVRD: Common = 4194304
+
+[DEF, NI_Lock.Substeps[2]]
+%NAME = "Edit"
+
+[DEF, NI_Lock.AdditionalResultsHints]
+%EPTYPE = "TYPE, NI_CustomResult"
+%[0] = "TYPE, NI_CustomResult"
+%[1] = "TYPE, NI_CustomResult"
+
+[NI_Lock.AdditionalResultsHints[0]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"LOCK_NAME\")"
+ValueToLog Line0001 = "RunState.Thread.RunTimeVariables.SetValInterface(\"NationalInstruments_TestStand_SyncObj_TempNameOrRefAdditionalResult\""
+ValueToLog Line0002 = ", PropOption_InsertIfMissing, &Evaluate(Step.NameOrRefExpr)),\nRunState.Thread.RunTimeVariables.SetValString(\"NationalI"
+ValueToLog Line0003 = "nstruments_TestStand_SyncObj_TempNameOrRefAdditionalResultString\", PropOption_InsertIfMissing,\n#NoValidation(\nRunStat"
+ValueToLog Line0004 = "e.Thread.RunTimeVariables.NationalInstruments_TestStand_SyncObj_TempNameOrRefAdditionalResult.AsPropertyObject.Type.Valu"
+ValueToLog Line0005 = "eType == PropValType_String ? \n*RunState.Thread.RunTimeVariables.NationalInstruments_TestStand_SyncObj_TempNameOrRefAdd"
+ValueToLog Line0006 = "itionalResult :\n(RunState.Thread.RunTimeVariables.NationalInstruments_TestStand_SyncObj_TempNameOrRefAdditionalResult.A"
+ValueToLog Line0007 = "sPropertyObject.Type.ValueType == PropValType_Array && RunState.Thread.RunTimeVariables.NationalInstruments_TestStand_Sy"
+ValueToLog Line0008 = "ncObj_TempNameOrRefAdditionalResult.AsPropertyObject.Type.ElementType.ValueType == PropValType_String) ?\n\" {\" + Str(*"
+ValueToLog Line0009 = "RunState.Thread.RunTimeVariables.NationalInstruments_TestStand_SyncObj_TempNameOrRefAdditionalResult, \"\", 1, False, \""
+ValueToLog Line0010 = ", \") + \"}\" :\nStep.NameOrRefExpr\n)),\nRunState.Thread.RunTimeVariables.DeleteSubProperty(\"NationalInstruments_TestS"
+ValueToLog Line0011 = "tand_SyncObj_TempNameOrRefAdditionalResult\", 0), // Make sure we don't extend lifetime if result was a reference or arr"
+ValueToLog Line0012 = "ay of references\n#NoValidation(RunState.Thread.RunTimeVariables.NationalInstruments_TestStand_SyncObj_TempNameOrRefAddi"
+ValueToLog Line0013 = "tionalResultString)"
+
+[NI_Lock.AdditionalResultsHints[1]]
+Name = "ResStr(\"NI_MUTEX_STEP_TYPE\", \"OPERATION\")"
+ValueToLog = "ResStr(\"NI_MUTEX_STEP_TYPE_OPER_NAME\", Str(Step.Operation))"
+
+[NI_Lock.TS]
+Icon = "ni_mutex.ico"
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 7143448
+BatchSyncOpt = 2
+ConnectionLifetime = 0
+%INSTFLG: PassAct = 1
+%INSTOVRD: PassAct = 5046297
+%INSTFLG: FailAct = 1
+%INSTOVRD: FailAct = 5046297
+%INSTFLG: PassActTarget = 1
+%INSTOVRD: PassActTarget = 5046297
+%INSTFLG: FailActTarget = 1
+%INSTOVRD: FailActTarget = 5046297
+%FLG: Requirements = 1
+%INSTFLG: Requirements = 1
+
+[DEF, NI_Lock.TS]
+SData = "TYPE, NoneStepAdditions"
+%FLG: SData = 2097152
+Requirements = Obj
+%FLG: Requirements = 2097152
+
+[DEF, NI_Lock.TS.Requirements]
+Links = Strs
+
+[NI_Lock.TS.Requirements]
+%FLG: Links = 71303168
+%INSTFLG: Links = 71303168
+%INSTOVRD: Links = 72286233
+
+[NI_Lock.TS.CustomResults.%EPTYPE]
+Name = "\"Foo\""
+ValueToLog = "12"
+IsAnyType = False
+
+[NI_Lock.NI_Data]
+%HI: EditPanels = [0]
+
+[NI_Lock.NI_Data.EditPanels]
+%[0] = "NIStepTypeControls.dll|NationalInstruments.TestStand.StepTypeControls.LockTabInfo"
+
+[DEF, NI_Lock.Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+
+[NI_Lock.Result]
 %FLG: Error = 4194304
 %INSTFLG: Error = 4194304
 %INSTOVRD: Error = 4194304

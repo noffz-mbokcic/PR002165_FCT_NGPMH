@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Execute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:noNamespaceSchemaLocation='RussianDoll.xsd'>
-  <requestParameters>
-	<Operator>1</Operator>
-	<SerialNo>2</SerialNo>
-	<MaterialCode>3</MaterialCode>
-  </requestParameters>
-</Execute>

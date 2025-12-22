@@ -12,6 +12,10 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="CSV" Type="Folder">
+			<Item Name="CSV Report.lvlib" Type="Library" URL="../CSV Report/CSV Report.lvlib"/>
+			<Item Name="Generate CSV Report combined.vi" Type="VI" URL="../CSV Report/Generate CSV Report combined.vi"/>
+		</Item>
 		<Item Name="Keyence" Type="Folder">
 			<Item Name="Convert Scanned HEX data to ASCII QR Code.vi" Type="VI" URL="../Keyence/Convert Scanned HEX data to ASCII QR Code.vi"/>
 			<Item Name="Deinitialize TCP Connection.vi" Type="VI" URL="../Keyence/Deinitialize TCP Connection.vi"/>
@@ -21,7 +25,13 @@
 			<Item Name="Test.vi" Type="VI" URL="../Keyence/Test.vi"/>
 		</Item>
 		<Item Name="MES" Type="Folder">
-			<Item Name="MES.lvlib" Type="Library" URL="../MES/MES.lvlib"/>
+			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="WebService" Type="Folder">
+				<Item Name="CheckPqmNtrsAndProductSerialDateService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_CheckPqmNtrsAndProductSerialDateService/CheckPqmNtrsAndProductSerialDateService.lvlib"/>
+				<Item Name="ContactAndRegisterWithNmaSapService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_ContactAndRegisterWithNmaSapService/ContactAndRegisterWithNmaSapService.lvlib"/>
+				<Item Name="Pre-Process and HU Validation.vi" Type="VI" URL="../MES/Communication/Pre-Process and HU Validation.vi"/>
+				<Item Name="SAP Integration.vi" Type="VI" URL="../MES/Communication/SAP Integration.vi"/>
+			</Item>
 		</Item>
 		<Item Name="NI 6386" Type="Folder">
 			<Item Name="AI.lvlib" Type="Library" URL="../NI 6386/AI/AI.lvlib"/>
@@ -30,8 +40,13 @@
 		<Item Name="PLC" Type="Folder">
 			<Item Name="PLC to MES monitor.vi" Type="VI" URL="../PLC/PLC to MES monitor.vi"/>
 		</Item>
+		<Item Name="Queue" Type="Folder">
+			<Item Name="Queue Priority TEST.vi" Type="VI" URL="../Queue/Queue Priority TEST.vi"/>
+			<Item Name="Queues.lvlib" Type="Library" URL="../Queue/Queues.lvlib"/>
+		</Item>
 		<Item Name="Station" Type="Folder">
 			<Item Name="Add alarm to archive.vi" Type="VI" URL="../Station/Add alarm to archive.vi"/>
+			<Item Name="Concatenate DUT results.vi" Type="VI" URL="../Station/Concatenate DUT results.vi"/>
 			<Item Name="Delete Alarm archive and Create Header for new one Alarm archive.vi" Type="VI" URL="../Station/Delete Alarm archive and Create Header for new one Alarm archive.vi"/>
 			<Item Name="Get Error Message.vi" Type="VI" URL="../Station/Get Error Message.vi"/>
 			<Item Name="Get Failure set to write.vi" Type="VI" URL="../Station/Get Failure set to write.vi"/>
@@ -40,8 +55,16 @@
 			<Item Name="Update Operating Mode.vi" Type="VI" URL="../Station/Update Operating Mode.vi"/>
 		</Item>
 		<Item Name="Aim TTi 1908P DMM.lvlib" Type="Library" URL="../AimTTi/Aim TTi 1908P DMM.lvlib"/>
+		<Item Name="Handle MES commands.vi" Type="VI" URL="../MES/Handle MES commands.vi"/>
 		<Item Name="RequestData.ctl" Type="VI" URL="../MES/RequestData.ctl"/>
+		<Item Name="Update Packaging Instructions.vi" Type="VI" URL="../MES/Update Packaging Instructions.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
+			<Item Name="user.lib" Type="Folder">
+				<Item Name="CheckPqmNtrsAndProductSerialDateService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_CheckPqmNtrsAndProductSerialDateService/CheckPqmNtrsAndProductSerialDateService.dll"/>
+				<Item Name="CheckUserAndEquipmentStatusService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_CheckUserAndEquipmentStatusService/CheckUserAndEquipmentStatusService.dll"/>
+				<Item Name="CheckUserAndEquipmentStatusService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_CheckUserAndEquipmentStatusService/CheckUserAndEquipmentStatusService.lvlib"/>
+				<Item Name="ContactAndRegisterWithNmaSapService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_ContactAndRegisterWithNmaSapService/ContactAndRegisterWithNmaSapService.dll"/>
+			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
 				<Item Name="Acquire Semaphore.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Acquire Semaphore.vi"/>
@@ -212,6 +235,7 @@
 				<Item Name="DAQmx Read (Raw 1D U32).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Raw 1D U32).vi"/>
 				<Item Name="DAQmx Read.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read.vi"/>
 				<Item Name="DAQmx Start Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/task.llb/DAQmx Start Task.vi"/>
+				<Item Name="DAQmx Stop Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/task.llb/DAQmx Stop Task.vi"/>
 				<Item Name="DAQmx Timing (Burst Export Clock).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/timing.llb/DAQmx Timing (Burst Export Clock).vi"/>
 				<Item Name="DAQmx Timing (Burst Import Clock).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/timing.llb/DAQmx Timing (Burst Import Clock).vi"/>
 				<Item Name="DAQmx Timing (Change Detection).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/timing.llb/DAQmx Timing (Change Detection).vi"/>
@@ -310,7 +334,6 @@
 				<Item Name="GetRTHostConnectedProp.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetRTHostConnectedProp.vi"/>
 				<Item Name="hasp_net_windows.dll" Type="Document" URL="/&lt;vilib&gt;/Noffz/UTP IO/UTP IO Shared/bin/hasp_net_windows.dll"/>
 				<Item Name="High Resolution Relative Seconds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Relative Seconds.vi"/>
-				<Item Name="LabVIEWHTTPClient.lvlib" Type="Library" URL="/&lt;vilib&gt;/httpClient/LabVIEWHTTPClient.lvlib"/>
 				<Item Name="List Directory and LLBs.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/List Directory and LLBs.vi"/>
 				<Item Name="load all classes.vi" Type="VI" URL="/&lt;vilib&gt;/Noffz/UTP IO/UTP IO Library/_sub/load all classes.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
@@ -322,7 +345,6 @@
 				<Item Name="NI_MABase.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MABase.lvlib"/>
 				<Item Name="NI_MAPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MAPro.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
-				<Item Name="NI_XML.lvlib" Type="Library" URL="/&lt;vilib&gt;/xml/NI_XML.lvlib"/>
 				<Item Name="Not A Semaphore.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Not A Semaphore.vi"/>
 				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi"/>
 				<Item Name="Obtain Semaphore Reference.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Obtain Semaphore Reference.vi"/>
@@ -330,8 +352,6 @@
 				<Item Name="Open Registry Key.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Open Registry Key.vi"/>
 				<Item Name="Open_Create_Replace File.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/Open_Create_Replace File.vi"/>
 				<Item Name="ParseXMLFragments.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/ParseXMLFragments.vi"/>
-				<Item Name="Path To Command Line String.vi" Type="VI" URL="/&lt;vilib&gt;/AdvancedString/Path To Command Line String.vi"/>
-				<Item Name="PathToUNIXPathString.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/CFURL.llb/PathToUNIXPathString.vi"/>
 				<Item Name="Query Registry Key Info.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Query Registry Key Info.vi"/>
 				<Item Name="Read Delimited Spreadsheet (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (DBL).vi"/>
 				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
@@ -718,17 +738,21 @@
 				<Item Name="UTP IO Library.lvlib" Type="Library" URL="/&lt;vilib&gt;/Noffz/UTP IO/UTP IO Library/UTP IO Library.lvlib"/>
 				<Item Name="Validate Semaphore Size.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Validate Semaphore Size.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
+				<Item Name="Write Delimited Spreadsheet (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (DBL).vi"/>
+				<Item Name="Write Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (I64).vi"/>
+				<Item Name="Write Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (string).vi"/>
+				<Item Name="Write Delimited Spreadsheet.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet.vi"/>
+				<Item Name="Write Spreadsheet String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Spreadsheet String.vi"/>
 			</Item>
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
-			<Item Name="DOMUserDefRef.dll" Type="Document" URL="DOMUserDefRef.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="Login.vi" Type="VI" URL="../MES/Communication/Login.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
+			<Item Name="MessageInfo.ctl" Type="VI" URL="../MES/MessageInfo.ctl"/>
 			<Item Name="mscorlib" Type="VI" URL="mscorlib">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -738,6 +762,7 @@
 			<Item Name="System" Type="VI" URL="System">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="Update Messages.vi" Type="VI" URL="../MES/Update Messages.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
