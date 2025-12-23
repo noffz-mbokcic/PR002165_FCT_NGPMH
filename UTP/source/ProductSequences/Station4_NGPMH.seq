@@ -33,6 +33,7 @@ NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = StepType
 PassFailTest = StepType
 NoffzUTP_IOPLCVariableBooleanRead = StepType
 NoffzUTP_TEF_Model_Station_GetOperationMode = StepType
+SequenceCall = StepType
 
 [DEF, SF]
 Seq = Objs
@@ -49,7 +50,7 @@ Requirements = Obj
 %NAME = "Data"
 
 [SF]
-%HI: Seq = [0]
+%HI: Seq = [1]
 %FLG: Seq = 4194304
 %FLG: FileGlobalDefaults = 4194304
 %FLG: ModelFile = 4194312
@@ -69,6 +70,7 @@ BatchSync = 1
 
 [DEF, SF.Seq]
 %[0] = Sequence
+%[1] = Sequence
 
 [DEF, SF.Seq[0]]
 Parameters = Obj
@@ -87,7 +89,6 @@ FailureAction = Num
 %FLG: Locals = 4194304
 %HI: Main = [0]
 %FLG: Main = 4194304
-%HI: Setup = [2]
 %FLG: Setup = 4194304
 %FLG: Cleanup = 4194304
 RecordResults = True
@@ -108,150 +109,20 @@ OperationMode = Str
 
 [DEF, SF.Seq[0].Main]
 %[0] = Step
-%TYPE: %[0] = "PassFailTest"
+%TYPE: %[0] = "SequenceCall"
 
 [SF.Seq[0].Main[0].TS]
-Id = "ID#:hCrvw7fphkC0XZILHKFRBB"
+Id = "ID#:tvsNrgrg8BGJ2cyCf5xeVC"
 
 [DEF, SF.Seq[0].Main[0].TS]
-SData = "TYPE, NoneStepAdditions"
+SData = "TYPE, SeqCallStepAdditions"
 
-[SF.Seq[0].Main[0]]
-DataSource = "Locals.PackagingStatus"
+[SF.Seq[0].Main[0].TS.SData]
+SeqName = "Device packing"
+UseCurFile = True
 
 [DEF, SF.Seq[0].Main[0]]
-%NAME = "4.00. Device packed "
-
-[DEF, SF.Seq[0].Setup]
-%[0] = Step
-%TYPE: %[0] = "NoffzUTP_TEF_Model_TestSocket_GetTestSocketName"
-%[1] = Step
-%TYPE: %[1] = "NoffzUTP_TEF_Model_Station_GetOperationMode"
-%[2] = Step
-%TYPE: %[2] = "NoffzUTP_IOPLCVariableBooleanRead"
-
-[SF.Seq[0].Setup[0].TS]
-Id = "ID#:Y52FSNnc8BGJ1syCf5xeVC"
-ResultOption = 0
-
-[DEF, SF.Seq[0].Setup[0].TS]
-SData = "TYPE, SeqCallStepAdditions"
-
-[SF.Seq[0].Setup[0].TS.SData]
-SFPath = "Noffz.UTP.TEF.API.seq"
-SeqName = "Model.TestSocket.GetTestSocketName"
-CustomThreadAffinity = "-1"
-Trace = "Off"
-
-[DEF, SF.Seq[0].Setup[0].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
-
-[DEF, SF.Seq[0].Setup[0].TS.SData.ActualArgs]
-TestSocket = "TYPE, SequenceArgument"
-TestSocketName = "TYPE, SequenceArgument"
-
-[SF.Seq[0].Setup[0].TS.SData.ActualArgs.TestSocket]
-ParamType = 4
-ParamRepresentation = 1
-Flags = 0
-
-[SF.Seq[0].Setup[0].TS.SData.ActualArgs.TestSocketName]
-UseDef = False
-Expr = "Locals.TestSocketName"
-ParamType = 2
-
-[DEF, SF.Seq[0].Setup[0].TS.SData.Prototype]
-TestSocket = Num
-TestSocketName = Str
-
-[SF.Seq[0].Setup[0].TS.SData.Prototype]
-TestSocket = Nan
-%FLG: TestSocketName = 4
-
-[SF.Seq[0].Setup[0].TS.SData.Prototype.TestSocket]
-%COMMENT = "Test Socket number."
-
-[SF.Seq[0].Setup[0].TS.SData.Prototype.TestSocketName]
-%COMMENT = "Test Socket name."
-
-[DEF, SF.Seq[0].Setup[0]]
-%NAME = "Model.TestSocket.GetTestSocketName"
-
-[SF.Seq[0].Setup[1].TS]
-Id = "ID#:EQZIgy3f8BGJ2MyCf5xeVC"
-ResultOption = 0
-
-[DEF, SF.Seq[0].Setup[1].TS]
-SData = "TYPE, SeqCallStepAdditions"
-
-[SF.Seq[0].Setup[1].TS.SData]
-SFPath = "Noffz.UTP.TEF.API.seq"
-SeqName = "Model.Station.GetOperationMode"
-CustomThreadAffinity = "-1"
-Trace = "Off"
-
-[DEF, SF.Seq[0].Setup[1].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
-
-[DEF, SF.Seq[0].Setup[1].TS.SData.ActualArgs]
-OperationMode = "TYPE, SequenceArgument"
-
-[SF.Seq[0].Setup[1].TS.SData.ActualArgs.OperationMode]
-UseDef = False
-Expr = "Locals.OperationMode"
-ParamType = 2
-
-[DEF, SF.Seq[0].Setup[1].TS.SData.Prototype]
-OperationMode = Str
-
-[SF.Seq[0].Setup[1].TS.SData.Prototype]
-%FLG: OperationMode = 4
-
-[DEF, SF.Seq[0].Setup[1]]
-%NAME = "Model.Station.GetOperationMode"
-
-[SF.Seq[0].Setup[2].TS]
-Id = "ID#:IeaXttjc8BGJ1syCf5xeVC"
-ResultOption = 0
-
-[DEF, SF.Seq[0].Setup[2].TS]
-SData = "TYPE, SeqCallStepAdditions"
-
-[SF.Seq[0].Setup[2].TS.SData]
-SFPath = "Noffz.UTP.IO.seq"
-SeqName = "UTP.IO.PLC.Variable.Boolean.Read"
-Trace = "Off"
-
-[DEF, SF.Seq[0].Setup[2].TS.SData]
-ActualArgs = Arguments
-Prototype = Obj
-
-[DEF, SF.Seq[0].Setup[2].TS.SData.ActualArgs]
-VariableValue = "TYPE, SequenceArgument"
-VariableName = "TYPE, SequenceArgument"
-
-[SF.Seq[0].Setup[2].TS.SData.ActualArgs.VariableValue]
-UseDef = False
-Expr = "Locals.PackagingStatus"
-ParamType = 16
-
-[SF.Seq[0].Setup[2].TS.SData.ActualArgs.VariableName]
-UseDef = False
-Expr = "\"PLC_Packaging_Status_\"+ Locals.TestSocketName"
-ParamType = 2
-Flags = 0
-
-[DEF, SF.Seq[0].Setup[2].TS.SData.Prototype]
-VariableValue = Bool
-VariableName = Str
-
-[SF.Seq[0].Setup[2].TS.SData.Prototype]
-%FLG: VariableValue = 4
-
-[DEF, SF.Seq[0].Setup[2]]
-%NAME = "Read Packaging Status"
+%NAME = "4.00.00 Device packed "
 
 [DEF, SF.Seq[0].RTS]
 Type = Num
@@ -300,6 +171,239 @@ Links = Strs
 [SF.Seq[0].Requirements]
 %FLG: Links = 71303168
 
+[DEF, SF.Seq[1]]
+Parameters = Obj
+Locals = Obj
+Main = Objs
+Setup = Objs
+Cleanup = Objs
+RecordResults = Bool
+RTS = Obj
+Requirements = Obj
+FailureAction = Num
+%NAME = "Device packing"
+
+[SF.Seq[1]]
+%FLG: Parameters = 4456448
+%FLG: Locals = 4194304
+%HI: Main = [0]
+%FLG: Main = 4194304
+%HI: Setup = [2]
+%FLG: Setup = 4194304
+%FLG: Cleanup = 4194304
+RecordResults = True
+%FLG: RecordResults = 4194312
+%FLG: RTS = 4456456
+%FLG: Requirements = 4456456
+FailureAction = 2
+%FLG: FailureAction = 4194312
+
+[DEF, SF.Seq[1].Locals]
+ResultList = Objs
+TestSocketName = Str
+OperationMode = Str
+PackagingStatus = Bool
+
+[DEF, SF.Seq[1].Locals.ResultList]
+%EPTYPE = TEResult
+
+[SF.Seq[1].Locals]
+%FLG: ResultList = 4194304
+
+[DEF, SF.Seq[1].Main]
+%[0] = Step
+%TYPE: %[0] = "PassFailTest"
+
+[SF.Seq[1].Main[0].TS]
+Id = "ID#:hCrvw7fphkC0XZILHKFRBB"
+
+[DEF, SF.Seq[1].Main[0].TS]
+SData = "TYPE, NoneStepAdditions"
+
+[SF.Seq[1].Main[0]]
+DataSource = "Locals.PackagingStatus"
+
+[DEF, SF.Seq[1].Main[0]]
+%NAME = "4.00. Device packed "
+
+[DEF, SF.Seq[1].Setup]
+%[0] = Step
+%TYPE: %[0] = "NoffzUTP_TEF_Model_TestSocket_GetTestSocketName"
+%[1] = Step
+%TYPE: %[1] = "NoffzUTP_TEF_Model_Station_GetOperationMode"
+%[2] = Step
+%TYPE: %[2] = "NoffzUTP_IOPLCVariableBooleanRead"
+
+[SF.Seq[1].Setup[0].TS]
+Id = "ID#:Y52FSNnc8BGJ1syCf5xeVC"
+ResultOption = 0
+
+[DEF, SF.Seq[1].Setup[0].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[1].Setup[0].TS.SData]
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.TestSocket.GetTestSocketName"
+CustomThreadAffinity = "-1"
+Trace = "Off"
+
+[DEF, SF.Seq[1].Setup[0].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[1].Setup[0].TS.SData.ActualArgs]
+TestSocket = "TYPE, SequenceArgument"
+TestSocketName = "TYPE, SequenceArgument"
+
+[SF.Seq[1].Setup[0].TS.SData.ActualArgs.TestSocket]
+ParamType = 4
+ParamRepresentation = 1
+Flags = 0
+
+[SF.Seq[1].Setup[0].TS.SData.ActualArgs.TestSocketName]
+UseDef = False
+Expr = "Locals.TestSocketName"
+ParamType = 2
+
+[DEF, SF.Seq[1].Setup[0].TS.SData.Prototype]
+TestSocket = Num
+TestSocketName = Str
+
+[SF.Seq[1].Setup[0].TS.SData.Prototype]
+TestSocket = Nan
+%FLG: TestSocketName = 4
+
+[SF.Seq[1].Setup[0].TS.SData.Prototype.TestSocket]
+%COMMENT = "Test Socket number."
+
+[SF.Seq[1].Setup[0].TS.SData.Prototype.TestSocketName]
+%COMMENT = "Test Socket name."
+
+[DEF, SF.Seq[1].Setup[0]]
+%NAME = "Model.TestSocket.GetTestSocketName"
+
+[SF.Seq[1].Setup[1].TS]
+Id = "ID#:EQZIgy3f8BGJ2MyCf5xeVC"
+ResultOption = 0
+
+[DEF, SF.Seq[1].Setup[1].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[1].Setup[1].TS.SData]
+SFPath = "Noffz.UTP.TEF.API.seq"
+SeqName = "Model.Station.GetOperationMode"
+CustomThreadAffinity = "-1"
+Trace = "Off"
+
+[DEF, SF.Seq[1].Setup[1].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[1].Setup[1].TS.SData.ActualArgs]
+OperationMode = "TYPE, SequenceArgument"
+
+[SF.Seq[1].Setup[1].TS.SData.ActualArgs.OperationMode]
+UseDef = False
+Expr = "Locals.OperationMode"
+ParamType = 2
+
+[DEF, SF.Seq[1].Setup[1].TS.SData.Prototype]
+OperationMode = Str
+
+[SF.Seq[1].Setup[1].TS.SData.Prototype]
+%FLG: OperationMode = 4
+
+[DEF, SF.Seq[1].Setup[1]]
+%NAME = "Model.Station.GetOperationMode"
+
+[SF.Seq[1].Setup[2].TS]
+Id = "ID#:IeaXttjc8BGJ1syCf5xeVC"
+ResultOption = 0
+
+[DEF, SF.Seq[1].Setup[2].TS]
+SData = "TYPE, SeqCallStepAdditions"
+
+[SF.Seq[1].Setup[2].TS.SData]
+SFPath = "Noffz.UTP.IO.seq"
+SeqName = "UTP.IO.PLC.Variable.Boolean.Read"
+Trace = "Off"
+
+[DEF, SF.Seq[1].Setup[2].TS.SData]
+ActualArgs = Arguments
+Prototype = Obj
+
+[DEF, SF.Seq[1].Setup[2].TS.SData.ActualArgs]
+VariableValue = "TYPE, SequenceArgument"
+VariableName = "TYPE, SequenceArgument"
+
+[SF.Seq[1].Setup[2].TS.SData.ActualArgs.VariableValue]
+UseDef = False
+Expr = "Locals.PackagingStatus"
+ParamType = 16
+
+[SF.Seq[1].Setup[2].TS.SData.ActualArgs.VariableName]
+UseDef = False
+Expr = "\"PLC_Packaging_Status_\"+ Locals.TestSocketName"
+ParamType = 2
+Flags = 0
+
+[DEF, SF.Seq[1].Setup[2].TS.SData.Prototype]
+VariableValue = Bool
+VariableName = Str
+
+[SF.Seq[1].Setup[2].TS.SData.Prototype]
+%FLG: VariableValue = 4
+
+[DEF, SF.Seq[1].Setup[2]]
+%NAME = "Read Packaging Status"
+
+[DEF, SF.Seq[1].RTS]
+Type = Num
+OptimizeNonReentrantCalls = Bool
+EPNameExpr = Str
+EPEnabledExpr = Str
+EPMenuHint = Str
+EPIgnoreClient = Bool
+EPInitiallyHidden = Bool
+EPCheckToSaveTitledFile = Bool
+ShowEPAlways = Bool
+ShowEPForFileWin = Bool
+ShowEPForExeWin = Bool
+ShowEPForEditorOnly = Bool
+AllowIntExeOfEP = Bool
+CopyStepsOnOverriding = Bool
+Priority = Num
+
+[SF.Seq[1].RTS]
+%FLG: Type = 4194304
+OptimizeNonReentrantCalls = True
+%FLG: OptimizeNonReentrantCalls = 4194304
+EPNameExpr = "\"Unnamed Entry Point\""
+%FLG: EPNameExpr = 4194304
+EPEnabledExpr = "True"
+%FLG: EPEnabledExpr = 4194304
+%FLG: EPMenuHint = 4194304
+%FLG: EPIgnoreClient = 4194304
+%FLG: EPInitiallyHidden = 4194304
+EPCheckToSaveTitledFile = True
+%FLG: EPCheckToSaveTitledFile = 4194304
+%FLG: ShowEPAlways = 4194304
+ShowEPForFileWin = True
+%FLG: ShowEPForFileWin = 4194304
+%FLG: ShowEPForExeWin = 4194304
+%FLG: ShowEPForEditorOnly = 4194304
+%FLG: AllowIntExeOfEP = 4194304
+CopyStepsOnOverriding = True
+%FLG: CopyStepsOnOverriding = 4194304
+Priority = 2953567917
+%FLG: Priority = 4194304
+
+[DEF, SF.Seq[1].Requirements]
+Links = Strs
+
+[SF.Seq[1].Requirements]
+%FLG: Links = 71303168
+
 [DEF, SF.FileGlobalDefaults]
 VariantEditor = Obj
 
@@ -333,6 +437,7 @@ NoffzUTP_TEF_Model_TestSocket_GetTestSocketName = "NoffzUTP_TEF_Model_TestSocket
 PassFailTest = "PassFailTest"
 NoffzUTP_IOPLCVariableBooleanRead = "NoffzUTP_IOPLCVariableBooleanRead"
 NoffzUTP_TEF_Model_Station_GetOperationMode = "NoffzUTP_TEF_Model_Station_GetOperationMode"
+SequenceCall = "SequenceCall"
 
 [DEF, Path]
 %LOCATION = "StdTypes"
@@ -1633,6 +1738,109 @@ ReportText = Str
 Common = "TYPE, CommonResults"
 
 [NoffzUTP_TEF_Model_Station_GetOperationMode.Result]
+%FLG: Error = 4194304
+%INSTFLG: Error = 4194304
+%INSTOVRD: Error = 4194304
+%FLG: Status = 4194304
+%INSTFLG: Status = 4194304
+%FLG: ReportText = 4194304
+%INSTFLG: ReportText = 4194304
+%INSTOVRD: Common = 4194304
+
+[DEF, SequenceCall]
+%LOCATION = "StepTypes"
+Substeps = "TYPE, StepTypeSubstepsArray"
+DescriptionFormat = "TYPE, Expression"
+%FLG: DescriptionFormat = 524288
+DefaultNameFormat = "TYPE, Expression"
+%FLG: DefaultNameFormat = 524288
+Menu = "TYPE, StepTypeMenu"
+AdditionalResultsHints = Objs
+%FLG: AdditionalResultsHints = 524288
+TS = "TYPE, TEInf"
+NI_Data = "TYPE, StepTypeNIData"
+Result = Obj
+CodeTemplates = Str
+%FLG: CodeTemplates = 524288
+BlockStartTypes = Str
+%FLG: BlockStartTypes = 524288
+BlockEndTypes = Str
+%FLG: BlockEndTypes = 524288
+AppliesToBlockStructure = Bool
+%FLG: AppliesToBlockStructure = 524288
+CanEncapsulate = Bool
+%FLG: CanEncapsulate = 524288
+%ROOT_TYPE = True
+
+[SequenceCall]
+%INSTFLG: Substeps = 524312
+%INSTOVRD: Substeps = 655384
+DescriptionFormat = "\"%ModuleDescription\""
+%FLG: DescriptionFormat = 4194328
+%INSTFLG: DescriptionFormat = 4718616
+%INSTOVRD: DescriptionFormat = 4718616
+DefaultNameFormat = "ResStr(\"NI_STEPTYPES\", \"SC_DEF_STEP_NAME\")"
+%FLG: DefaultNameFormat = 4194328
+%INSTFLG: DefaultNameFormat = 4718616
+%INSTOVRD: DefaultNameFormat = 4718616
+%INSTFLG: Menu = 524312
+%INSTOVRD: Menu = 524312
+%FLG: AdditionalResultsHints = 4194328
+%INSTFLG: TS = 262168
+%INSTOVRD: TS = 4456472
+%FLG: Result = 4194304
+%INSTFLG: Result = 4194304
+%FLG: CodeTemplates = 4194328
+%FLG: BlockStartTypes = 4194328
+%FLG: BlockEndTypes = 4194328
+%FLG: AppliesToBlockStructure = 4194328
+%FLG: CanEncapsulate = 4194328
+%TIMESTAMP = 1666107259
+%VERSION = "23.0.0.1"
+%TYPELASTMOD = "23.0.0.0"
+%MINPRODVER = "23.0.0.0"
+%TYPE_FLG = 33554438
+
+[SequenceCall.Menu]
+ItemName = "ResStr(\"NI_STEPTYPES\", \"SC_MENU_ITEM_NAME\")"
+Group = "NI_Miscellaneous"
+
+[DEF, SequenceCall.AdditionalResultsHints]
+%EPTYPE = "TYPE, NI_CustomResult"
+
+[SequenceCall.TS]
+Icon = "SeqAdp.ico"
+%INSTFLG: SData = 2097152
+%INSTOVRD: SData = 7143448
+ConnectionLifetime = 0
+StatusExpr Line0001 = "(Step.Result.Status == \"Done\" && (Step.TS.SData.ThreadOpt == 0 || Step.TS.SData.ThreadOpt == 3)) ? \"Passed\" : Step.R"
+StatusExpr Line0002 = "esult.Status"
+%INSTFLG: StatusExpr = 1
+%INSTOVRD: StatusExpr = 5046297
+%FLG: Requirements = 1
+%INSTFLG: Requirements = 1
+
+[DEF, SequenceCall.TS]
+SData = "TYPE, SeqCallStepAdditions"
+%FLG: SData = 2097152
+Requirements = Obj
+%FLG: Requirements = 2097152
+
+[DEF, SequenceCall.TS.Requirements]
+Links = Strs
+
+[SequenceCall.TS.Requirements]
+%FLG: Links = 71303168
+%INSTFLG: Links = 71303168
+%INSTOVRD: Links = 72286233
+
+[DEF, SequenceCall.Result]
+Error = "TYPE, Error"
+Status = Str
+ReportText = Str
+Common = "TYPE, CommonResults"
+
+[SequenceCall.Result]
 %FLG: Error = 4194304
 %INSTFLG: Error = 4194304
 %INSTOVRD: Error = 4194304
