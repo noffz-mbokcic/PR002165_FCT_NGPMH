@@ -976,7 +976,7 @@ PWM = "TYPE, Test_Values"
 %FLG: Locals = 4194304
 %HI: Main = [11]
 %FLG: Main = 4194304
-%HI: Setup = [0]
+%HI: Setup = [1]
 %FLG: Setup = 4194304
 %FLG: Cleanup = 4194304
 RecordResults = True
@@ -987,6 +987,12 @@ FailureAction = 2
 %FLG: FailureAction = 4194312
 
 [DEF, SF.Seq[1].Locals]
+INCArisetimeOffset = Num
+INCAfalltimeOffset = Num
+INCBrisetimeOffset = Num
+INCBfalltimeOffset = Num
+PWMrisetimeOffset = Num
+PWMfalltimeOffset = Num
 ResultList = Objs
 
 [DEF, SF.Seq[1].Locals.ResultList]
@@ -1032,10 +1038,10 @@ Units = "uS"
 
 [SF.Seq[1].Main[0].Limits]
 Low = 0
-High = 5.7999999999999998
+High = 5.2000000000000002
 
 [SF.Seq[1].Main[0]]
-DataSource = "Parameters.A.Rise_Time * 1000000 // uS"
+DataSource = "((Parameters.A.Rise_Time * 1000000) - Locals.INCArisetimeOffset)  // uS"
 
 [DEF, SF.Seq[1].Main[0]]
 %NAME = "3.02 INC A Rise Time"
@@ -1051,10 +1057,10 @@ Units = "uS"
 
 [SF.Seq[1].Main[1].Limits]
 Low = 0
-High = 3.7999999999999998
+High = 2.2999999999999998
 
 [SF.Seq[1].Main[1]]
-DataSource = "Parameters.A.Fall_Time * 1000000 //uS"
+DataSource = "((Parameters.A.Fall_Time * 1000000) - Locals.INCAfalltimeOffset) //uS"
 
 [DEF, SF.Seq[1].Main[1]]
 %NAME = "3.03 INC A Fall Time"
@@ -1069,7 +1075,7 @@ SData = "TYPE, NoneStepAdditions"
 Units = "V"
 
 [SF.Seq[1].Main[2].Limits]
-Low = 4
+Low = 0
 High = 6
 
 [SF.Seq[1].Main[2]]
@@ -1108,10 +1114,10 @@ Units = "uS"
 
 [SF.Seq[1].Main[4].Limits]
 Low = 0
-High = 5.7999999999999998
+High = 5.2000000000000002
 
 [SF.Seq[1].Main[4]]
-DataSource = "Parameters.B.Rise_Time * 1000000 // uS"
+DataSource = "((Parameters.B.Rise_Time * 1000000) - Locals.INCBrisetimeOffset) // uS"
 
 [DEF, SF.Seq[1].Main[4]]
 %NAME = "3.06 INC B Rise Time"
@@ -1127,10 +1133,10 @@ Units = "uS"
 
 [SF.Seq[1].Main[5].Limits]
 Low = 0
-High = 3.7999999999999998
+High = 2.2999999999999998
 
 [SF.Seq[1].Main[5]]
-DataSource = "Parameters.B.Fall_Time * 1000000 //uS"
+DataSource = "((Parameters.B.Fall_Time * 1000000) - Locals.INCBfalltimeOffset) //uS"
 
 [DEF, SF.Seq[1].Main[5]]
 %NAME = "3.07 INC B Fall Time"
@@ -1184,10 +1190,10 @@ Units = "nS"
 
 [SF.Seq[1].Main[8].Limits]
 Low = 0
-High = 950
+High = 850
 
 [SF.Seq[1].Main[8]]
-DataSource = "Parameters.PWM.Rise_Time * 1000000000 // nS"
+DataSource = "((Parameters.PWM.Rise_Time * 1000000000) - Locals.PWMrisetimeOffset) // nS"
 
 [DEF, SF.Seq[1].Main[8]]
 %NAME = "3.10 PWM Rise Time"
@@ -1203,10 +1209,10 @@ Units = "nS"
 
 [SF.Seq[1].Main[9].Limits]
 Low = 0
-High = 650
+High = 350
 
 [SF.Seq[1].Main[9]]
-DataSource = "Parameters.PWM.Fall_Time * 1000000000 //nS"
+DataSource = "((Parameters.PWM.Fall_Time * 1000000000) - Locals.PWMfalltimeOffset) //nS"
 
 [DEF, SF.Seq[1].Main[9]]
 %NAME = "3.11 PWM Fall Time"
@@ -1252,6 +1258,8 @@ DataSource = "Parameters.PWM.Low_Value"
 [DEF, SF.Seq[1].Setup]
 %[0] = Step
 %TYPE: %[0] = "Statement"
+%[1] = Step
+%TYPE: %[1] = "Statement"
 
 [SF.Seq[1].Setup[0].TS]
 Id = "ID#:pyt6BB/g8BGJ2cyCf5xeVC"
@@ -1261,6 +1269,16 @@ PostExpr = "RunState."
 
 [DEF, SF.Seq[1].Setup[0]]
 %NAME = "SAMO OVI KORACI NE TREBA DA IDU U CLEANUP AKO SU PALI"
+
+[SF.Seq[1].Setup[1].TS]
+Id = "ID#:I6+iPE3i8BGJ3MyCf5xeVC"
+PostExpr Line0001 = "Locals.INCArisetimeOffset = RunState.TestSockets.MyIndex == 2 ? 2.01:2.061,\nLocals.INCAfalltimeOffset = RunState.TestSo"
+PostExpr Line0002 = "ckets.MyIndex == 2 ? 0.78:0.804,\nLocals.INCBrisetimeOffset = RunState.TestSockets.MyIndex == 2 ? 1.833:1.912,\nLocals.I"
+PostExpr Line0003 = "NCBfalltimeOffset =  RunState.TestSockets.MyIndex == 2 ? 0.724:0.748,\nLocals.PWMrisetimeOffset = RunState.TestSockets.M"
+PostExpr Line0004 = "yIndex == 2 ? 1219:1140,\nLocals.PWMfalltimeOffset = RunState.TestSockets.MyIndex == 2 ? 518:492.18\n"
+
+[DEF, SF.Seq[1].Setup[1]]
+%NAME = "Ofsets"
 
 [DEF, SF.Seq[1].RTS]
 Type = Num
@@ -11678,7 +11696,7 @@ DisplayType = "1D Array (Container)"
 
 [SF.Seq[5].Main[4].TS.SData.ViCall.Parms[1]]
 Label = "NoEdges"
-ArgVal = "2"
+ArgVal = "1"
 Type = 0
 WireRequirement = 1
 NumType = 4

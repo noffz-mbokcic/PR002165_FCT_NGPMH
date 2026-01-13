@@ -697,8 +697,7 @@ PreExpr Line0002 = ".MES.Operator,\nLocals.ValidationInput.SerialNo = Parameters
 SData = "TYPE, FlexGStepAdditions"
 
 [SF.Seq[2].Main[0].TS.SData.ViCall]
-ProjectPath = "..\\LabView\\NGPMH.lvproj"
-VIPath = "My Computer\\MES\\WebService\\Pre-Process and HU Validation.vi"
+VIPath = "MES\\Communication\\Pre-Process and HU Validation.vi"
 VIDescription Line0001 = "With this VI it is check if device can be tested on station. All fields are required. Example :\nOperator = 0043, Serial"
 VIDescription Line0002 = "No =  3144369-AA01S251219OK02, MaterialCode = 604-003-00-00.\nPossible Errors : Serial Number and material code missmatc"
 VIDescription Line0003 = "h, Previous process failure, Previous process skipped and Already packed in HU [400000355]"
@@ -1002,11 +1001,11 @@ VariableName = Str
 [SF.Seq[2].Setup[2].TS]
 Id = "ID#:QKjVbiXf8BGJ2MyCf5xeVC"
 ResultOption = 0
-PostExpr Line0001 = "StationGlobals.MES.MaterialCode = StationGlobals.MES.Data[1],\nStationGlobals.MES.Operator = StationGlobals.MES.Data[2]\"
-PostExpr Line0002 = "n"
+PostExpr Line0001 = "StationGlobals.MES.HU_Number = StationGlobals.Data[0],\nStationGlobals.MES.MaterialCode = StationGlobals.MES.Data[1],\nS"
+PostExpr Line0002 = "tationGlobals.MES.Operator = StationGlobals.MES.Data[2]\n"
 
 [DEF, SF.Seq[2].Setup[2]]
-%NAME = "Set Material code and operator"
+%NAME = "Set Material code, Operator and HU number"
 
 [DEF, SF.Seq[2].Cleanup]
 %[0] = Step
