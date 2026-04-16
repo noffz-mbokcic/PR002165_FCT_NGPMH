@@ -1,0 +1,15 @@
+[__Header__]
+ProductName = "TestStand"
+ProductVersion = 23.0.0.49152
+CompatibleProdVersion = 23.0.0.0
+Version = 1022
+Type = ""
+Path = ""
+ProductVersionString = "2023 Q4 (23.0.0.49152)"
+Description = ""
+CharEncoding = "SBCS"
+
+[StatisticData]
+PassedCount = 0
+FailedCount = 0
+

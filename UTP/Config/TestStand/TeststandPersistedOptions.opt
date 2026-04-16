@@ -1,0 +1,313 @@
+[DEF, %OBJROOT]
+PersistedBreakpointArray = Objs
+PersistedBreakpoint = Obj
+PersistedWatchpointArray = Objs
+
+[PersistedBreakpointArray]
+%HI = [34]
+
+[DEF, PersistedBreakpointArray]
+%[0] = "TYPE, PersistedBreakpoint"
+%[1] = "TYPE, PersistedBreakpoint"
+%[2] = "TYPE, PersistedBreakpoint"
+%[3] = "TYPE, PersistedBreakpoint"
+%[4] = "TYPE, PersistedBreakpoint"
+%[5] = "TYPE, PersistedBreakpoint"
+%[6] = "TYPE, PersistedBreakpoint"
+%[7] = "TYPE, PersistedBreakpoint"
+%[8] = "TYPE, PersistedBreakpoint"
+%[9] = "TYPE, PersistedBreakpoint"
+%[10] = "TYPE, PersistedBreakpoint"
+%[11] = "TYPE, PersistedBreakpoint"
+%[12] = "TYPE, PersistedBreakpoint"
+%[13] = "TYPE, PersistedBreakpoint"
+%[14] = "TYPE, PersistedBreakpoint"
+%[15] = "TYPE, PersistedBreakpoint"
+%[16] = "TYPE, PersistedBreakpoint"
+%[17] = "TYPE, PersistedBreakpoint"
+%[18] = "TYPE, PersistedBreakpoint"
+%[19] = "TYPE, PersistedBreakpoint"
+%[20] = "TYPE, PersistedBreakpoint"
+%[21] = "TYPE, PersistedBreakpoint"
+%[22] = "TYPE, PersistedBreakpoint"
+%[23] = "TYPE, PersistedBreakpoint"
+%[24] = "TYPE, PersistedBreakpoint"
+%[25] = "TYPE, PersistedBreakpoint"
+%[26] = "TYPE, PersistedBreakpoint"
+%[27] = "TYPE, PersistedBreakpoint"
+%[28] = "TYPE, PersistedBreakpoint"
+%[29] = "TYPE, PersistedBreakpoint"
+%[30] = "TYPE, PersistedBreakpoint"
+%[31] = "TYPE, PersistedBreakpoint"
+%[32] = "TYPE, PersistedBreakpoint"
+%[33] = "TYPE, PersistedBreakpoint"
+%[34] = "TYPE, PersistedBreakpoint"
+%NAME = ""
+
+[PersistedBreakpointArray[0]]
+Path = "C:\\Users\\Nidec\\Desktop\\test.seq"
+Group = 0
+StepName = "Pool.GetSessionHandle"
+StepIndex = 1
+StepId = "ID#:IGHiPyzx8BGJ7cyCf5xeVC"
+
+[PersistedBreakpointArray[1]]
+Path = "C:\\Users\\Nidec\\Desktop\\test.seq"
+StepName = "Action"
+StepIndex = 1
+StepId = "ID#:R7gfKSzx8BGJ7cyCf5xeVC"
+
+[PersistedBreakpointArray[2]]
+Path = "C:\\Users\\Nidec\\Desktop\\test.seq"
+StepName = "Set MES Ready"
+StepId = "ID#:WklBmizx8BGJ7cyCf5xeVC"
+
+[PersistedBreakpointArray[3]]
+Path = "C:\\Users\\Nidec\\Desktop\\test2.seq"
+StepName = "Send Serial number to SAP"
+StepId = "ID#:m2N7UjD18BGJ8cyCf5xeVC"
+
+[PersistedBreakpointArray[4]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "UI.TestSocket.ShowMessageDialog: \"Press Ok button to Start the test on the Test Socket\""
+StepIndex = 1
+StepId = "ID#:/EdyxZrGIUK0sYg03Aq6+B"
+
+[PersistedBreakpointArray[5]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "Get Serial Number"
+StepIndex = 5
+StepId = "ID#:7P6uVUAfKEySZ1RTqlUKMC"
+
+[PersistedBreakpointArray[6]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 2
+StepId = "ID#:LZcj0LSe0Eee5TiIV0vkNB"
+
+[PersistedBreakpointArray[7]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "Get Serial Number"
+StepIndex = 6
+StepId = "ID#:TEEzhMUWSUGgGV50cmhBdB"
+
+[PersistedBreakpointArray[8]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "UI.TestSocket.ShowMessage: \"Getting Serial Number and Product Selection...\""
+StepIndex = 3
+StepId = "ID#:a6wN4MzQNkmvQoUr7WEKgC"
+
+[PersistedBreakpointArray[9]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "Waiting for start"
+StepId = "ID#:iQHll4odd0y5Et61aOm3rD"
+
+[PersistedBreakpointArray[10]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\FCT_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 4
+StepId = "ID#:r95QKyLom0OTMQlizCMveA"
+
+[PersistedBreakpointArray[11]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station1_Interface.seq"
+SequenceName = "Post UUT"
+StepName = "NO ACTION"
+StepIndex = 77
+StepId = "ID#:qNdh147D8BG5WVB7nf4f8B"
+
+[PersistedBreakpointArray[12]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station1_Interface.seq"
+SequenceName = "Post UUT"
+StepName = "Label"
+StepIndex = 5
+StepId = "ID#:s9dh147D8BG5WVB7nf4f8B"
+
+[PersistedBreakpointArray[13]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station1_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 10
+StepId = "ID#:0zVmwnzq8BGJ4cyCf5xeVC"
+
+[PersistedBreakpointArray[14]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station1_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "There is a problem"
+StepIndex = 91
+StepId = "ID#:VVezjDzf8BGJ2MyCf5xeVC"
+
+[PersistedBreakpointArray[15]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station1_Interface.seq"
+SequenceName = "Pre UUT"
+StepName = "Send Serial number to SAP"
+StepIndex = 29
+StepId = "ID#:evYXTETf8BGJ2MyCf5xeVC"
+
+[PersistedBreakpointArray[16]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station2_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 16
+StepId = "ID#:B2+by37q8BGJ4cyCf5xeVC"
+
+[PersistedBreakpointArray[17]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station3_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 16
+StepId = "ID#:hoIGxofs8BGJ48yCf5xeVC"
+
+[PersistedBreakpointArray[18]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station4_Interface.seq"
+SequenceName = "Post UUT"
+StepName = "Send Serial number to SAP"
+StepIndex = 41
+StepId = "ID#:PPpnr+Xh8BGJ28yCf5xeVC"
+
+[PersistedBreakpointArray[19]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station4_Interface.seq"
+SequenceName = "Pre UUT"
+StepIndex = 17
+StepId = "ID#:ChJ2WRPg8BGJ2cyCf5xeVC"
+
+[PersistedBreakpointArray[20]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "Begin"
+Group = 0
+StepName = "Pool.Open"
+StepId = "ID#:zjWSM9Lc8BGJ1syCf5xeVC"
+
+[PersistedBreakpointArray[21]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "Begin"
+StepName = "UI.Station.Station.SetValue"
+StepIndex = 32
+StepId = "ID#:zbnx0RLf8BGJ18yCf5xeVC"
+
+[PersistedBreakpointArray[22]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "Monitor Operation Mode"
+StepName = "Set Limits to production Limits"
+StepIndex = 5
+StepId = "ID#:mWWj0Cjx8BGJ7cyCf5xeVC"
+
+[PersistedBreakpointArray[23]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "Monitor Operation Mode"
+StepName = "Set Limits to Error Proof limits"
+StepIndex = 24
+StepId = "ID#:re6DDCnx8BGJ7cyCf5xeVC"
+
+[PersistedBreakpointArray[24]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "Monitor Operation Mode"
+Group = 2
+StepIndex = -1
+
+[PersistedBreakpointArray[25]]
+Path = "C:\\UTP\\source\\InterfaceSequences\\Station_Interface.seq"
+SequenceName = "MSA"
+StepName = "Set operation mode"
+StepId = "ID#:lQCel9zg8BGJ2syCf5xeVC"
+
+[PersistedBreakpointArray[26]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station1_NGPMH.seq"
+StepName = "0.02 Pre-Process and HU Validation"
+StepIndex = 1
+StepId = "ID#:tdMj/Arg8BGJ2cyCf5xeVC"
+
+[PersistedBreakpointArray[27]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station1_NGPMH.seq"
+SequenceName = "MES test"
+Group = 2
+StepName = "Show Error to operator"
+StepIndex = 4
+StepId = "ID#:p9/krsfc8BGJ1syCf5xeVC"
+
+[PersistedBreakpointArray[28]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station2_NGPMH - Socket test.seq"
+Group = 0
+StepName = "Set TestSocket Name"
+StepIndex = 1
+StepId = "ID#:ZfteEGPX8BG5blB7nf4f8B"
+
+[PersistedBreakpointArray[29]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station2_NGPMH - Socket test.seq"
+Group = 2
+StepIndex = -1
+
+[PersistedBreakpointArray[30]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station2_NGPMH.seq"
+Group = 0
+StepName = "Get Limits"
+StepIndex = 5
+StepId = "ID#:RNGa6FsD8RG5i1B7nf4f8B"
+
+[PersistedBreakpointArray[31]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station3_NGPMH - Socket Test.seq"
+SequenceName = "Collect Measurement"
+StepName = "Get Measurement A and B"
+StepIndex = 3
+StepId = "ID#:nawsk2vX8BG5blB7nf4f8B"
+
+[PersistedBreakpointArray[32]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station3_NGPMH - Socket Test.seq"
+Group = 0
+StepName = "Set TestSocket Name"
+StepIndex = 1
+StepId = "ID#:4y62+GLX8BG5blB7nf4f8B"
+
+[PersistedBreakpointArray[33]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station3_NGPMH - Socket Test.seq"
+Group = 2
+StepIndex = -1
+
+[PersistedBreakpointArray[34]]
+Path = "C:\\UTP\\source\\ProductSequences\\Station3_NGPMH.seq"
+Group = 0
+StepName = "DCPSU.Limits.Set"
+StepIndex = 4
+StepId = "ID#:Imc2nYTA8BG5VlB7nf4f8B"
+
+[%TYPES]
+PersistedBreakpoint = "PersistedBreakpoint"
+
+[DEF, PersistedBreakpoint]
+%LOCATION = "StdTypes"
+Path = Str
+SequenceName = Str
+Group = Num
+StepName = Str
+StepIndex = Num
+StepId = Str
+IsEnabled = Bool
+PassCount = Num
+Condition = Str
+%ROOT_TYPE = True
+
+[PersistedBreakpoint]
+SequenceName = "MainSequence"
+Group = 1
+IsEnabled = True
+%TIMESTAMP = 1695801917
+%VERSION = "23.0.0.49152"
+%TYPELASTMOD = "23.0.0.49152"
+%MINPRODVER = "23.0.0.0"
+%TYPE_FLG = 33554436
+
+[__Header__]
+ProductName = "TestStand"
+ProductVersion = 23.0.0.49152
+CompatibleProdVersion = 23.0.0.0
+Version = 1022
+Type = "TEPersisted"
+Path = ""
+ProductVersionString = "2023 Q4 (23.0.0.49152)"
+Description = ""
+CharEncoding = ""
+
+[DEF, PersistedWatchpointArray]
+%NAME = ""
+

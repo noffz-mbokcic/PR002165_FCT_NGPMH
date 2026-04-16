@@ -113,6 +113,98 @@
                 <GroupItems>
                   <GroupItem>
                     <Name>Setup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Model.TestSocket.GetTestSocketName</Name>
+                        <UniqueId>ID#:JmgbFxTg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_GetTestSocketName</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Statement</Name>
+                        <UniqueId>ID#:ACK+Ihfg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>0.01 Read Serial number</Name>
+                        <UniqueId>ID#:VTjx6Arg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>0.02 Pre-Process and HU Validation</Name>
+                        <UniqueId>ID#:tdMj/Arg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Set Serial Number</Name>
+                        <UniqueId>ID#:zdB6jMbc8BGJ1syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_SetSerialNumber</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Send Serial Number</Name>
+                        <UniqueId>ID#:mJjS6RPg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringWrite</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Read Serial number</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
                     <StepItems />
                   </GroupItem>
                   <GroupItem>
@@ -130,12 +222,91 @@
                           <LimitValueItems />
                         </LimitValueItemContainer>
                       </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>MES test</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Save selected Packaging instruction</Name>
+                        <UniqueId>ID#:HYmq3wvg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringRead</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Save selected Product Version</Name>
+                        <UniqueId>ID#:Homq3wvg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringRead</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Save selected User</Name>
+                        <UniqueId>ID#:kuMl3kT48BGJ9syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringRead</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Save selected Material code</Name>
+                        <UniqueId>ID#:a+bgD0X48BGJ9syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringRead</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Set Material code and operator</Name>
+                        <UniqueId>ID#:QKjVbiXf8BGJ2MyCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Skip</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
                       <StepItem>
                         <Name>0.02 Pre-Process and HU Validation</Name>
                         <UniqueId>ID#:OpTcn8bc8BGJ1syCf5xeVC</UniqueId>
                         <StepType>PassFailTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>0</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -148,9 +319,9 @@
                     <Name>Cleanup</Name>
                     <StepItems>
                       <StepItem>
-                        <Name>Show Error to operator</Name>
-                        <UniqueId>ID#:p9/krsfc8BGJ1syCf5xeVC</UniqueId>
-                        <StepType>NoffzUTP_TEF_UI_Station_ShowPopupMessageDialog</StepType>
+                        <Name>Write PLC Message description</Name>
+                        <UniqueId>ID#:77/xD0Px8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringWrite</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>0</Index>
                         <RunMode>Normal</RunMode>
@@ -160,9 +331,9 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>UI.TestSocket.SetCaption: Socket Name + Serial Number</Name>
-                        <UniqueId>ID#:7+DDH9Tc8BGJ1syCf5xeVC</UniqueId>
-                        <StepType>NoffzUTP_TEF_UI_TestSocket_SetCaption</StepType>
+                        <Name>Write Command response</Name>
+                        <UniqueId>ID#:8MC0UUPx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableBooleanWrite</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>1</Index>
                         <RunMode>Normal</RunMode>
@@ -172,12 +343,36 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Set Serial Number</Name>
-                        <UniqueId>ID#:zdB6jMbc8BGJ1syCf5xeVC</UniqueId>
-                        <StepType>NoffzUTP_TEF_Model_TestSocket_SetSerialNumber</StepType>
+                        <Name>Set Error State</Name>
+                        <UniqueId>ID#:QuUKt0Px8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableBooleanWrite</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>2</Index>
-                        <RunMode>Normal</RunMode>
+                        <RunMode>Skip</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Set Error Code</Name>
+                        <UniqueId>ID#:vRTh+kPx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableI16Write</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Skip</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Show Error to operator</Name>
+                        <UniqueId>ID#:p9/krsfc8BGJ1syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_UI_Station_ShowPopupMessageDialog</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Skip</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -273,9 +468,9 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Lock DMM</Name>
-                        <UniqueId>ID#:OhJG56rZ8BGJzsyCf5xeVC</UniqueId>
-                        <StepType>NI_Lock</StepType>
+                        <Name>Get Limits</Name>
+                        <UniqueId>ID#:RNGa6FsD8RG5i1B7nf4f8B</UniqueId>
+                        <StepType>Statement</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>5</Index>
                         <RunMode>Normal</RunMode>
@@ -302,12 +497,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>4.9</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -337,12 +532,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>-0.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>0.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -372,12 +567,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.4</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.6</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -407,12 +602,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>4.9</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -430,23 +625,11 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>UnLock DMM</Name>
-                        <UniqueId>ID#:TH8y76rZ8BGJzsyCf5xeVC</UniqueId>
-                        <StepType>NI_Lock</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>4</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
                         <Name>2.02 Reverse polarity test</Name>
                         <UniqueId>ID#:V117voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
-                        <Index>5</Index>
+                        <Index>4</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -454,12 +637,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>3</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>3.6</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -482,11 +665,23 @@
                     <Name>Cleanup</Name>
                     <StepItems>
                       <StepItem>
+                        <Name>Model.TestSocket.GetTestSocketName</Name>
+                        <UniqueId>ID#:zMu+o97c8BGJ1syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_GetTestSocketName</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Power Off Device</Name>
                         <UniqueId>ID#:NGP0sbPD8BG5WVB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>0</Index>
+                        <Index>1</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -498,7 +693,7 @@
                         <UniqueId>ID#:SV17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>2</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -510,7 +705,7 @@
                         <UniqueId>ID#:Sl17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>2</Index>
+                        <Index>3</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -522,7 +717,7 @@
                         <UniqueId>ID#:S117voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>3</Index>
+                        <Index>4</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -534,7 +729,7 @@
                         <UniqueId>ID#:TF17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>4</Index>
+                        <Index>5</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -569,11 +764,23 @@
                     <Name>Setup</Name>
                     <StepItems>
                       <StepItem>
+                        <Name>Lock DMM</Name>
+                        <UniqueId>ID#:OhJG56rZ8BGJzsyCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Connect DMM + to T24</Name>
                         <UniqueId>ID#:TV17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>0</Index>
+                        <Index>1</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -585,7 +792,7 @@
                         <UniqueId>ID#:Tl17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>2</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -597,8 +804,8 @@
                         <UniqueId>ID#:6WqLv6DZ8BGJzsyCf5xeVC</UniqueId>
                         <StepType>NI_Wait</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>2</Index>
-                        <RunMode>Skip</RunMode>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -610,7 +817,7 @@
                     <Name>Main</Name>
                     <StepItems>
                       <StepItem>
-                        <Name>1.1 Test Power Supply voltage</Name>
+                        <Name>1.01.01 Test Power Supply voltage</Name>
                         <UniqueId>ID#:T117voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -622,12 +829,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>4.9</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -635,7 +842,42 @@
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
                               <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>1.01.02 Test of Power Supply Current</Name>
+                        <UniqueId>ID#:nc4/tyLx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>A</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Numeric Format</Name>
@@ -651,11 +893,11 @@
                     <StepItems>
                       <StepItem>
                         <Name>Disconnect DMM + from T24</Name>
-                        <UniqueId>ID#:UF17voHA8BG5VlB7nf4f8B</UniqueId>
+                        <UniqueId>ID#:W5nNVFvw8BGJ58yCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>0</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -663,11 +905,23 @@
                       </StepItem>
                       <StepItem>
                         <Name>Disconnect DMM - from GND</Name>
-                        <UniqueId>ID#:UV17voHA8BG5VlB7nf4f8B</UniqueId>
+                        <UniqueId>ID#:XJnNVFvw8BGJ58yCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>1</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>UnLock DMM</Name>
+                        <UniqueId>ID#:TH8y76rZ8BGJzsyCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -696,12 +950,48 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
+                        <Name>Lock DMM</Name>
+                        <UniqueId>ID#:oxPbGlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Connect DMM + to T24</Name>
+                        <UniqueId>ID#:pBPbGlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Connect DMM - to GND</Name>
+                        <UniqueId>ID#:pRPbGlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Wait</Name>
                         <UniqueId>ID#:4SAfPqPZ8BGJzsyCf5xeVC</UniqueId>
                         <StepType>NI_Wait</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>1</Index>
-                        <RunMode>Skip</RunMode>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -738,7 +1028,7 @@
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Units</Name>
-                              <Value />
+                              <Value>V</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Numeric Format</Name>
@@ -751,7 +1041,44 @@
                   </GroupItem>
                   <GroupItem>
                     <Name>Cleanup</Name>
-                    <StepItems />
+                    <StepItems>
+                      <StepItem>
+                        <Name>Disconnect DMM + from T24</Name>
+                        <UniqueId>ID#:3lmsZFvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Disconnect DMM - from GND</Name>
+                        <UniqueId>ID#:31msZFvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>UnLock DMM</Name>
+                        <UniqueId>ID#:rRPbGlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
                   </GroupItem>
                 </GroupItems>
               </SequenceItem>
@@ -774,12 +1101,48 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
+                        <Name>Lock DMM</Name>
+                        <UniqueId>ID#:F188MFvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Connect DMM + to T24</Name>
+                        <UniqueId>ID#:GF88MFvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Connect DMM - to GND</Name>
+                        <UniqueId>ID#:GV88MFvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Wait</Name>
                         <UniqueId>ID#:4iAfPqPZ8BGJzsyCf5xeVC</UniqueId>
                         <StepType>NI_Wait</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>1</Index>
-                        <RunMode>Skip</RunMode>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -816,7 +1179,7 @@
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Units</Name>
-                              <Value />
+                              <Value>V</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Numeric Format</Name>
@@ -829,7 +1192,44 @@
                   </GroupItem>
                   <GroupItem>
                     <Name>Cleanup</Name>
-                    <StepItems />
+                    <StepItems>
+                      <StepItem>
+                        <Name>Disconnect DMM + from T24</Name>
+                        <UniqueId>ID#:Obvla1vw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Disconnect DMM - from GND</Name>
+                        <UniqueId>ID#:Orvla1vw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>UnLock DMM</Name>
+                        <UniqueId>ID#:arThNlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
                   </GroupItem>
                 </GroupItems>
               </SequenceItem>
@@ -869,36 +1269,36 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Connect Power Supply +</Name>
-                        <UniqueId>ID#:WV17voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <Name>Lock DMM</Name>
+                        <UniqueId>ID#:nM2CRlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>1</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Connect Power Supply -</Name>
-                        <UniqueId>ID#:Wl17voHA8BG5VlB7nf4f8B</UniqueId>
+                        <Name>Connect DMM + to T24</Name>
+                        <UniqueId>ID#:nc2CRlvw8BGJ58yCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>2</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>DCPSU.Output.Set</Name>
-                        <UniqueId>ID#:W117voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
+                        <Name>Connect DMM - to GND</Name>
+                        <UniqueId>ID#:ns2CRlvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>3</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -910,31 +1310,7 @@
                         <StepType>NI_Wait</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>4</Index>
-                        <RunMode>Skip</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>Connect DMM + to T24</Name>
-                        <UniqueId>ID#:XF17voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
-                        <StepItemGroup>Setup</StepItemGroup>
-                        <Index>5</Index>
-                        <RunMode>Skip</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>Connect DMM - to GND</Name>
-                        <UniqueId>ID#:XV17voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
-                        <StepItemGroup>Setup</StepItemGroup>
-                        <Index>6</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -971,7 +1347,7 @@
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Units</Name>
-                              <Value />
+                              <Value>V</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Numeric Format</Name>
@@ -986,47 +1362,11 @@
                     <Name>Cleanup</Name>
                     <StepItems>
                       <StepItem>
-                        <Name>Power Off Device</Name>
-                        <UniqueId>ID#:8toMGLTD8BG5WVB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
-                        <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>0</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>Disconnect Power Supply +</Name>
-                        <UniqueId>ID#:X117voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
-                        <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>1</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>Disconnect Power Supply -</Name>
-                        <UniqueId>ID#:YF17voHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
-                        <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>2</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
                         <Name>Disconnect DMM + from T24</Name>
                         <UniqueId>ID#:YV17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>3</Index>
+                        <Index>0</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1038,7 +1378,55 @@
                         <UniqueId>ID#:Yl17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>UnLock DMM</Name>
+                        <UniqueId>ID#:7tLoTVvw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Power Off Device</Name>
+                        <UniqueId>ID#:8toMGLTD8BG5WVB7nf4f8B</UniqueId>
+                        <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Disconnect Power Supply +</Name>
+                        <UniqueId>ID#:pAK7r1vw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>4</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Disconnect Power Supply -</Name>
+                        <UniqueId>ID#:pQK7r1vw8BGJ58yCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>5</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1241,7 +1629,7 @@
                         <StepType>NI_Wait</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
                         <Index>15</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -1278,7 +1666,7 @@
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Units</Name>
-                              <Value />
+                              <Value>V</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Numeric Format</Name>
@@ -1293,23 +1681,11 @@
                     <Name>Cleanup</Name>
                     <StepItems>
                       <StepItem>
-                        <Name>DCPSU.Output.Set</Name>
-                        <UniqueId>ID#:LPxAurPD8BG5WVB7nf4f8B</UniqueId>
-                        <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
-                        <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>0</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems />
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
                         <Name>Disconnect DMM + from T25</Name>
                         <UniqueId>ID#:cF17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>0</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1321,7 +1697,7 @@
                         <UniqueId>ID#:cV17voHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>2</Index>
+                        <Index>1</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1333,6 +1709,18 @@
                         <UniqueId>ID#:5HdjPavZ8BGJzsyCf5xeVC</UniqueId>
                         <StepType>NI_Lock</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>DCPSU.Output.Set</Name>
+                        <UniqueId>ID#:LPxAurPD8BG5WVB7nf4f8B</UniqueId>
+                        <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
                         <Index>3</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
@@ -1341,6 +1729,71 @@
                         </LimitValueItemContainer>
                       </StepItem>
                     </StepItems>
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Merenje struje</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>DCPSU.Measurements.Get</Name>
+                        <UniqueId>ID#:nW0Sw+zf8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IODCPSUMeasurementsGet</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>1.01.02 Test of Power Supply Current</Name>
+                        <UniqueId>ID#:RZ2aeOzf8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0.005</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0.035</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>A</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
                   </GroupItem>
                 </GroupItems>
               </SequenceItem>
@@ -1382,11 +1835,23 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
+                        <Name>Get Limits</Name>
+                        <UniqueId>ID#:I3dpEV0D8RG5i1B7nf4f8B</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Connect Power Supply +</Name>
                         <UniqueId>ID#:u/l+y8LZ8BGJ0MyCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>2</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1398,7 +1863,7 @@
                         <UniqueId>ID#:vPl+y8LZ8BGJ0MyCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>2</Index>
+                        <Index>3</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1410,7 +1875,7 @@
                         <UniqueId>ID#:Imc2nYTA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IODCPSULimitsSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>3</Index>
+                        <Index>4</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1422,7 +1887,7 @@
                         <UniqueId>ID#:8xkkkITA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>4</Index>
+                        <Index>5</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1519,423 +1984,15 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>3.02 INC A Rise Time</Name>
-                        <UniqueId>ID#:6VaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
+                        <Name>3.02 Analog tests</Name>
+                        <UniqueId>ID#:w0l97B7g8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
                         <StepItemGroup>Main</StepItemGroup>
                         <Index>7</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>5.8</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>uS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.03 INC A Fall Time</Name>
-                        <UniqueId>ID#:6laF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>8</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>3.8</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>uS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.04 INC A High Value</Name>
-                        <UniqueId>ID#:61aF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>9</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>4</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>6</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.05 INC A Low Value</Name>
-                        <UniqueId>ID#:7FaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>10</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>2</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.06 INC B Rise Time</Name>
-                        <UniqueId>ID#:7VaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>11</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>5.8</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>uS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.07 INC B Fall Time</Name>
-                        <UniqueId>ID#:7laF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>12</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>3.8</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>uS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.08 INC B High Value</Name>
-                        <UniqueId>ID#:71aF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>13</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>4</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>6</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.09 INC B Low Value</Name>
-                        <UniqueId>ID#:8FaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>14</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>2</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.10 PWM Rise Time</Name>
-                        <UniqueId>ID#:8VaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>15</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>950</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>nS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.11 PWM Fall Time</Name>
-                        <UniqueId>ID#:8laF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>16</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>650</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>nS</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.12 PWM High Value</Name>
-                        <UniqueId>ID#:81aF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>17</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>4</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>6</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
-                        </LimitValueItemContainer>
-                      </StepItem>
-                      <StepItem>
-                        <Name>3.13 PWM Low Value</Name>
-                        <UniqueId>ID#:9FaF9IHA8BG5VlB7nf4f8B</UniqueId>
-                        <StepType>NumericLimitTest</StepType>
-                        <StepItemGroup>Main</StepItemGroup>
-                        <Index>18</Index>
-                        <RunMode>Normal</RunMode>
-                        <LimitValueItemContainer>
-                          <Name>Limits</Name>
-                          <LimitValueItems>
-                            <LimitValueItem>
-                              <Name>Low</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>0</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>High</Name>
-                              <ValueType>Numeric</ValueType>
-                              <Value>2</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Comparison Type</Name>
-                              <Value>GELE</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Units</Name>
-                              <Value>V</Value>
-                            </LimitValueItem>
-                            <LimitValueItem>
-                              <Name>Numeric Format</Name>
-                              <Value />
-                            </LimitValueItem>
-                          </LimitValueItems>
+                          <LimitValueItems />
                         </LimitValueItemContainer>
                       </StepItem>
                     </StepItems>
@@ -1944,11 +2001,23 @@
                     <Name>Cleanup</Name>
                     <StepItems>
                       <StepItem>
+                        <Name>Model.TestSocket.GetTestSocketName</Name>
+                        <UniqueId>ID#:y8u+o97c8BGJ1syCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_GetTestSocketName</StepType>
+                        <StepItemGroup>Cleanup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Stop Motor Movement</Name>
                         <UniqueId>ID#:bct8CYPA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>SequenceCall</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>0</Index>
+                        <Index>1</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1960,7 +2029,7 @@
                         <UniqueId>ID#:HWpAiIXA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IODCPSUOutputSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>2</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1972,7 +2041,7 @@
                         <UniqueId>ID#:F9QbvoXA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>2</Index>
+                        <Index>3</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -1984,7 +2053,7 @@
                         <UniqueId>ID#:GNQbvoXA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NoffzUTP_IOSwitchSPSTSet</StepType>
                         <StepItemGroup>Cleanup</StepItemGroup>
-                        <Index>3</Index>
+                        <Index>4</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -2043,12 +2112,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>4.9</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>5.1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -2078,12 +2147,12 @@
                             <LimitValueItem>
                               <Name>Low</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>0.01</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>High</Name>
                               <ValueType>Numeric</ValueType>
-                              <Value>1</Value>
+                              <Value>0</Value>
                             </LimitValueItem>
                             <LimitValueItem>
                               <Name>Comparison Type</Name>
@@ -2263,7 +2332,7 @@
                     <Name>Main</Name>
                     <StepItems>
                       <StepItem>
-                        <Name>Read ZPOSM</Name>
+                        <Name>Read ZPOSM_1</Name>
                         <UniqueId>ID#:4v7bjWPX8BG5blB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2298,7 +2367,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Read ZPOSL</Name>
+                        <Name>Read ZPOSL_1</Name>
                         <UniqueId>ID#:/VaF9IHA8BG5VlB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2508,7 +2577,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Read ZPOSM</Name>
+                        <Name>Read ZPOSM_2</Name>
                         <UniqueId>ID#:lv9Y+GPX8BG5blB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2543,7 +2612,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Read ZPOSM</Name>
+                        <Name>Read ZPOSM_3</Name>
                         <UniqueId>ID#:iY+IHcnZ8BGJ0MyCf5xeVC</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2648,7 +2717,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Read ZPOSL</Name>
+                        <Name>Read ZPOSL_2</Name>
                         <UniqueId>ID#:mf9Y+GPX8BG5blB7nf4f8B</UniqueId>
                         <StepType>NumericLimitTest</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2846,12 +2915,12 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Set Error if mototr did not start moving</Name>
-                        <UniqueId>ID#:cpDPoZbD8BG5WVB7nf4f8B</UniqueId>
-                        <StepType>Statement</StepType>
+                        <Name>Set Error in sequence</Name>
+                        <UniqueId>ID#:BdyvTCXx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
                         <StepItemGroup>Main</StepItemGroup>
                         <Index>3</Index>
-                        <RunMode>Skip</RunMode>
+                        <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
                           <LimitValueItems />
@@ -2949,7 +3018,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Get Measurement A and B</Name>
+                        <Name>Get Measurement PWM</Name>
                         <UniqueId>ID#:nawsk2vX8BG5blB7nf4f8B</UniqueId>
                         <StepType>Action</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -2961,7 +3030,7 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
-                        <Name>Process Measurement A</Name>
+                        <Name>Process Measurement PWM</Name>
                         <UniqueId>ID#:nqwsk2vX8BG5blB7nf4f8B</UniqueId>
                         <StepType>Action</StepType>
                         <StepItemGroup>Main</StepItemGroup>
@@ -3005,6 +3074,626 @@
                   </GroupItem>
                 </GroupItems>
               </SequenceItem>
+              <SequenceItem>
+                <Name>AnalogTests</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>SAMO OVI KORACI NE TREBA DA IDU U CLEANUP AKO SU PALI</Name>
+                        <UniqueId>ID#:pyt6BB/g8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Skip</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Ofsets</Name>
+                        <UniqueId>ID#:I6+iPE3i8BGJ3MyCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Skip</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>3.02 INC A Rise Time</Name>
+                        <UniqueId>ID#:6VaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>uS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.03 INC A Fall Time</Name>
+                        <UniqueId>ID#:6laF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>uS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.04 INC A High Value</Name>
+                        <UniqueId>ID#:61aF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.05 INC A Low Value</Name>
+                        <UniqueId>ID#:7FaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.06 INC B Rise Time</Name>
+                        <UniqueId>ID#:7VaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>uS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.07 INC B Fall Time</Name>
+                        <UniqueId>ID#:7laF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>5</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>uS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.08 INC B High Value</Name>
+                        <UniqueId>ID#:71aF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>6</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.09 INC B Low Value</Name>
+                        <UniqueId>ID#:8FaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>7</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.10 PWM Rise Time</Name>
+                        <UniqueId>ID#:8VaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>8</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>nS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.11 PWM Fall Time</Name>
+                        <UniqueId>ID#:8laF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>9</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>nS</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.12 PWM High Value</Name>
+                        <UniqueId>ID#:81aF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>10</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>3.13 PWM Low Value</Name>
+                        <UniqueId>ID#:9FaF9IHA8BG5VlB7nf4f8B</UniqueId>
+                        <StepType>NumericLimitTest</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>11</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems>
+                            <LimitValueItem>
+                              <Name>Low</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>High</Name>
+                              <ValueType>Numeric</ValueType>
+                              <Value>0</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Comparison Type</Name>
+                              <Value>GELE</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Units</Name>
+                              <Value>V</Value>
+                            </LimitValueItem>
+                            <LimitValueItem>
+                              <Name>Numeric Format</Name>
+                              <Value />
+                            </LimitValueItem>
+                          </LimitValueItems>
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Set Error in sequence</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Model.TestSocket.GetTestSocketName</Name>
+                        <UniqueId>ID#:6ZvCBADz8BGJ8MyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_GetTestSocketName</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Get Current DUT</Name>
+                        <UniqueId>ID#:99vg4UH28BGJ8syCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Set Error to True</Name>
+                        <UniqueId>ID#:x//+RSXx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableBooleanWrite</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Change the Sequence State to ERROR</Name>
+                        <UniqueId>ID#:VDrk8GD18BGJ8syCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Return same DUT to the QUEUE</Name>
+                        <UniqueId>ID#:OKKCp0H28BGJ8syCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Set Error Code</Name>
+                        <UniqueId>ID#:1GSPcCXx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableI16Write</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Save system error</Name>
+                        <UniqueId>ID#:OcYOc/kH8RGKEsyCf5xeVC</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>E1003 and E1004</Name>
+                        <UniqueId>ID#:/gCbHgDz8BGJ8MyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_UI_TestSocket_ShowMessageDialog</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>5</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Return same DUT to QUEUE</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Set QUEUE Priority to TOP</Name>
+                        <UniqueId>ID#:ZhdHtEH28BGJ8syCf5xeVC</UniqueId>
+                        <StepType>Statement</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Insert element in the same QUEUE to be retested</Name>
+                        <UniqueId>ID#:ZxdHtEH28BGJ8syCf5xeVC</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
             </SequenceItems>
           </VariantItem>
           <VariantItem>
@@ -3029,6 +3718,36 @@
                 <GroupItems>
                   <GroupItem>
                     <Name>Setup</Name>
+                    <StepItems />
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>4.00.00 Device packed </Name>
+                        <UniqueId>ID#:tvsNrgrg8BGJ2cyCf5xeVC</UniqueId>
+                        <StepType>SequenceCall</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>Device packing</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
                     <StepItems>
                       <StepItem>
                         <Name>Model.TestSocket.GetTestSocketName</Name>
@@ -3043,11 +3762,23 @@
                         </LimitValueItemContainer>
                       </StepItem>
                       <StepItem>
+                        <Name>Model.Station.GetOperationMode</Name>
+                        <UniqueId>ID#:EQZIgy3f8BGJ2MyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_Station_GetOperationMode</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
                         <Name>Read Packaging Status</Name>
                         <UniqueId>ID#:IeaXttjc8BGJ1syCf5xeVC</UniqueId>
                         <StepType>NoffzUTP_IOPLCVariableBooleanRead</StepType>
                         <StepItemGroup>Setup</StepItemGroup>
-                        <Index>1</Index>
+                        <Index>2</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
                           <Name>Limits</Name>
@@ -3067,6 +3798,110 @@
                         <Index>0</Index>
                         <RunMode>Normal</RunMode>
                         <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Cleanup</Name>
+                    <StepItems />
+                  </GroupItem>
+                </GroupItems>
+              </SequenceItem>
+              <SequenceItem>
+                <Name>MES packing</Name>
+                <GroupItems>
+                  <GroupItem>
+                    <Name>Setup</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Model.TestSocket.GetSerialNumber</Name>
+                        <UniqueId>ID#:/t7I7Ebx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_Model_TestSocket_GetSerialNumber</StepType>
+                        <StepItemGroup>Setup</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                    </StepItems>
+                  </GroupItem>
+                  <GroupItem>
+                    <Name>Main</Name>
+                    <StepItems>
+                      <StepItem>
+                        <Name>Lock</Name>
+                        <UniqueId>ID#:YM86aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>0</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Send Serial number to SAP</Name>
+                        <UniqueId>ID#:Yc86aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>Action</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>1</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Update message to PLC</Name>
+                        <UniqueId>ID#:Ys86aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableStringWrite</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>2</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Update Message status</Name>
+                        <UniqueId>ID#:Y886aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_IOPLCVariableBooleanWrite</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>3</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Show Error to operator</Name>
+                        <UniqueId>ID#:Zs86aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NoffzUTP_TEF_UI_Station_ShowPopupMessageDialog</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>4</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
+                          <LimitValueItems />
+                        </LimitValueItemContainer>
+                      </StepItem>
+                      <StepItem>
+                        <Name>Lock</Name>
+                        <UniqueId>ID#:Z886aUbx8BGJ7cyCf5xeVC</UniqueId>
+                        <StepType>NI_Lock</StepType>
+                        <StepItemGroup>Main</StepItemGroup>
+                        <Index>5</Index>
+                        <RunMode>Normal</RunMode>
+                        <LimitValueItemContainer>
+                          <Name>Limits</Name>
                           <LimitValueItems />
                         </LimitValueItemContainer>
                       </StepItem>
@@ -3117,6 +3952,6 @@
   </AppInfo>
   <AppInfo>
     <Version>10.0.0.0</Version>
-    <LastModification>2025-12-19T13:59:32.9051446+01:00</LastModification>
+    <LastModification>2026-02-12T12:36:41.7475349+01:00</LastModification>
   </AppInfo>
 </ProductConfiguration>

@@ -15,6 +15,7 @@
 		<Item Name="CSV" Type="Folder">
 			<Item Name="CSV Report.lvlib" Type="Library" URL="../CSV Report/CSV Report.lvlib"/>
 			<Item Name="Generate CSV Report combined.vi" Type="VI" URL="../CSV Report/Generate CSV Report combined.vi"/>
+			<Item Name="Move reports.vi" Type="VI" URL="../CSV Report/Move reports.vi"/>
 		</Item>
 		<Item Name="Keyence" Type="Folder">
 			<Item Name="Convert Scanned HEX data to ASCII QR Code.vi" Type="VI" URL="../Keyence/Convert Scanned HEX data to ASCII QR Code.vi"/>
@@ -26,12 +27,6 @@
 		</Item>
 		<Item Name="MES" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
-			<Item Name="WebService" Type="Folder">
-				<Item Name="CheckPqmNtrsAndProductSerialDateService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_CheckPqmNtrsAndProductSerialDateService/CheckPqmNtrsAndProductSerialDateService.lvlib"/>
-				<Item Name="ContactAndRegisterWithNmaSapService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_ContactAndRegisterWithNmaSapService/ContactAndRegisterWithNmaSapService.lvlib"/>
-				<Item Name="Pre-Process and HU Validation.vi" Type="VI" URL="../MES/Communication/Pre-Process and HU Validation.vi"/>
-				<Item Name="SAP Integration.vi" Type="VI" URL="../MES/Communication/SAP Integration.vi"/>
-			</Item>
 		</Item>
 		<Item Name="NI 6386" Type="Folder">
 			<Item Name="AI.lvlib" Type="Library" URL="../NI 6386/AI/AI.lvlib"/>
@@ -52,6 +47,8 @@
 			<Item Name="Get Failure set to write.vi" Type="VI" URL="../Station/Get Failure set to write.vi"/>
 			<Item Name="Get Testing Limits.vi" Type="VI" URL="../Station/Get Testing Limits.vi"/>
 			<Item Name="Read Ini FIle.vi" Type="VI" URL="../Station/Read Ini FIle.vi"/>
+			<Item Name="Save MES errors.vi" Type="VI" URL="../Station/Saving errors/Save MES errors.vi"/>
+			<Item Name="Save System errors.vi" Type="VI" URL="../Station/Saving errors/Save System errors.vi"/>
 			<Item Name="Update Operating Mode.vi" Type="VI" URL="../Station/Update Operating Mode.vi"/>
 		</Item>
 		<Item Name="Aim TTi 1908P DMM.lvlib" Type="Library" URL="../AimTTi/Aim TTi 1908P DMM.lvlib"/>
@@ -60,10 +57,10 @@
 		<Item Name="Update Packaging Instructions.vi" Type="VI" URL="../MES/Update Packaging Instructions.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
-				<Item Name="CheckPqmNtrsAndProductSerialDateService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_CheckPqmNtrsAndProductSerialDateService/CheckPqmNtrsAndProductSerialDateService.dll"/>
-				<Item Name="CheckUserAndEquipmentStatusService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_CheckUserAndEquipmentStatusService/CheckUserAndEquipmentStatusService.dll"/>
-				<Item Name="CheckUserAndEquipmentStatusService.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_CheckUserAndEquipmentStatusService/CheckUserAndEquipmentStatusService.lvlib"/>
-				<Item Name="ContactAndRegisterWithNmaSapService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_ContactAndRegisterWithNmaSapService/ContactAndRegisterWithNmaSapService.dll"/>
+				<Item Name="CheckUserAndEquipmentStatusService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_UserLogin/CheckUserAndEquipmentStatusService.dll"/>
+				<Item Name="ContactAndRegisterWithNmaSapService.dll" Type="Document" URL="/&lt;userlib&gt;/WebService/_SAP/ContactAndRegisterWithNmaSapService.dll"/>
+				<Item Name="SAP.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_SAP/SAP.lvlib"/>
+				<Item Name="UserLogin.lvlib" Type="Library" URL="/&lt;userlib&gt;/WebService/_UserLogin/UserLogin.lvlib"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
@@ -750,7 +747,7 @@
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Login.vi" Type="VI" URL="../MES/Communication/Login.vi"/>
+			<Item Name="login.vi" Type="VI" URL="../MES/Communication/login.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="MessageInfo.ctl" Type="VI" URL="../MES/MessageInfo.ctl"/>
 			<Item Name="mscorlib" Type="VI" URL="mscorlib">
@@ -759,6 +756,8 @@
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="SAP Integration.vi" Type="VI" URL="../MES/Communication/SAP Integration.vi"/>
+			<Item Name="SAP.vi" Type="VI" URL="../MES/Communication/SAP.vi"/>
 			<Item Name="System" Type="VI" URL="System">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>

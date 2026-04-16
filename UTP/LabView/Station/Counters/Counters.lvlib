@@ -9,9 +9,7 @@
 </Property>
 	<Item Name="Get NOK Counter.vi" Type="VI" URL="../Get NOK Counter.vi"/>
 	<Item Name="Get NOK In A Row Counter.vi" Type="VI" URL="../Get NOK In A Row Counter.vi"/>
-	<Item Name="Get number of Retests.vi" Type="VI" URL="../Get number of Retests.vi"/>
 	<Item Name="Get Target For In A Row Failing.vi" Type="VI" URL="../Get Target For In A Row Failing.vi"/>
-	<Item Name="Get Target For NOK Box.vi" Type="VI" URL="../Get Target For NOK Box.vi"/>
 	<Item Name="Increase NOK Counter.vi" Type="VI" URL="../Increase NOK Counter.vi"/>
 	<Item Name="Increase NOK In A Row Counter.vi" Type="VI" URL="../Increase NOK In A Row Counter.vi"/>
 	<Item Name="Reinitialize Counters.vi" Type="VI" URL="../Reinitialize Counters.vi"/>

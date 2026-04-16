@@ -1,0 +1,2 @@
+Project,Variant,Operating Mode,Fixture,Serial Number,Date,Time,Test Names,Lower limits values,Measurement values,Upper,Unit,Test Status,Station status,Overall status
+NGPMH,NGPMH,Auto,101,518019808P1_2025052619182_01,1/5/2026,6:16:32 PM,0.01 Read Serial number,0,0,1,Boolean,Passed,Passed,Passed

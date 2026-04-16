@@ -1,0 +1,8 @@
+Project,Variant,Operating Mode,Fixture,Serial Number,Date,Time,Test Names,Lower limits values,Measurement values,Upper,Unit,Test Status,Station status,Overall status
+NGPMH,NGPMH,Auto,100,518019808P1_2025052618879_01,1/5/2026,6:16:26 PM,0.01 Read Serial number,0,0,1,Boolean,Passed,Passed,Passed
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,1.01.01 Test Power Supply voltage,4.9,4.9668,5.1,V,Passed,Passed,
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,1.01.02 Test of Power Supply Current,0.005,0.021,0.035,A,Passed,,
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,1.2 Read overvoltage voltage on T24,-0.1,0.0801,0.1,V,Passed,,
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,1.2 Read voltage on T24 after overvoltage,5.4,5.4657,5.6,V,Passed,,
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,2.1 Test Power Supply voltage,4.9,5.0227,5.1,V,Passed,,
+NGPMH,NGPMH,Auto,200,518019808P1_2025052618879_01,1/5/2026,6:16:38 PM,2.2 Test Voltage on T25,3,3.4731,3.6,V,Passed,,

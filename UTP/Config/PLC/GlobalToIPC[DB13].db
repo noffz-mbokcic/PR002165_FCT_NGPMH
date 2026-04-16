@@ -8,6 +8,7 @@ NON_RETAIN
             Testing : Struct
                Station1_LeftDutNest_StartTest : Bool;
                Station1_LeftDutNest_Stoptest : Bool;
+			   Station1_LeftDutNest_ReTest : Bool;
                Station1_LeftDutNest_Reset : Bool;
             END_STRUCT;
 			Dummy1 : Bool;
@@ -22,7 +23,6 @@ NON_RETAIN
 			Dummy10 : Bool;
 			Dummy11: Bool;
 			Dummy12 : Bool;
-			Dummy13 : Bool;
             Station1_DUTPresentSensor : Bool;
             Station1_DUTPlaced : Bool;
 		    Dummy1 : Bool;
@@ -44,6 +44,7 @@ NON_RETAIN
             Testing : Struct
                Station1_RightDutNest_StartTest : Bool;
                Station1_RightDutNest_Stoptest : Bool;
+			   Station1_RightDutNest_ReTest : Bool;
                Station1_RightDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -57,7 +58,6 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
             Station1_DUTPresentSensor : Bool;
             Station1_DUTPlaced : Bool;
@@ -68,6 +68,7 @@ NON_RETAIN
             Testing : Struct
                Station2_LeftDutNest_StartTest : Bool;
                Station2_LeftDutNest_Stoptest : Bool;
+			   Station2_LeftDutNest_ReTest : Bool;
                Station2_LeftDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -81,13 +82,13 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
          END_STRUCT;
          RightDutNest : Struct
             Testing : Struct
                Station2_RightDutNest_StartTest : Bool;
                Station2_RightDutNest_Stoptest : Bool;
+			   Station2_RightDutNest_ReTest : Bool;
                Station2_RightDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -101,7 +102,6 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
          END_STRUCT;
       END_STRUCT;
@@ -110,6 +110,7 @@ NON_RETAIN
             Testing : Struct
                Station3_LeftDutNest_StartTest : Bool;
                Station3_LeftDutNest_Stoptest : Bool;
+			   Station3_LeftDutNest_ReTest : Bool;
                Station3_LeftDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -123,7 +124,6 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
             Motor : Struct
                Station3_LeftDutNest_ReadyRunning : Bool;
@@ -148,6 +148,7 @@ NON_RETAIN
             Testing : Struct
                Station3_RightDutNest_StartTest : Bool;
                Station3_RightDutNest_Stoptest : Bool;
+			   Station3_RightDutNest_ReTest : Bool;
                Station3_RightDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -161,7 +162,6 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
             Motor : Struct
                Station3_RightDutNest_ReadyRunning : Bool;
@@ -173,6 +173,7 @@ NON_RETAIN
             Testing : Struct
                Station4_LeftDutNest_StoreResults : Bool;
                Station4_LeftDutNest_PackagingStatus : Bool;
+			   Station4_LeftDutNest_ReTest : Bool;
                Station4_LeftDutNest_Reset : Bool;
 			   Dummy1 : Bool;
 			   Dummy2 : Bool;
@@ -186,13 +187,13 @@ NON_RETAIN
 			   Dummy10 : Bool;
 			   Dummy11 : Bool;
 			   Dummy12 : Bool;
-			   Dummy13 : Bool;
             END_STRUCT;
          END_STRUCT;
          RightDutNest : Struct
             Testing : Struct
                Station4_RightDutNest_StoreResults : Bool;
                Station4_RightDutNest_PackagingStatus : Bool;
+			   Station4_RightDutNest_ReTest : Bool;
                Station4_RightDutNest_Reset : Bool;
             END_STRUCT;
          END_STRUCT;
@@ -224,6 +225,11 @@ NON_RETAIN
          Mode : Int;
          SubMode : Int;
          EMGactive : Bool;
+		 StartButton : Bool;
+		 Left_Dut_Position_X : Int;
+		 Left_Dut_Position_Y : Int;
+		 Right_Dut_Position_X : Int;
+		 Right_Dut_Position_Y : Int;
       END_STRUCT;
    END_STRUCT;
 
